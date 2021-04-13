@@ -12,10 +12,17 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import { YagaModule } from '@yaga/leaflet-ng2';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
+import { ChamisTableauComponent } from './chamis-tableau/chamis-tableau.component';
+import { DefisTableauComponent } from './defis-tableau/defis-tableau.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChamisTableauComponent,
+    DefisTableauComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,9 @@ import { YagaModule } from '@yaga/leaflet-ng2';
     MatInputModule,
     MatSelectModule,
     MatMenuModule,
-    YagaModule
+    YagaModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
