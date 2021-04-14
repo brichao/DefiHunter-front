@@ -11,12 +11,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list'
 import { YagaModule } from '@yaga/leaflet-ng2';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { ChamisTableauComponent } from './chamis-tableau/chamis-tableau.component';
 import { DefisTableauComponent } from './defis-tableau/defis-tableau.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,9 +37,11 @@ import { DefisTableauComponent } from './defis-tableau/defis-tableau.component';
     MatInputModule,
     MatSelectModule,
     MatMenuModule,
+    MatListModule,
     YagaModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

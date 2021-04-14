@@ -5,10 +5,11 @@
   <label>
     Projet Groupe 9
   </label>
-  <label class="spacer"></label>
-  <div *ngIf="chamis$ | async as chamis">
+  <label class="spacer">
+  </label>
+  <label for="menu" *ngIf="chamis$ | async as chamis">
     {{chamis.displayName}}
-  </div>
+  </label>
   <mat-icon [matMenuTriggerFor]="menuConnect">
     account_circle
   </mat-icon>
@@ -26,6 +27,7 @@
     </ng-template>
   </mat-menu>
 </mat-toolbar>
+<defis-tableau></defis-tableau>
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer [mode]="mode.value">
     Placez votre menu ici...

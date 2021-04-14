@@ -1,15 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-defis-tableau',
+  selector: 'defis-tableau',
   templateUrl: './defis-tableau.component.html',
   styleUrls: ['./defis-tableau.component.scss']
 })
-export class DefisTableauComponent implements OnInit {
+export class DefisTableauComponent {
 
-  constructor() { }
+  // defis = Array<firebase.default.User | null>();
+  defis: any;
 
-  ngOnInit(): void {
-  }
+  private dbUrl = 'http://jsonplaceholder.typicode.com/users';
+
+  constructor(public http: HttpClient) {
+    http.get(this.dbUrl, {observe: 'body', responseType: 'json'})
+      .subscribe((response) => {
+        this.defis = response;
+      })
+   }
 
 }

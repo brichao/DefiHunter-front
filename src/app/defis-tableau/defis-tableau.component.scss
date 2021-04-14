@@ -1,0 +1,12 @@
+mat-list {
+  flex-grow: 1;
+  border: 2px solid rgb(170, 170, 170);
+  border-radius: 5px;
+  overflow: auto;
+  padding: 14px;
+}
+
+mat-list[dense] mat-list-item {
+  font-size: 12px;
+  color: rgb(44, 44, 44);
+}
