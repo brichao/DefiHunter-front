@@ -3,21 +3,20 @@
     <mat-icon (click)="drawer.toggle()">menu</mat-icon>
   </button>
   <label>
-    Projet intégrateur
+    Projet Groupe 9
   </label>
+  <p>{{chamis?.displayName}}</p>
   <label class="spacer"></label>
   <mat-icon [matMenuTriggerFor]="menuConnect">
     account_circle
   </mat-icon>
   <mat-menu #menuConnect="matMenu">
-    <button mat-menu-item (click)="login()">
+    <button *ngIf="!chamis" mat-menu-item (click)="login()">
       <img [src]="dataIconGoogle" width="24" height="24"/>
       &nbsp;
       <span>Compte Google</span>
     </button>
-  </mat-menu>
-  <mat-menu #menuDisconnect="matMenu">
-    <button mat-menu-item>
+    <button *ngIf="chamis" mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Déconnexion</span>
     </button>
