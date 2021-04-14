@@ -5,24 +5,27 @@
   <label>
     Projet Groupe 9
   </label>
-  <p>{{chamis?.displayName}}</p>
   <label class="spacer"></label>
+  <div *ngIf="chamis$ | async as chamis">
+    {{chamis.displayName}}
+  </div>
   <mat-icon [matMenuTriggerFor]="menuConnect">
     account_circle
   </mat-icon>
   <mat-menu #menuConnect="matMenu">
-    <button *ngIf="!chamis" mat-menu-item (click)="login()">
-      <img [src]="dataIconGoogle" width="24" height="24"/>
-      &nbsp;
-      <span>Compte Google</span>
-    </button>
-    <button *ngIf="chamis" mat-menu-item (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      <span>Déconnexion</span>
-    </button>
+      <button *ngIf="chamis$ | async as chamis; else anonymousUser" mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Déconnexion</span>
+      </button>
+    <ng-template #anonymousUser>
+      <button  mat-menu-item (click)="login()">
+        <img [src]="dataIconGoogle" width="24" height="24"/>
+        &nbsp;
+        <span>Compte Google</span>
+      </button>
+    </ng-template>
   </mat-menu>
 </mat-toolbar>
-
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer [mode]="mode.value">
     Placez votre menu ici...
