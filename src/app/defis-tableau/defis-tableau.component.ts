@@ -11,7 +11,7 @@ export class DefisTableauComponent {
   // defis = Array<firebase.default.User | null>();
   defis: any;
 
-  private dbUrl = 'http://jsonplaceholder.typicode.com/users';
+  private dbUrl = 'http://jsonplaceholder.typicode.com/posts';
 
   constructor(public http: HttpClient) {
     http.get(this.dbUrl, {observe: 'body', responseType: 'json'})
