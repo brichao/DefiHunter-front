@@ -7,5 +7,6 @@ export const environment = {
     storageBucket: "defigrenoble-961cf.appspot.com",
     messagingSenderId: "455752264671",
     appId: "1:455752264671:web:49baa93e1d72897c18f26a"
-  }
+  },
+  apiBaseUrl: "https://l3m-pi-serveur-gp09.herokuapp.com"
 };

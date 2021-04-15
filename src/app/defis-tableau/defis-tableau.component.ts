@@ -1,4 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { DefisService } from './../services/defis.service';
+import { Defis } from './../services/defis';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,18 +8,24 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './defis-tableau.component.html',
   styleUrls: ['./defis-tableau.component.scss']
 })
-export class DefisTableauComponent {
+export class DefisTableauComponent implements OnInit {
 
-  // defis = Array<firebase.default.User | null>();
-  defis: any;
+  defis: Defis[] = [];
 
-  private dbUrl = 'http://jsonplaceholder.typicode.com/posts';
+  constructor(public defisService: DefisService) { }
 
-  constructor(public http: HttpClient) {
-    http.get(this.dbUrl, {observe: 'body', responseType: 'json'})
-      .subscribe((response) => {
+  ngOnInit() {
+    this.getDefis();
+  }
+
+  getDefis() {
+    this.defisService.defis
+      .subscribe((response: Defis[]) => {
         this.defis = response;
-      })
-   }
-
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 }

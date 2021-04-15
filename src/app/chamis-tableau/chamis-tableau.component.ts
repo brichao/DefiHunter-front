@@ -1,4 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { ChamisService } from './../services/chamis.service';
+import { Chamis } from './../services/chamis';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,15 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChamisTableauComponent {
 
-  listeChamis: any;
+  chamis: Chamis[] = [];
 
-  private dbUrl = 'http://jsonplaceholder.typicode.com/users';
+  constructor(public chamisService: ChamisService) { }
 
-  constructor(public http: HttpClient) {
-    http.get(this.dbUrl, {observe: 'body', responseType: 'json'})
-      .subscribe((response) => {
-        this.listeChamis = response;
-      })
+  ngOnInit() {
+    this.getChamis();
+  }
+
+   getChamis() {
+     this.chamisService.chamis
+      .subscribe((response: Chamis[]) => {
+        this.chamis = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
    }
-
 }
