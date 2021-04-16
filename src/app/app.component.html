@@ -28,13 +28,13 @@
   </mat-menu>
 </mat-toolbar>
 
-<!-- Tableaux -->
-<defis-tableau></defis-tableau>
-<chamis-tableau></chamis-tableau>
+
 
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer [mode]="mode.value">
-    Placez votre menu ici...
+    <!-- Tableaux -->
+    <defis-tableau></defis-tableau>
+    <chamis-tableau></chamis-tableau>
   </mat-drawer>
   <mat-drawer-content>
     <mat-form-field>
