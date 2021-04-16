@@ -13,18 +13,18 @@ export class DefisService {
   constructor(private http: HttpClient) { }
 
   get defis(): Observable<Defis[]> {
-    return this.http.get<any>(`${this.apiServerUrl}/api/defis/`);
+    return this.http.get<Defis[]>(`${this.apiServerUrl}/api/defis/`);
   }
 
   addDefis(defis: Defis): Observable<Defis> {
-    return this.http.post<any>(`${this.apiServerUrl}/api/defis/${defis.id}`, defis);
+    return this.http.post<Defis>(`${this.apiServerUrl}/api/defis/${defis.id}`, defis);
   }
 
   updateDefis(defis: Defis): Observable<Defis> {
-    return this.http.put<any>(`${this.apiServerUrl}/api/defis/${defis.id}`, defis);
+    return this.http.put<Defis>(`${this.apiServerUrl}/api/defis/${defis.id}`, defis);
   }
 
   deleteDefis(defis: Defis): Observable<void> {
-    return this.http.delete<any>(`${this.apiServerUrl}/api/defis/${defis.id}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/api/defis/${defis.id}`);
   }
 }
