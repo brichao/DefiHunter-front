@@ -1,5 +1,5 @@
 export interface Chamis {
-  auteur: string,
+  pseudo: string,
   age: number,
   defisCrees: number
 }

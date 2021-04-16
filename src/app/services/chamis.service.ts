@@ -17,14 +17,14 @@ export class ChamisService {
   }
 
   addChamis(chamis: Chamis): Observable<Chamis> {
-    return this.http.post<any>(`${this.apiServerUrl}/api/chamis/${chamis.auteur}`, chamis);
+    return this.http.post<any>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
   }
 
   updateChamis(chamis: Chamis): Observable<Chamis> {
-    return this.http.put<any>(`${this.apiServerUrl}/api/chamis/${chamis.auteur}`, chamis);
+    return this.http.put<any>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
   }
 
   deleteChamis(chamis: Chamis): Observable<void> {
-    return this.http.delete<any>(`${this.apiServerUrl}/api/chamis/${chamis.auteur}`);
+    return this.http.delete<any>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`);
   }
 }
