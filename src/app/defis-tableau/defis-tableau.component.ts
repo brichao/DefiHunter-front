@@ -18,7 +18,7 @@ export class DefisTableauComponent implements OnInit {
     this.getDefis();
   }
 
-  getDefis() {
+  getDefis() : void {
     this.defisService.defis
       .subscribe((response: Defis[]) => {
         this.defis = response;

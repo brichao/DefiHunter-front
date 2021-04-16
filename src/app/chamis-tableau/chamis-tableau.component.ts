@@ -18,7 +18,7 @@ export class ChamisTableauComponent {
     this.getChamis();
   }
 
-   getChamis() {
+   getChamis() : void {
      this.chamisService.chamis
       .subscribe((response: Chamis[]) => {
         this.chamis = response;
