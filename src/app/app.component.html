@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar color = "primary">
   <button mat-icon-button class="example-icon" aria-label="Menu">
     <mat-icon (click)="drawer.toggle()">menu</mat-icon>
   </button>
@@ -7,6 +7,8 @@
   </label>
   <label class="spacer">
   </label>
+  <a mat-button routerLink = "defis">Liste des défis</a>
+  <a mat-button routerLink = "chamis">Liste des Chamis</a>
   <label for="menu" *ngIf="chamis$ | async as chamis">
     {{chamis.displayName}}
   </label>
@@ -28,13 +30,10 @@
   </mat-menu>
 </mat-toolbar>
 
-
-
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer [mode]="mode.value">
     <!-- Tableaux -->
-    <defis-tableau></defis-tableau>
-    <chamis-tableau></chamis-tableau>
+
   </mat-drawer>
   <mat-drawer-content>
     <mat-form-field>
@@ -54,9 +53,12 @@
                     [opacity] = "1"
                     >
         <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+        <!--<yaga-polyline [color] = "" [geoJSON] = "" ></yaga-polyline>-->
       </yaga-marker>
 
     </yaga-map>
 
   </mat-drawer-content>
 </mat-drawer-container>
+
+<router-outlet></router-outlet>

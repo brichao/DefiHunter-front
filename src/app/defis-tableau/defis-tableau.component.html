@@ -1,5 +1,25 @@
-<mat-list dense>
-    <mat-list-item *ngFor="let defi of defis">
-        {{ defi.titre }}
-    </mat-list-item>
-</mat-list>
+<mat-table [dataSource] = "defis">
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{defi.id }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="titre">
+    <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{defi.titre }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="auteur">
+    <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{defi.auteur }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{defi.description }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['id', 'titre', 'auteur', 'description']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['id', 'titre', 'auteur', 'description']"></mat-row>
+</mat-table>
