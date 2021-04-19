@@ -1,5 +1,16 @@
-<mat-list dense>
-    <mat-list-item *ngFor="let defi of defis">
-        {{ defi.titre }}
-    </mat-list-item>
-</mat-list>
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <mat-list dense>
+      <mat-list-item *ngFor="let defi of defis">
+        {{ defi.id }}
+      </mat-list-item>
+    </mat-list>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-list dense>
+      <mat-list-item *ngFor="let defi of defis">
+        {{ defi.auteur }}
+      </mat-list-item>
+    </mat-list>
+  </mat-grid-tile>
+</mat-grid-list>

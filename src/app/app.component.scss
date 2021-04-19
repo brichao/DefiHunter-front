@@ -20,13 +20,17 @@
     }
   }
 
+  div {
+    display: flex;
+    align-items: flex-start;
+  }
+
   mat-drawer-container {
     flex: 1 1;
     > mat-drawer {
       border-right: solid grey 3px;
     }
   }
-
 
   yaga-map {
     height: 480px;

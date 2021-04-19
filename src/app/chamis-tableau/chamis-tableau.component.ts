@@ -22,7 +22,6 @@ export class ChamisTableauComponent {
      this.chamisService.chamis
       .subscribe((response: Chamis[]) => {
         this.chamis = response;
-        console.log(response);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

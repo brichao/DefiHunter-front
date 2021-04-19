@@ -1,31 +1,32 @@
 :host {
   width: 50%;
-  height: 30%;
   min-height: 40px;
   min-width: 100px;
   max-height: 165px;
   display: flex;
   flex-direction: column;
 
-  mat-list[dense] {
-    flex-grow: 1;
-    border: 1.5px solid rgb(170, 170, 170);
-    border-radius: 3px;
-    overflow: auto;
-    padding-top: 0px;
-  }
+  mat-grid-list[cols="2"] mat-grid-tile {
+    mat-list[dense] {
+      flex-grow: 1;
+      border: 1.5px solid rgb(170, 170, 170);
+      border-radius: 3px;
+      overflow: auto;
+      padding-top: 0px;
 
-  mat-list[dense] mat-list-item {
-    font-size: 12px;
-    color: rgb(44, 44, 44);
-    background-color: rgb(238, 238, 238);
-    border-radius: 2px;
-  }
+      mat-list-item {
+        font-size: 12px;
+        color: rgb(44, 44, 44);
+        background-color: rgb(238, 238, 238);
+        border-radius: 2px;
+      }
 
-  mat-list[dense] mat-list-item:nth-child(odd) {
-    font-size: 12px;
-    color: rgb(44, 44, 44);
-    background-color: rgb(223, 223, 223);
-    border-radius: 2px;
+      mat-list-item:nth-child(odd) {
+        font-size: 12px;
+        color: rgb(44, 44, 44);
+        background-color: rgb(223, 223, 223);
+        border-radius: 2px;
+      }
+    }
   }
 }

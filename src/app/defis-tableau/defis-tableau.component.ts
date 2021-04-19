@@ -22,7 +22,6 @@ export class DefisTableauComponent implements OnInit {
     this.defisService.defis
       .subscribe((response: Defis[]) => {
         this.defis = response;
-        console.log(response);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

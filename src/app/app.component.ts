@@ -18,9 +18,9 @@ export class AppComponent {
 
   chamis$: Observable<firebase.User | null>;
 
-
   constructor(public auth: AngularFireAuth) {
     this.chamis$ = auth.authState;
+
   }
 
   login(): void {
