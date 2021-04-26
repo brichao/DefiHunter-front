@@ -1,5 +1,16 @@
-<mat-list dense>
-  <mat-list-item *ngFor="let c of chamis">
-      {{ c.pseudo }}
-  </mat-list-item>
-</mat-list>
+<mat-table [dataSource] = "chamis">
+
+  <ng-container matColumnDef="pseudo">
+    <mat-header-cell *matHeaderCellDef> Pseudo </mat-header-cell>
+    <mat-cell *matCellDef="let c"> {{c.pseudo }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="age">
+    <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+    <mat-cell *matCellDef="let c"> {{c.age }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['pseudo', 'age']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['pseudo', 'age']"></mat-row>
+</mat-table>
+

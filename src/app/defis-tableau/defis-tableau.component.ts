@@ -1,6 +1,6 @@
 import { DefisService } from './../services/defis.service';
 import { Defis } from './../services/defis';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -18,7 +18,7 @@ export class DefisTableauComponent implements OnInit {
     this.getDefis();
   }
 
-  getDefis() {
+  getDefis() : void {
     this.defisService.defis
       .subscribe((response: Defis[]) => {
         this.defis = response;

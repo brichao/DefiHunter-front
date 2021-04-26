@@ -13,18 +13,18 @@ export class ChamisService {
   constructor(private http: HttpClient) { }
 
   get chamis(): Observable<Chamis[]> {
-    return this.http.get<any>(`${this.apiServerUrl}/api/chamis/`);
+    return this.http.get<Chamis[]>(`${this.apiServerUrl}/api/chamis/`);
   }
 
   addChamis(chamis: Chamis): Observable<Chamis> {
-    return this.http.post<any>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
+    return this.http.post<Chamis>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
   }
 
   updateChamis(chamis: Chamis): Observable<Chamis> {
-    return this.http.put<any>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
+    return this.http.put<Chamis>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
   }
 
   deleteChamis(chamis: Chamis): Observable<void> {
-    return this.http.delete<any>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`);
   }
 }

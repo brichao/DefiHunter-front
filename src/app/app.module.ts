@@ -11,8 +11,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatListModule} from '@angular/material/list';
-import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list'
+import {MatTableModule} from '@angular/material/table';
 import { YagaModule } from '@yaga/leaflet-ng2';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -39,7 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatMenuModule,
     MatListModule,
-    MatGridListModule,
+    MatTableModule,
     YagaModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

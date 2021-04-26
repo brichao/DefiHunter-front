@@ -20,7 +20,6 @@ export class AppComponent {
 
   constructor(public auth: AngularFireAuth) {
     this.chamis$ = auth.authState;
-
   }
 
   login(): void {
