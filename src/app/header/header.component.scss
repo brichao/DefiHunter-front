@@ -16,6 +16,11 @@ mat-toolbar {
     }
   }
 
+  .spacer {
+    flex: 1 1;
+    border-left: 0;
+  }
+
   p {
     padding: 0.25rem 1rem 0.25rem 1rem;
   }
