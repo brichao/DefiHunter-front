@@ -20,12 +20,16 @@ import { environment } from 'src/environments/environment';
 import { ChamisTableauComponent } from './chamis-tableau/chamis-tableau.component';
 import { DefisTableauComponent } from './defis-tableau/defis-tableau.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { DefisPageComponent } from './defis-page/defis-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChamisTableauComponent,
-    DefisTableauComponent
+    DefisTableauComponent,
+    HeaderComponent,
+    DefisPageComponent
   ],
   imports: [
     BrowserModule,
