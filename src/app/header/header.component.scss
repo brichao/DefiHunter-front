@@ -9,22 +9,24 @@ mat-toolbar {
   > mat-icon {
     user-select: none;
     transition: transform .3s;
+    padding-right: 1rem;
 
     &:hover {
       transform: scale(1.4);
     }
   }
 
+  p {
+    padding: 0.25rem 1rem 0.25rem 1rem;
+  }
+
+  a {
+    border-left: 1px solid var(--gray-100);
+  }
+
   label {
     margin-left: 1rem;
     padding: 0.25rem 1rem 0.25rem 1rem;
     border-left: 1px solid var(--gray-100);
-  }
-
-  img {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    border: solid black 3px;
   }
 }

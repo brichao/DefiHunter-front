@@ -6,20 +6,20 @@
     DefisHunter
   </label>
 
+  <a mat-button routerLink = "defis">Liste des défis</a>
+  <a mat-button routerLink = "chamis">Liste des Chamis</a>
   <label class="spacer">
   </label>
 
-  <a mat-button routerLink = "defis">Liste des défis</a>
-  <a mat-button routerLink = "chamis">Liste des Chamis</a>
-  <label for="menu" *ngIf="chamis$ | async as chamis">
+  <p for="menu" *ngIf="isLoggedIn() | async as chamis">
     {{chamis.displayName}}
-  </label>
+  </p>
   <mat-icon [matMenuTriggerFor]="menuConnect">
     account_circle
   </mat-icon>
   <mat-menu #menuConnect="matMenu">
       <button
-        *ngIf="chamis$ | async as chamis; else anonymousUser"
+        *ngIf="isLoggedIn() | async as chamis; else anonymousUser"
         mat-menu-item
         (click)="logout()"
       >
