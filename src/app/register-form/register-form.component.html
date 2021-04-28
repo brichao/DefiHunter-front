@@ -1,5 +1,5 @@
-<form [formGroup]="form" (ngSubmit)="login()">
-  <div *ngIf="form.errors" class="alert alert-danger">Invalid Pseudo or Password</div>
+<form [formGroup]="form" (ngSubmit)="inscription()">
+  <div *ngIf="form.errors" class="alert alert-danger">Pseudo, Âge ou Ville Invalide</div>
   <div formGroupName="account">
     <div class="form-group">
         <label for="pseudo">Pseudo</label>
@@ -18,16 +18,19 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="age">Age</label>
+        <label for="age">Âge</label>
         <input
-            formControlName="age"
-            id="age"
-            type="text"
-            class="form-control"
+          formControlName="age"
+          id="age"
+          type="text"
+          class="form-control"
         >
         <div class="alert alert-danger" *ngIf="age?.touched && age?.invalid">
           <div *ngIf="age?.errors?.required">L'âge est requis.</div>
-          <div *ngIf="age?.errors?.minlength">Password should have a minimum of {{age?.errors?.minlength.requiredLength}} characters.</div>
+          <div *ngIf="age?.errors?.isNotNumber">L'âge doit être un numéro.</div>
+          <div *ngIf="age?.errors?.tooOld">Vous êtes trop vieux XD.</div>
+          <div *ngIf="age?.errors?.cannotContainSpace">L'Âge ne peut pas contenir des espaces.</div>
+          <div *ngIf="age?.errors?.cannotContainDotOrComma">L'Âge doit être un numéro entier.</div>
         </div>
     </div>
     <div class="form-group">
@@ -40,7 +43,6 @@
         >
         <div class="alert alert-danger" *ngIf="ville?.touched && ville?.invalid">
           <div *ngIf="ville?.errors?.required">La ville est requise.</div>
-          <div *ngIf="ville?.errors?.minlength">Password should have a minimum of {{ville?.errors?.minlength.requiredLength}} characters.</div>
         </div>
     </div>
   </div>

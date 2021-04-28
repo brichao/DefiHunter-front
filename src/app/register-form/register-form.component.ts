@@ -1,7 +1,9 @@
 import { PseudoValidators } from './pseudo.validators';
 import { AgeValidators } from './age.validators';
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { RegisterFormService } from '../services/register-form.service';
+import { ChamisService } from '../services/chamis.service';
 
 @Component({
   selector: 'register-form',
@@ -9,15 +11,25 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent {
+
+  constructor(private pseudoService: PseudoValidators) {}
+
   form = new FormGroup({
     account: new FormGroup({
-      pseudo: new FormControl('',
+      pseudo: new FormControl('',[
         Validators.required,
-        PseudoValidators.shouldBeUnique),
-      age: new FormControl('', [
-        Validators.required,
-        AgeValidators.isNumber
-      ]),
+        PseudoValidators.cannotContainSpace
+      ],
+        PseudoValidators.shouldBeUnique
+      ),
+      age: new FormControl('',[
+          Validators.required,
+          AgeValidators.isNotNumber,
+          AgeValidators.cannotContainSpace,
+          AgeValidators.tooOld,
+          AgeValidators.cannotContainDotOrComma
+        ]
+      ),
       ville: new FormControl('',
         Validators.required)
     })
@@ -28,14 +40,14 @@ export class RegisterFormComponent {
   }
 
   get age() {
-    return this.form.get('account.password');
+    return this.form.get('account.age');
   }
 
   get ville() {
     return this.form.get('account.ville');
   }
 
-  login() {
+  inscription() {
     this.form.setErrors({
       invalidLogin: true
     })

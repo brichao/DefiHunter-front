@@ -26,6 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { DefisPageComponent } from './defis-page/defis-page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { RegisterFormService } from './services/register-form.service';
+import { ChamisService } from './services/chamis.service';
+import { PseudoValidators } from './register-form/pseudo.validators';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,11 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     AngularFireAuthModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    RegisterFormService,
+    ChamisService,
+    PseudoValidators
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
