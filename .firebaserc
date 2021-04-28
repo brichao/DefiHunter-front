@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "defigrenoble-961cf": {
+      "hosting": {
+        "amorce-client": [
+          "defigrenoble-961cf"
+        ]
+      }
+    }
+  }
+}

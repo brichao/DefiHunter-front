@@ -1,6 +1,6 @@
 import { ChamisService } from './../services/chamis.service';
 import { Chamis } from './../services/chamis';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -22,7 +22,6 @@ export class ChamisTableauComponent {
      this.chamisService.chamis
       .subscribe((response: Chamis[]) => {
         this.chamis = response;
-        console.log(response);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
