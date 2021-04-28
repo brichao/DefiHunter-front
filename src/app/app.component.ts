@@ -23,6 +23,7 @@ export class AppComponent {
     this.chamis$ = auth.authState;
   }
 
+
   login(): void {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({

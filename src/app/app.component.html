@@ -45,15 +45,33 @@
       </mat-select>
     </mat-form-field>
 
-    <yaga-map [lng]="5.724524" [lat]="45.188529" [zoom]="12">
+    <yaga-map [lng]="5.7252853997794295" [lat]="45.189341083040574" [zoom]="12">
       <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
-      <yaga-marker  [lng] = "5.724524"
-                    [lat] = "45.188529"
+      <yaga-marker  [lng] = "5.7252853997794295"
+                    [lat] = "45.189341083040574"
                     [display] = "true"
                     [opacity] = "1"
                     >
         <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
-        <!--<yaga-polyline [color] = "" [geoJSON] = "" ></yaga-polyline>-->
+
+      </yaga-marker>
+
+      <yaga-marker  [lng] = "5.719179072792394"
+                    [lat] = "45.18928762856083"
+                    [display] = "true"
+                    [opacity] = "1"
+                    >
+        <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+
+      </yaga-marker>
+
+      <yaga-marker  [lng] = "5.728209269095507"
+                    [lat] = "45.190426814853595"
+                    [display] = "true"
+                    [opacity] = "1"
+                    >
+        <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+
       </yaga-marker>
 
     </yaga-map>
