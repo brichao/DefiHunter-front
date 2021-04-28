@@ -1,5 +1,6 @@
-<main>
-  <!-- Header -->
+<register-form></register-form>
+
+<!-- <main>
   <app-header (menuEvent)="drawer.toggle()"></app-header>
 
   <mat-drawer-container class="example-container">
@@ -7,16 +8,6 @@
       Contenu drawer
     </mat-drawer>
     <mat-drawer-content>
-      <!-- <mat-form-field>
-        <mat-label>Sidenav mode</mat-label>
-        <mat-select #mode value="push">
-          <mat-option value="side">Side</mat-option>
-          <mat-option value="over">Over</mat-option>
-          <mat-option value="push">Push</mat-option>
-        </mat-select>
-      </mat-form-field> -->
-
-
       <div class="map">
         <label for="adresse">Adresse</label>
         <input
@@ -30,17 +21,17 @@
         >
         <yaga-map [lng]="5.724524" [lat]="45.188529" [zoom]="12">
           <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
-          <yaga-marker  [lng] = "5.724524"
-          [lat] = "45.188529"
-          [display] = "true"
-          [opacity] = "1"
+          <yaga-marker
+            [lng] = "5.724524"
+            [lat] = "45.188529"
+            [display] = "true"
+            [opacity] = "1"
           >
-          <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
-          <!--<yaga-polyline [color] = "" [geoJSON] = "" ></yaga-polyline>-->
-        </yaga-marker>
-      </yaga-map>
+            <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+          </yaga-marker>
+        </yaga-map>
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
 </main>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->

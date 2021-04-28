@@ -1,5 +1,8 @@
 export interface Chamis {
-  pseudo: string,
-  age: number,
-  defisCrees: number
+  nom: string;
+  prenom: string;
+  pseudo: string;
+  age: number;
+  ville: string;
+  defisCrees: number;
 }

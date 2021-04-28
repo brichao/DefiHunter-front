@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+  <div *ngIf="form.errors" class="alert alert-danger">Invalid Pseudo or Password</div>
+  <div formGroupName="account">
+    <div class="form-group">
+        <label for="pseudo">Pseudo</label>
+        <input
+          formControlName="pseudo"
+          id="pseudo"
+          type="text"
+          class="form-control"
+        >
+        <div *ngIf="pseudo?.pending">Checking for duplicated pseudo...</div>
+        <div class="alert alert-danger" *ngIf="pseudo?.touched && pseudo?.invalid">
+          <div *ngIf="pseudo?.errors?.required">Pseudo est requis.</div>
+          <div *ngIf="pseudo?.errors?.minlength">Pseudo should have a minimum of {{pseudo?.errors?.minlength.requiredLength}} characters.</div>
+          <div *ngIf="pseudo?.errors?.cannotContainSpace">Pseudo cannot contain space.</div>
+          <div *ngIf="pseudo?.errors?.shouldBeUnique">Pseudo déjà pris.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input
+            formControlName="age"
+            id="age"
+            type="text"
+            class="form-control"
+        >
+        <div class="alert alert-danger" *ngIf="age?.touched && age?.invalid">
+          <div *ngIf="age?.errors?.required">L'âge est requis.</div>
+          <div *ngIf="age?.errors?.minlength">Password should have a minimum of {{age?.errors?.minlength.requiredLength}} characters.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="age">Ville</label>
+        <input
+            formControlName="ville"
+            id="ville"
+            type="text"
+            class="form-control"
+        >
+        <div class="alert alert-danger" *ngIf="ville?.touched && ville?.invalid">
+          <div *ngIf="ville?.errors?.required">La ville est requise.</div>
+          <div *ngIf="ville?.errors?.minlength">Password should have a minimum of {{ville?.errors?.minlength.requiredLength}} characters.</div>
+        </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">S'inscrire</button>
+</form>
