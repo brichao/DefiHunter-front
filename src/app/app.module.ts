@@ -22,6 +22,7 @@ import { DefisTableauComponent } from './defis-tableau/defis-tableau.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { DefisPageComponent } from './defis-page/defis-page.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DefisPageComponent } from './defis-page/defis-page.component';
     ChamisTableauComponent,
     DefisTableauComponent,
     HeaderComponent,
-    DefisPageComponent
+    DefisPageComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

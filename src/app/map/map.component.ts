@@ -1,15 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
-import { RawResult } from 'leaflet-geosearch/dist/providers/bingProvider';
-import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
+import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-map',
+  templateUrl: './map.component.html',
+  styleUrls: ['./map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class MapComponent {
   iconMarker = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/585px-Map_marker.svg.png';
   tileLayerUrl = OSM_TILE_LAYER_URL;
 
@@ -27,4 +26,5 @@ export class AppComponent {
     //   this.log(r.y);
     // });
   }
+
 }
