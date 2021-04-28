@@ -20,18 +20,16 @@
         <yaga-map [lng]="5.724524" [lat]="45.188529" [zoom]="12">
           <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
           <yaga-marker  [lng] = "5.724524"
-                        [lat] = "45.188529"
-                        [display] = "true"
-                        [opacity] = "1"
-                        >
-            <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
-            <!--<yaga-polyline [color] = "" [geoJSON] = "" ></yaga-polyline>-->
-          </yaga-marker>
-        </yaga-map>
-      </div>
-
-    </mat-drawer-content>
-  </mat-drawer-container>
-
+          [lat] = "45.188529"
+          [display] = "true"
+          [opacity] = "1"
+          >
+          <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+          <!--<yaga-polyline [color] = "" [geoJSON] = "" ></yaga-polyline>-->
+        </yaga-marker>
+      </yaga-map>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
 </main>
 <router-outlet></router-outlet>
