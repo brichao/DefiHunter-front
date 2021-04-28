@@ -27,6 +27,10 @@ export class AppComponent{
     this.chamis$ = auth.authState;
   }
 
+  ngOnInit() {
+    this.getDonnee();
+  }
+
   login(): void {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({
@@ -53,8 +57,7 @@ export class AppComponent{
     return promise;
   }*/
 
-  getdonnee(){
-
+  getDonnee(){
     const lien="https://data.mobilites-m.fr/api/lines/json?types=ligne"
     this.http.get(lien).subscribe((lignes)=>{
       this.donnee = lignes;
