@@ -13,6 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list'
 import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 import { YagaModule } from '@yaga/leaflet-ng2';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -40,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatMenuModule,
     MatListModule,
     MatTableModule,
+    MatTabsModule,
     YagaModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
