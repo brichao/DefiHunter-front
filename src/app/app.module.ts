@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -29,15 +30,17 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { RegisterFormService } from './services/register-form.service';
 import { ChamisService } from './services/chamis.service';
 import { PseudoValidators } from './register-form/pseudo.validators';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     ChamisTableauComponent,
     DefisTableauComponent,
     HeaderComponent,
     DefisPageComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,24 @@ import { PseudoValidators } from './register-form/pseudo.validators';
     MatListModule,
     MatTableModule,
     YagaModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'inscription',
+        component: RegisterFormComponent
+      },
+      {
+        path: 'chamis',
+        component: ChamisTableauComponent
+      },
+      {
+        path: 'defis',
+        component: DefisTableauComponent
+      },
+    ]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     HttpClientModule

@@ -59,8 +59,6 @@ export class RegisterFormComponent {
 
   inscription() {
     this.chamis = {
-      nom: "",
-      prenom: "",
       email: "",
       pseudo: this.pseudo?.value,
       age: this.age?.value,

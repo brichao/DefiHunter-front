@@ -5,6 +5,7 @@ import { ChamisService } from './chamis.service';
   providedIn: 'root'
 })
 export class RegisterFormService {
+
   static _pseudos: Array<string> = [];
 
   constructor(service: ChamisService) {

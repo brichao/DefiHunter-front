@@ -1,0 +1,32 @@
+<main>
+  <mat-drawer-container class="example-container">
+    <mat-drawer #drawer [mode]="'over'">
+      Contenu drawer
+    </mat-drawer>
+    <mat-drawer-content>
+      <label for="adresse">Adresse</label>
+      <input
+      #adresse
+      (change)="getResults(adresse)"
+      type="text"
+      id="adresse"
+      name="adresse"
+      placeholder="Adresse"
+      class="form-control"
+      >
+      <div class="map">
+        <yaga-map [lng]="5.724524" [lat]="45.188529" [zoom]="12">
+          <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
+          <yaga-marker
+            [lng] = "5.724524"
+            [lat] = "45.188529"
+            [display] = "true"
+            [opacity] = "1"
+          >
+            <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+          </yaga-marker>
+        </yaga-map>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</main>

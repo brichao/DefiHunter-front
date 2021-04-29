@@ -11,9 +11,9 @@
   <label class="spacer">
   </label>
 
-  <p for="menu" *ngIf="isLoggedIn() | async as chamis">
+  <label class="name" *ngIf="isLoggedIn() | async as chamis">
     {{chamis.displayName}}
-  </p>
+  </label>
   <mat-icon [matMenuTriggerFor]="menuConnect">
     account_circle
   </mat-icon>

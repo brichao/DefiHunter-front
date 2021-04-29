@@ -6,6 +6,10 @@ mat-toolbar {
 
   border-bottom: 1px solid var(--gray-100);
 
+  button {
+    margin-right: 1rem;
+  }
+
   > mat-icon {
     user-select: none;
     transition: transform .3s;
@@ -16,13 +20,9 @@ mat-toolbar {
     }
   }
 
-  .spacer {
-    flex: 1 1;
-    border-left: 0;
-  }
 
   p {
-    padding: 0.25rem 1rem 0.25rem 1rem;
+    padding: 0 1rem 0 1rem;
   }
 
   a {
@@ -30,8 +30,17 @@ mat-toolbar {
   }
 
   label {
-    margin-left: 1rem;
-    padding: 0.25rem 1rem 0.25rem 1rem;
+    margin-bottom: 0;
+    padding: 0rem 1rem 0rem 1rem;
     border-left: 1px solid var(--gray-100);
+
+    &.spacer {
+      flex: 1 1;
+      border-left: 0;
+    }
+
+    &.name {
+      border-left: 0;
+    }
   }
 }
