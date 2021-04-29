@@ -20,7 +20,7 @@ export class AgeValidators {
   }
 
   static cannotContainDotOrComma(control: AbstractControl): ValidationErrors | null {
-    if ((control.value as string).indexOf('.') >= 0 || (control.value as string).indexOf(',') >= 0) {
+    if ((control.value).indexOf('.') >= 0 || (control.value).indexOf(',') >= 0) {
       return { cannotContainDotOrComma: true };
     }
     else

@@ -17,6 +17,7 @@ export class ChamisService {
   }
 
   addChamis(chamis: Chamis): Observable<Chamis> {
+    console.log(chamis);
     return this.http.post<Chamis>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
   }
 

@@ -19,6 +19,7 @@ export class PseudoValidators {
   }
 
   static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
+    console.log(RegisterFormService.pseudos);
     return new Promise((resolve) => {
         if (RegisterFormService.pseudos.includes(control.value)) {
           resolve({ shouldBeUnique: true });
