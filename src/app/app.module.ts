@@ -21,12 +21,18 @@ import { environment } from 'src/environments/environment';
 import { ChamisTableauComponent } from './chamis-tableau/chamis-tableau.component';
 import { DefisTableauComponent } from './defis-tableau/defis-tableau.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AccueilComponent } from './accueil/accueil.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChamisTableauComponent,
-    DefisTableauComponent
+    DefisTableauComponent,
+    AccueilComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,9 @@ import { HttpClientModule } from '@angular/common/http';
     YagaModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
