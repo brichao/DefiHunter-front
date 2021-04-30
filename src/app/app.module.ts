@@ -25,7 +25,6 @@ import { ChamisTableauComponent } from './chamis-tableau/chamis-tableau.componen
 import { DefisTableauComponent } from './defis-tableau/defis-tableau.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
-import { DefisPageComponent } from './defis-page/defis-page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { RegisterFormService } from './services/register-form.service';
 import { ChamisService } from './services/chamis.service';
@@ -39,7 +38,6 @@ import { HomeComponent } from './home/home.component';
     ChamisTableauComponent,
     DefisTableauComponent,
     HeaderComponent,
-    DefisPageComponent,
     RegisterFormComponent,
   ],
   imports: [
