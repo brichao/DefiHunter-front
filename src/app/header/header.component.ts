@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
 import firebase from 'firebase';
 import { Observable } from 'rxjs';
+import { RegisterFormService } from '../services/register-form.service';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +20,10 @@ export class HeaderComponent {
 
   chamis$: Observable<firebase.User | null>;
 
-  constructor(public auth: AngularFireAuth) {
+  constructor(  public auth: AngularFireAuth,
+                private registerService: RegisterFormService,
+                private router: Router
+              ){
     this.chamis$ = auth.authState;
   }
 
@@ -32,13 +37,25 @@ export class HeaderComponent {
       prompt: 'select_account'
     });
     this.auth.signInWithPopup(provider);
-  }
+    this.redirectUserAfterLogin();
+}
 
-  logout(): void {
-    this.auth.signOut();
-  }
+logout(): void {
+  this.auth.signOut();
+}
 
-  isLoggedIn(): Observable<firebase.User | null> {
-    return this.chamis$;
+isLoggedIn(): Observable<firebase.User | null> {
+  return this.chamis$;
+}
+
+// Redirects User to Register Page if the user's email is not found in the database
+redirectUserAfterLogin(): void {
+  this.chamis$
+    .subscribe(c => {
+      console.log(c);
+      if (c != null && !RegisterFormService.emails.includes(c?.email as string)) {
+        this.router.navigate(['inscription'], { state: { redirect: this.router.url } } );
+      }
+    });
   }
 }

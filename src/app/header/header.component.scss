@@ -27,6 +27,8 @@ mat-toolbar {
 
   a {
     border-left: 1px solid var(--gray-100);
+    text-decoration: none;
+    color : inherit;
   }
 
   label {
