@@ -1,0 +1,52 @@
+mat-toolbar {
+  height: 6.5rem;
+  background-color: white;
+
+  align-items: center;
+
+  border-bottom: 1px solid var(--gray-100);
+
+  button {
+    margin-right: 1rem;
+  }
+
+  > mat-icon {
+    user-select: none;
+    transition: transform .3s;
+    padding-right: 1rem;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
+
+
+  p {
+    padding: 0 1rem 0 1rem;
+  }
+
+  a {
+    border-left: 1px solid var(--gray-100);
+    text-decoration: none;
+    color : inherit;
+  }
+
+  label {
+    margin-bottom: 0;
+    padding: 0rem 1rem 0rem 1rem;
+    border-left: 1px solid var(--gray-100);
+
+    &.title {
+      cursor: pointer;
+    }
+
+    &.spacer {
+      flex: 1 1;
+      border-left: 0;
+    }
+
+    &.name {
+      border-left: 0;
+    }
+  }
+}

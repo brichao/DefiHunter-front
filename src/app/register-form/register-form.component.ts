@@ -2,6 +2,9 @@ import { PseudoValidators } from './pseudo.validators';
 import { AgeValidators } from './age.validators';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { RegisterFormService } from '../services/register-form.service';
+import { ChamisService } from '../services/chamis.service';
+import { Chamis } from '../services/chamis';
 
 @Component({
   selector: 'register-form',
@@ -10,12 +13,15 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class RegisterFormComponent {
 
-  constructor(private pseudoService: PseudoValidators) {}
+  private chamis: Chamis | null = null;
+
+  constructor(private service: ChamisService, private pseudoService: PseudoValidators) {}
 
   form = new FormGroup({
     account: new FormGroup({
       pseudo: new FormControl('',[
         Validators.required,
+        Validators.minLength(3),
         PseudoValidators.cannotContainSpace
       ],
         PseudoValidators.shouldBeUnique
@@ -29,7 +35,9 @@ export class RegisterFormComponent {
         ]
       ),
       ville: new FormControl('',
-        Validators.required)
+        Validators.required
+      ),
+      description: new FormControl('',)
     })
   });
 
@@ -45,9 +53,19 @@ export class RegisterFormComponent {
     return this.form.get('account.ville');
   }
 
+  get description() {
+    return this.form.get('account.description');
+  }
+
   inscription() {
-    this.form.setErrors({
-      invalidLogin: true
-    })
+    this.chamis = {
+      email: "",
+      pseudo: this.pseudo?.value,
+      age: this.age?.value,
+      ville: this.ville?.value,
+      description: this.description?.value,
+      // defisCrees: 0
+    };
+    this.service.addChamis(this.chamis);
   }
 }

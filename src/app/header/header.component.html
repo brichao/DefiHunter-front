@@ -1,0 +1,40 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Menu">
+    <mat-icon (click)="handleMenuClick($event)">menu</mat-icon>
+  </button>
+  <label class="title" routerLink = "">
+    DefisHunter
+  </label>
+
+  <a mat-button routerLink = "defis">Liste des défis</a>
+  <a mat-button routerLink = "chamis">Liste des Chamis</a>
+  <label class="spacer">
+  </label>
+
+  <label class="name" *ngIf="isLoggedIn() | async as chamis">
+    {{chamis.displayName}}
+  </label>
+  <mat-icon [matMenuTriggerFor]="menuConnect">
+    account_circle
+  </mat-icon>
+  <mat-menu #menuConnect="matMenu">
+      <button
+        *ngIf="isLoggedIn() | async as chamis; else anonymousUser"
+        mat-menu-item
+        (click)="logout()"
+      >
+        <mat-icon>logout</mat-icon>
+        <span>Déconnexion</span>
+      </button>
+    <ng-template #anonymousUser>
+      <button
+        mat-menu-item
+        (click)="login()"
+      >
+        <img [src]="dataIconGoogle" width="24" height="24"/>
+        &nbsp;
+        <span>Compte Google</span>
+      </button>
+    </ng-template>
+  </mat-menu>
+</mat-toolbar>

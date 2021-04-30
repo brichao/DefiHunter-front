@@ -1,4 +1,8 @@
-<mat-table [dataSource] = "chamis">
+<!-- <div *ngFor="let c of (chamis$ | async)">
+  <div>{{c.pseudo}}</div>
+</div> -->
+
+<mat-table [dataSource] = "(chamis$)">
 
   <ng-container matColumnDef="pseudo">
     <mat-header-cell *matHeaderCellDef> Pseudo </mat-header-cell>

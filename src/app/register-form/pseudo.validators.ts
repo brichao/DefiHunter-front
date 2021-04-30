@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 import { ChamisService } from "../services/chamis.service";
-import { RegisterFormService } from '../services/register-form.service';
-
+import { RegisterFormService } from "../services/register-form.service";
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +19,7 @@ export class PseudoValidators {
   }
 
   static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
+    console.log(RegisterFormService.pseudos);
     return new Promise((resolve) => {
         if (RegisterFormService.pseudos.includes(control.value)) {
           resolve({ shouldBeUnique: true });

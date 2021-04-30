@@ -4,6 +4,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -21,23 +25,29 @@ import { environment } from 'src/environments/environment';
 import { ChamisTableauComponent } from './chamis-tableau/chamis-tableau.component';
 import { DefisTableauComponent } from './defis-tableau/defis-tableau.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AccueilComponent } from './accueil/accueil.component';
+import { HeaderComponent } from './header/header.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterFormService } from './services/register-form.service';
+import { ChamisService } from './services/chamis.service';
+import { PseudoValidators } from './register-form/pseudo.validators';
+import { HomeComponent } from './home/home.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    AccueilComponent,
     ChamisTableauComponent,
     DefisTableauComponent,
-    AccueilComponent,
-    RegisterFormComponent
+    HeaderComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -49,13 +59,35 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     MatTabsModule,
     YagaModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'inscription',
+        component: RegisterFormComponent
+      },
+      {
+        path: 'chamis',
+        component: ChamisTableauComponent
+      },
+      {
+        path: 'defis',
+        component: DefisTableauComponent
+      },
+    ]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    RegisterFormService,
+    ChamisService,
+    PseudoValidators
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

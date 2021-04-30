@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+
+  main {
+    flex: 1;
+
+    mat-drawer-container {
+      flex: 1 1;
+      > mat-drawer {
+        border-right: 1px solid var(--gray-100);
+        background-color: white;
+      }
+    }
+
+    .map {
+
+
+      background-color: var(--gray-50);
+      padding: 2rem 5rem 0 5rem;
+
+
+      yaga-map {
+        border-radius: 0.75rem;
+        height: 45rem;
+        width: 100rem;
+      }
+    }
+  }
+}

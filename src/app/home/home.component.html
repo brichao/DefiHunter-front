@@ -1,0 +1,65 @@
+<main>
+  <mat-drawer-container class="example-container">
+    <mat-drawer #drawer [mode]="'over'">
+      Contenu du drawer
+
+    </mat-drawer>
+    <mat-drawer-content>
+
+      <div class="map">
+        <!-- <mat-tab-group mat-align-tabs="Debut"> -->
+          <!-- <mat-tab label="Votre Map"> -->
+            <yaga-map [lng]="5.734862282275417" [lat]="45.18598899690281" [zoom]="13">
+              <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
+              <yaga-marker
+                [lng] = "5.724524"
+                [lat] = "45.188529"
+                [display] = "true"
+                [opacity] = "1"
+              >
+                <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+              </yaga-marker>
+              <yaga-polyline *ngFor="let x of (donnee); let i = index" [color]="couleur(x.properties.COULEUR)" [geoJSON]="x" >
+                <yaga-popup>
+                  <h3>Ligne {{x.properties.NUMERO}}</h3>
+                  <h4>{{x.properties.LIBELLE}}</h4>
+                </yaga-popup>
+              </yaga-polyline>
+            </yaga-map>
+          <!-- </mat-tab> -->
+        <!-- </mat-tab-group> -->
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+  <!-- <mat-drawer-container class="example-container">
+    <mat-drawer #drawer [mode]="'over'">
+      Contenu drawer
+    </mat-drawer>
+    <mat-drawer-content>
+      <label for="adresse">Adresse</label>
+      <input
+      #adresse
+      (change)="getResults(adresse)"
+      type="text"
+      id="adresse"
+      name="adresse"
+      placeholder="Adresse"
+      class="form-control"
+      >
+      <div class="map">
+        <yaga-map [lng]="5.724524" [lat]="45.188529" [zoom]="12">
+          <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
+          <yaga-marker
+            [lng] = "5.724524"
+            [lat] = "45.188529"
+            [display] = "true"
+            [opacity] = "1"
+          >
+            <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+          </yaga-marker>
+        </yaga-map>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container> -->
+</main>

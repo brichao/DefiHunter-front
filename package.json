@@ -24,7 +24,11 @@
     "@angular/router": "~11.2.9",
     "@firebase/util": "^1.0.0",
     "@yaga/leaflet-ng2": "^1.0.0",
+    "bootstrap": "^4.6.0",
     "firebase": "^7.0 || ^8.0",
+    "google-maps": "^4.3.3",
+    "leaflet": "^1.7.1",
+    "leaflet-geosearch": "^3.3.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

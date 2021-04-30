@@ -66,7 +66,7 @@ export class AccueilComponent implements OnInit {
 
   couleur(colorRGB: any): string {
     return `rgb( ${colorRGB} )`;
-}
+  }
 
 
 }
