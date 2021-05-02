@@ -6,9 +6,10 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path : 'defis', component : DefisTableauComponent},
-  { path : 'chamis', component : ChamisTableauComponent},
-  { path : 'register', component : RegisterFormComponent}
+  { path: '', component: AccueilComponent },
+  { path: 'inscription', component: RegisterFormComponent },
+  { path: 'chamis', component: ChamisTableauComponent },
+  { path: 'defis',  component: DefisTableauComponent },
 ];
 
 @NgModule({

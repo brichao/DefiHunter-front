@@ -1,6 +1,6 @@
 export interface Chamis {
-  email: string;
   pseudo: string;
+  email: string;
   age: number;
   ville: string;
   description: string;

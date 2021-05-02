@@ -1,7 +1,7 @@
 import { PseudoValidators } from './pseudo.validators';
 import { AgeValidators } from './age.validators';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegisterFormService } from '../services/register-form.service';
 import { ChamisService } from '../services/chamis.service';
 import { Chamis } from '../services/chamis';
@@ -59,13 +59,14 @@ export class RegisterFormComponent {
 
   inscription() {
     this.chamis = {
-      email: "",
       pseudo: this.pseudo?.value,
+      email: "",
       age: this.age?.value,
       ville: this.ville?.value,
       description: this.description?.value,
       // defisCrees: 0
     };
     this.service.addChamis(this.chamis);
+    console.log(this.chamis);
   }
 }

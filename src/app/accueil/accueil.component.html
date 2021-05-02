@@ -14,6 +14,9 @@
           [display] = "true"
           [opacity] = "1">
           <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+          <yaga-popup>
+            <h1>Defi</h1>
+          </yaga-popup>
        </yaga-marker>
        <yaga-polyline *ngFor="let x of donnee.features; let i = index" [color]="couleur(x.properties.COULEUR)" [geoJSON]="x" >
          <yaga-popup>
@@ -27,5 +30,3 @@
     </mat-tab-group>
   </mat-drawer-content>
 </mat-drawer-container>
-
-<router-outlet></router-outlet>

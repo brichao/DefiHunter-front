@@ -1,3 +1,4 @@
+import { DefisService } from './services/defis.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -18,6 +18,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list'
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import { MatDialogModule } from '@angular/material/dialog';
 import { YagaModule } from '@yaga/leaflet-ng2';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -30,18 +32,18 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { RegisterFormService } from './services/register-form.service';
 import { ChamisService } from './services/chamis.service';
 import { PseudoValidators } from './register-form/pseudo.validators';
-import { HomeComponent } from './home/home.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { AjoutDefiComponent } from './defis-tableau/ajout-defi/ajout-defi.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     AccueilComponent,
     ChamisTableauComponent,
     DefisTableauComponent,
     HeaderComponent,
     RegisterFormComponent,
+    AjoutDefiComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,35 +60,19 @@ import { AccueilComponent } from './accueil/accueil.component';
     MatListModule,
     MatTableModule,
     MatTabsModule,
+    MatFormFieldModule,
+    MatDialogModule,
     YagaModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: HomeComponent
-      },
-      {
-        path: 'inscription',
-        component: RegisterFormComponent
-      },
-      {
-        path: 'chamis',
-        component: ChamisTableauComponent
-      },
-      {
-        path: 'defis',
-        component: DefisTableauComponent
-      },
-    ]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     RegisterFormService,
     ChamisService,
-    PseudoValidators
+    DefisService,
   ],
   bootstrap: [AppComponent]
 })
