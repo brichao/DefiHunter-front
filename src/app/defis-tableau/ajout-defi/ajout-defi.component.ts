@@ -15,13 +15,6 @@ export class AjoutDefiComponent implements OnInit{
 
   constructor(private defiService : DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>) { }
 
-  ngOnInit() {
-    this.getArrets();
-  }
-
-  getArrets() {
-    const lien = "https://data.mobilites-m.fr/api/lines/json?types=arret&reseaux=SEM";
-  }
 
   formDefis = new FormGroup({
     defis: new FormGroup({
@@ -45,6 +38,13 @@ export class AjoutDefiComponent implements OnInit{
     })
   })
 
+  ngOnInit() {
+    this.getArrets();
+  }
+
+  getArrets() {
+    const lien = "https://data.mobilites-m.fr/api/lines/json?types=arret&reseaux=SEM";
+  }
   getId(){
     return this.formDefis.get('defis.id');
   }
@@ -70,7 +70,7 @@ export class AjoutDefiComponent implements OnInit{
       id: this.getId()?.value,
       titre : this.getTitre()?.value,
       nomType : "",
-      dateDeCreation: new Date(),
+      dateDeCreation: new Date(Date.now()),
       dateDeModification: new Date(),
       auteur: "",
       codeArret: this.getArret()?.value,

@@ -1,7 +1,8 @@
+<h1 mat-dialog-title>Inscription</h1>
 <form  [formGroup]="form" (ngSubmit)="inscription()">
   <div *ngIf="form.errors" class="alert alert-danger">Pseudo, Âge ou Ville Invalide</div>
   <div formGroupName="account">
-    <div class="form-group">
+    <div class="fields">
       <mat-form-field>
         <mat-label for="pseudo">Pseudo</mat-label>
         <input
@@ -9,7 +10,7 @@
           id="pseudo"
           class="form-control"
           matInput
-          placeholder="pseudo"
+          placeholder="Pseudo"
         >
         <div *ngIf="pseudo?.pending">Checking for duplicated pseudo...</div>
           <mat-error *ngIf="pseudo?.errors?.required">Pseudo est requis.</mat-error>
@@ -18,7 +19,7 @@
           <mat-error *ngIf="pseudo?.errors?.shouldBeUnique">Pseudo déjà pris.</mat-error>
       </mat-form-field>
     </div>
-    <div class="form-group">
+    <div class="fields">
       <mat-form-field>
         <mat-label for="age">Âge</mat-label>
         <input
@@ -26,7 +27,7 @@
           id="age"
           class="form-control"
           matInput
-          placeholder="Age"
+          placeholder="Âge"
         >
           <mat-error *ngIf="age?.errors?.required">L'âge est requis.</mat-error>
           <mat-error *ngIf="age?.errors?.isNotNumber">L'âge doit être un numéro.</mat-error>
@@ -35,7 +36,7 @@
           <mat-error *ngIf="age?.errors?.cannotContainDotOrComma">L'Âge doit être un numéro entier.</mat-error>
       </mat-form-field>
     </div>
-    <div class="form-group">
+    <div class="fields">
       <mat-form-field>
         <mat-label for="ville">Ville</mat-label>
         <input
@@ -48,7 +49,7 @@
           <mat-error *ngIf="ville?.errors?.required">La ville est requise.</mat-error>
       </mat-form-field>
     </div>
-    <div class="form-group">
+    <div class="fields">
       <mat-form-field>
         <label for="description">Description</label>
         <textarea
@@ -66,5 +67,5 @@
       </mat-form-field>
     </div>
   </div>
-  <button [disabled]="form?.invalid" class="btn btn-primary" type="submit" routerLink="">S'inscrire</button>
+  <button [disabled]="form?.invalid" class="btn btn-primary" type="submit" >S'inscrire</button>
 </form>
