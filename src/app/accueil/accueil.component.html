@@ -18,7 +18,7 @@
             <h1>Defi</h1>
           </yaga-popup>
        </yaga-marker>
-       <yaga-polyline *ngFor="let x of donnee.features; let i = index" [color]="couleur(x.properties.COULEUR)" [geoJSON]="x" >
+       <yaga-polyline *ngFor="let x of lignes$.features | async; let i = index" [color]="couleur(x.properties.COULEUR)" [geoJSON]="x" >
          <yaga-popup>
           <h3>Ligne {{x.properties.NUMERO}}</h3>
           <h4>{{x.properties.LIBELLE}}</h4>
