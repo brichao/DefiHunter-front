@@ -15,6 +15,6 @@ export class ChamisTableauComponent {
   chamis$: Observable<Chamis[]>;
 
   constructor(public chamisService: ChamisService) {
-    this.chamis$ = chamisService.chamis;
+    this.chamis$ = chamisService.getchamis();
    }
 }

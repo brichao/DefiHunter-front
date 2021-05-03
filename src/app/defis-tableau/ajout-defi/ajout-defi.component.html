@@ -1,17 +1,19 @@
 <h1 mat-dialog-title>Ajout d'un nouveau défi</h1>
 <div mat-dialog-content>
-  <form [formGroup]="formDefis" (ngSubmit)="addDefis()">
-    <div formGroupName="defis">
+  <form [formGroup]="formDefis">
+
       <div class="fields">
       <mat-form-field>
-        <mat-label>Id</mat-label>
+        <mat-label>Défi</mat-label>
         <input formControlName="id" id="id" placeholder="Id du défi" matInput>
-
-      </mat-form-field>
+        <!--<mat-error *ngIf="formDefis.get('id').errors?.required"></mat-error>
+        <mat-error *ngIf="formDefis.get('id').errors['minLength']">Défi doit avoir au moins {{formDefis.get('id').errors['minLength'].requiredLength}}</mat-error>
+        --></mat-form-field>
 
       <mat-form-field>
         <mat-label>Titre</mat-label>
         <input formControlName="titre" id="titre" placeholder="Titre du défi" matInput>
+
       </mat-form-field>
 
       <mat-form-field>
@@ -21,23 +23,27 @@
             <mat-option value="option1">option1</mat-option>
           </ng-container>
         </mat-select>
+        <mat-error>L'arret est requis.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Mots clés</mat-label>
         <input formControlName="motscles" id="motscles" placeholder="Les mots clés du défi" matInput>
+        <mat-hint>Veuillez noter les mots clés séparés par des virgules.</mat-hint>
+        <mat-error>Les mots clés sont requis.</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Description</mat-label>
         <textarea formControlName="description" id="description" placeholder="Description du défi" matInput cols="30" rows="10"></textarea>
+        <mat-error>La description est requise.</mat-error>
       </mat-form-field>
     </div>
-  </div>
+
   </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)='fermerAjout()'>Fermer</button>
-  <button [disabled]="formDefis?.invalid" mat-button type=submit>Valider</button>
+  <button [disabled]="formDefis?.invalid" mat-button (click)="addDefis()">Valider</button>
 </div>
 
 

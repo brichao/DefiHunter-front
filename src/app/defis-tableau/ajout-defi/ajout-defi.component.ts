@@ -53,12 +53,35 @@ export class AjoutDefiComponent implements OnInit{
     return this.formDefis.get('defis.titre');
   }
 
-  addDefis(){
-    /*this.defis={
-      id: this.id?.value,
-      titre : this.titre?.value,
-    }*/
+  getArret(){
+    return this.formDefis.get('defis.arret');
+  }
 
+  getMotsCles(){
+    return this.formDefis.get('defis.motscles');
+  }
+
+  getDescription(){
+    return this.formDefis.get('defis.description');
+  }
+
+  addDefis(){
+    this.defis={
+      id: this.getId()?.value,
+      titre : this.getTitre()?.value,
+      nomType : "",
+      dateDeCreation: new Date(),
+      dateDeModification: new Date(),
+      auteur: "",
+      codeArret: this.getArret()?.value,
+      points: 0,
+      duree: "",
+      prologue: "",
+      epilogue: "",
+      commentaire: this.getDescription()?.value
+    }
+    this.defiService.addDefis(this.defis);
+    this.dialogRef.close();
   }
 
   fermerAjout(): void {

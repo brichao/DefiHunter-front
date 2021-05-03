@@ -12,24 +12,21 @@ export class ChamisService {
   constructor(private http: HttpClient) { }
 
 
-  get chamis(): Observable<Chamis[]> {
+  getchamis(): Observable<Chamis[]> {
     return this.http.get<Chamis[]>(`${this.apiServerUrl}/api/chamis/`);
   }
 
-  addChamis(chamis: Chamis) {
-    console.log(chamis);
-    console.log(chamis.pseudo);
-
-    return this.http.post<Chamis>(`http://localhost:5000/api/chamis/${chamis.pseudo}`, chamis).subscribe();
+  addChamis(chamis: Chamis) : Observable<Chamis> {
+    return this.http.post<Chamis>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
 
   }
 
   updateChamis(chamis: Chamis) {
-    return this.http.put<Chamis>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
+    return this.http.put<Chamis>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis).subscribe();
   }
 
-  deleteChamis(chamis: Chamis): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`);
+  deleteChamis(chamis: Chamis){
+    return this.http.delete<void>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`).subscribe();
   }
 
 

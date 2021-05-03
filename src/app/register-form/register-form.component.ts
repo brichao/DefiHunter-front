@@ -66,7 +66,6 @@ export class RegisterFormComponent {
       description: this.description?.value,
       // defisCrees: 0
     };
-    this.service.addChamis(this.chamis);
-    console.log(this.chamis);
+    this.service.addChamis(this.chamis).subscribe((chami) => console.log(chami));
   }
 }
