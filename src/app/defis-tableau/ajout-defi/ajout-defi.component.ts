@@ -13,7 +13,7 @@ export class AjoutDefiComponent implements OnInit{
   private defis: Defis | null = null;
   public arrets: any = [];
 
-  constructor(private defiService : DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>) { }
+  constructor(private defiService: DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>) { }
 
 
   formDefis = new FormGroup({
@@ -45,42 +45,44 @@ export class AjoutDefiComponent implements OnInit{
   getArrets() {
     const lien = "https://data.mobilites-m.fr/api/lines/json?types=arret&reseaux=SEM";
   }
-  getId(){
+  get id(){
     return this.formDefis.get('defis.id');
   }
 
-  getTitre(){
+  get titre(){
     return this.formDefis.get('defis.titre');
   }
 
-  getArret(){
+  get arret(){
     return this.formDefis.get('defis.arret');
   }
 
-  getMotsCles(){
+  get motsCles(){
     return this.formDefis.get('defis.motscles');
   }
 
-  getDescription(){
+  get description(){
     return this.formDefis.get('defis.description');
   }
 
   addDefis(){
     this.defis={
-      id: this.getId()?.value,
-      titre : this.getTitre()?.value,
+      id: this.id?.value,
+      titre : this.titre?.value,
       nomType : "",
       dateDeCreation: new Date(Date.now()),
-      dateDeModification: new Date(),
+      dateDeModification: new Date(Date.now()),
       auteur: "",
-      codeArret: this.getArret()?.value,
+      codeArret: this.arret?.value,
       points: 0,
       duree: "",
       prologue: "",
       epilogue: "",
-      commentaire: this.getDescription()?.value
+      commentaire: this.description?.value
     }
-    this.defiService.addDefis(this.defis);
+    let defisAjoute = this.defiService.addDefis(this.defis);
+    console.log(this.defis);
+    console.log(defisAjoute);
     this.dialogRef.close();
   }
 

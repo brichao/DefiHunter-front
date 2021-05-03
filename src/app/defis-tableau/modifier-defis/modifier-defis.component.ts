@@ -22,7 +22,10 @@ export class ModifierDefisComponent implements OnInit {
   private defis: Defis | null = null;
   public arrets: any = [];
 
-  constructor(private defiService: DefisService, public dialogRefModifier: MatDialogRef<ModifierDefisComponent>, @Inject(MAT_DIALOG_DATA) public donnees : DialogData) {
+  constructor(private defiService: DefisService,
+              public dialogRefModifier: MatDialogRef<ModifierDefisComponent>,
+              @Inject(MAT_DIALOG_DATA) public donnees : DialogData)
+  {
     this.defis={
       id: donnees.id,
       titre: donnees.titre,
@@ -37,14 +40,6 @@ export class ModifierDefisComponent implements OnInit {
       epilogue: "",
       commentaire: donnees.description
     }
-   }
-
-  ngOnInit(): void {
-    this.getArrets();
-  }
-
-  getArrets() {
-    const lien = "https://data.mobilites-m.fr/api/lines/json?types=arret&reseaux=SEM";
   }
 
   formDefis = new FormGroup({
@@ -69,40 +64,48 @@ export class ModifierDefisComponent implements OnInit {
     })
   })
 
-  getId(){
+  ngOnInit(): void {
+    this.getArrets();
+  }
+
+  getArrets() {
+    const lien = "https://data.mobilites-m.fr/api/lines/json?types=arret&reseaux=SEM";
+  }
+
+  get id(){
     return this.formDefis.get('defis.id');
   }
 
-  getTitre(){
+  get titre(){
     return this.formDefis.get('defis.titre');
   }
 
-  getArret(){
+  get arret(){
     return this.formDefis.get('defis.arret');
   }
 
-  getMotsCles(){
+  get motsCles(){
     return this.formDefis.get('defis.motscles');
   }
 
-  getDescription(){
+  get description(){
     return this.formDefis.get('defis.description');
   }
 
   modifierDefis(){
     this.defis={
-      id: this.getId()?.value,
-      titre : this.getTitre()?.value,
+      id: this.id?.value,
+      titre : this.titre?.value,
       nomType : "",
       dateDeCreation: new Date(),
-      dateDeModification: new Date(),
+      dateDeModification: new Date(Date.now()),
       auteur: "",
-      codeArret: this.getArret()?.value,
+      codeArret: this.arret?.value,
       points: 0,
       duree: "",
       prologue: "",
       epilogue: "",
-      commentaire: this.getDescription()?.value
+      commentaire: this.description?.value
     }
     this.defiService.updateDefis(this.defis);
     this.dialogRefModifier.close();

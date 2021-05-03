@@ -6,14 +6,15 @@
       <mat-form-field>
         <mat-label>Défi</mat-label>
         <input formControlName="id" id="id" matInput [(ngModel)]="donnees.id">
-        <!--<mat-error *ngIf="formDefis.get('id').errors?.required"></mat-error>
-        <mat-error *ngIf="formDefis.get('id').errors['minLength']">Défi doit avoir au moins {{formDefis.get('id').errors['minLength'].requiredLength}}</mat-error>
-        --></mat-form-field>
+        <mat-error *ngIf="id?.errors?.required"></mat-error>
+        <mat-error *ngIf="id?.errors?.minlength">Défi doit avoir au moins {{id?.errors?.minlength.requiredLength}}</mat-error>
+       </mat-form-field>
 
-      <mat-form-field>
+       <mat-form-field>
         <mat-label>Titre</mat-label>
-        <input formControlName="titre" id="titre" matInput [(ngModel)]="donnees.titre">
-
+        <input formControlName="titre" id="titre" placeholder="Titre du défi" matInput>
+        <mat-error *ngIf="titre?.errors?.required">Le titre est requis.</mat-error>
+        <mat-error *ngIf="titre?.errors?.minlength">Le titre doit avoir au moins {{titre?.errors?.minlength.requiredLength}} charactères</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -22,21 +23,21 @@
             <mat-option></mat-option>
             <mat-option [value]="donnees.arret">{{donnees.arret}}</mat-option>
         </mat-select>
-        <mat-error>L'arret est requis.</mat-error>
+        <mat-error *ngIf="arret?.errors?.required">L'arret est requis.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Mots clés</mat-label>
         <input formControlName="motscles" id="motscles" placeholder="Les mots clés du défi" matInput>
         <mat-hint>Veuillez noter les mots clés séparés par des virgules.</mat-hint>
-        <mat-error>Les mots clés sont requis.</mat-error>
+        <mat-error *ngIf="motsCles?.errors?.required">Les mots clés sont requis.</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Description</mat-label>
         <textarea formControlName="description" id="description" placeholder="Description du défi" matInput cols="30" rows="10">
           {{donnees.description}}
         </textarea>
-        <mat-error>La description est requise.</mat-error>
+        <mat-error *ngIf="description?.errors?.required">La description est requise.</mat-error>
       </mat-form-field>
     </div>
   </div>

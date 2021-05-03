@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegisterFormService } from '../services/register-form.service';
 import { ChamisService } from '../services/chamis.service';
 import { Chamis } from '../services/chamis';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'register-form',
@@ -15,7 +16,9 @@ export class RegisterFormComponent {
 
   private chamis: Chamis | null = null;
 
-  constructor(private service: ChamisService, private pseudoService: PseudoValidators) {}
+  constructor(private service: ChamisService,
+              private pseudoService: PseudoValidators,
+              private router: Router) {}
 
   form = new FormGroup({
     account: new FormGroup({
@@ -67,5 +70,6 @@ export class RegisterFormComponent {
       // defisCrees: 0
     };
     this.service.addChamis(this.chamis).subscribe((chami) => console.log(chami));
+    this.router.navigate([''], { state: { redirect: this.router.url } } );
   }
 }
