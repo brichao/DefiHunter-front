@@ -34,6 +34,7 @@ import { ChamisService } from './services/chamis.service';
 import { PseudoValidators } from './register-form/pseudo.validators';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AjoutDefiComponent } from './defis-tableau/ajout-defi/ajout-defi.component';
+import { ModifierDefisComponent } from './defis-tableau/modifier-defis/modifier-defis.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AjoutDefiComponent } from './defis-tableau/ajout-defi/ajout-defi.compon
     HeaderComponent,
     RegisterFormComponent,
     AjoutDefiComponent,
+    ModifierDefisComponent,
   ],
   imports: [
     BrowserModule,

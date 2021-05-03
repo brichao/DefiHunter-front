@@ -14,7 +14,16 @@
     <mat-cell *matCellDef="let c"> {{c.age }} </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="['pseudo', 'age']"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: ['pseudo', 'age']"></mat-row>
+  <ng-container matColumnDef="modifier">
+    <mat-header-cell *matHeaderCellDef> Modifier </mat-header-cell>
+    <mat-cell *matCellDef="let defi">
+      <button mat-icon-button (click)="modifierChamis()" aria-label="modification defis">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['pseudo', 'age', 'modifier']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['pseudo', 'age', 'modifier']"></mat-row>
 </mat-table>
 

@@ -20,10 +20,19 @@
     <mat-cell *matCellDef="let defi"> {{defi.description }} </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="['id', 'titre', 'auteur', 'description']"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: ['id', 'titre', 'auteur', 'description']"></mat-row>
+  <ng-container matColumnDef="modifier">
+    <mat-header-cell *matHeaderCellDef> Modifier </mat-header-cell>
+    <mat-cell *matCellDef="let defi">
+      <button mat-icon-button (click)="modifierDefis(defi)" aria-label="modification defis">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['id', 'titre', 'auteur', 'description', 'modifier']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['id', 'titre', 'auteur', 'description', 'modifier']"></mat-row>
 </mat-table>
 
-<button mat-mini-fab (click)="openAjout()" aria-label="Creation defis">
+<button mat-mini-fab (click)="ajouterDefis()" aria-label="Creation defis">
   <mat-icon>add</mat-icon>
 </button>

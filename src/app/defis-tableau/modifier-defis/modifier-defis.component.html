@@ -1,27 +1,26 @@
-<h1 mat-dialog-title>Ajout d'un nouveau défi</h1>
+<h1 mat-dialog-title>Modification du défi {{donnees.id}}</h1>
 <div mat-dialog-content>
   <form [formGroup]="formDefis">
     <div formGroupName="defis">
       <div class="fields">
       <mat-form-field>
         <mat-label>Défi</mat-label>
-        <input formControlName="id" id="id" placeholder="Id du défi" matInput>
+        <input formControlName="id" id="id" matInput [(ngModel)]="donnees.id">
         <!--<mat-error *ngIf="formDefis.get('id').errors?.required"></mat-error>
         <mat-error *ngIf="formDefis.get('id').errors['minLength']">Défi doit avoir au moins {{formDefis.get('id').errors['minLength'].requiredLength}}</mat-error>
         --></mat-form-field>
 
       <mat-form-field>
         <mat-label>Titre</mat-label>
-        <input formControlName="titre" id="titre" placeholder="Titre du défi" matInput>
+        <input formControlName="titre" id="titre" matInput [(ngModel)]="donnees.titre">
 
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Arrêt</mat-label>
-        <mat-select formControlName="arret" id="arret">
-          <ng-container>
-            <mat-option value="option1">option1</mat-option>
-          </ng-container>
+        <mat-select formControlName="arret" id="arret" [(ngModel)]="donnees.arret">
+            <mat-option></mat-option>
+            <mat-option [value]="donnees.arret">{{donnees.arret}}</mat-option>
         </mat-select>
         <mat-error>L'arret est requis.</mat-error>
       </mat-form-field>
@@ -34,7 +33,9 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Description</mat-label>
-        <textarea formControlName="description" id="description" placeholder="Description du défi" matInput cols="30" rows="10"></textarea>
+        <textarea formControlName="description" id="description" placeholder="Description du défi" matInput cols="30" rows="10">
+          {{donnees.description}}
+        </textarea>
         <mat-error>La description est requise.</mat-error>
       </mat-form-field>
     </div>
@@ -42,8 +43,8 @@
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)='fermerAjout()'>Fermer</button>
-  <button [disabled]="formDefis?.invalid" mat-button (click)="addDefis()">Valider</button>
+  <button mat-button (click)='fermerModification()'>Fermer</button>
+  <button [disabled]="formDefis?.invalid" mat-button (click)="modifierDefis()">Valider</button>
 </div>
 
 

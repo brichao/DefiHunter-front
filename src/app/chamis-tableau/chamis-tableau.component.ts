@@ -17,4 +17,8 @@ export class ChamisTableauComponent {
   constructor(public chamisService: ChamisService) {
     this.chamis$ = chamisService.getchamis();
    }
+
+   modifierChamis(){
+
+   }
 }
