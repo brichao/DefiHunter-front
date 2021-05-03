@@ -35,6 +35,7 @@ import { PseudoValidators } from './register-form/pseudo.validators';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AjoutDefiComponent } from './defis-tableau/ajout-defi/ajout-defi.component';
 import { ModifierDefisComponent } from './defis-tableau/modifier-defis/modifier-defis.component';
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ModifierDefisComponent } from './defis-tableau/modifier-defis/modifier-
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

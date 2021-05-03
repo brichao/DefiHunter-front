@@ -9,22 +9,24 @@
       <mat-tab label="Votre Map">
         <yaga-map [lng]="5.734862282275417" [lat]="45.18598899690281" [zoom]="13">
           <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
-          <yaga-marker  [lng] = "5.724524"
-          [lat] = "45.188529"
-          [display] = "true"
-          [opacity] = "1">
-          <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
-          <yaga-popup>
-            <h1>Defi</h1>
-          </yaga-popup>
-       </yaga-marker>
-       <yaga-polyline *ngFor="let x of lignes$.features | async; let i = index" [color]="couleur(x.properties.COULEUR)" [geoJSON]="x" >
-         <yaga-popup>
-          <h3>Ligne {{x.properties.NUMERO}}</h3>
-          <h4>{{x.properties.LIBELLE}}</h4>
-         </yaga-popup>
-       </yaga-polyline>
-      </yaga-map>
+          <ng-container  *ngFor="let code of codeArret">
+            <yaga-marker  [lng] = "getLngArret(code)"
+                          [lat] = "getLatArret(code)"
+                          [display] = "true"
+                          [opacity] = "1">
+              <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+              <yaga-popup>
+                <h1>Defis</h1>
+              </yaga-popup>
+            </yaga-marker>
+          </ng-container>
+          <yaga-polyline *ngFor="let x of donnee.features; let i = index" [color]="couleur(x.properties.COULEUR)" [geoJSON]="x" >
+            <yaga-popup>
+              <h3>Ligne {{x.properties.NUMERO}}</h3>
+              <h4>{{x.properties.LIBELLE}}</h4>
+            </yaga-popup>
+          </yaga-polyline>
+        </yaga-map>
       </mat-tab>
 
     </mat-tab-group>
