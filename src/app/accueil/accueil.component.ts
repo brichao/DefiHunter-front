@@ -56,12 +56,21 @@ export class AccueilComponent implements OnInit {
     this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${code}`).subscribe((arrets)=>{
       this.darrets = arrets;
       console.log(this.darrets);
-    })
-    let long = this.darrets.features[0]?.geometry.coordinates[0];
-    let lat = this.darrets.features[0].geometry.coordinates[1];
-    return [long, lat];
+    });
+    return this.darrets;
   }
 
+  getLngArret(code : String) : number {
+
+    this.darrets = this.getDefisarret(code);
+    console.log(this.darrets);
+    return this.darrets.features[0]?.geometry.coordinates[0];
+  }
+
+  getLatArret(code : String) : number {
+    this.darrets = this.getDefisarret(code);
+    return this.darrets.features[0]?.geometry.coordinates[1];
+  }
 
   couleur(colorRGB: any): string {
     return `rgb( ${colorRGB} )`;
