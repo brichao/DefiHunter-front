@@ -36,7 +36,6 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AjoutDefiComponent } from './defis-tableau/ajout-defi/ajout-defi.component';
 import { ModifierDefisComponent } from './defis-tableau/modifier-defis/modifier-defis.component';
 import { CommonModule } from "@angular/common";
-import { ArretsComponent } from './arrets/arrets.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +47,6 @@ import { ArretsComponent } from './arrets/arrets.component';
     RegisterFormComponent,
     AjoutDefiComponent,
     ModifierDefisComponent,
-    ArretsComponent,
   ],
   imports: [
     BrowserModule,

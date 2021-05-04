@@ -22,6 +22,12 @@ export class AccueilComponent implements OnInit {
 
   constructor(private http: HttpClient, private defisServ: DefisService) {
     this.defis$ = this.defisServ.defis;
+     this.defis$.subscribe( (defis) => {
+       for(let defi of defis){
+         this.codeArret.push(defi.codeArret);
+       }
+       console.log(this.codeArret);
+     });
   }
 
   /*createChami(){
@@ -46,16 +52,8 @@ export class AccueilComponent implements OnInit {
   }
 
   getDefisarret(code : String) {
-    this.defis$ = this.defisServ.defis;
-     this.defis$.subscribe( (defis) => {
-       for(let defi of defis){
-         this.codeArret.push(defi.codeArret);
-       }
-       console.log(this.codeArret);
-     });
     this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${code}`).subscribe((arrets)=>{
       this.darrets = arrets;
-      console.log(this.darrets);
     });
     return this.darrets;
   }
