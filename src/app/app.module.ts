@@ -36,6 +36,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AjoutDefiComponent } from './defis-tableau/ajout-defi/ajout-defi.component';
 import { ModifierDefisComponent } from './defis-tableau/modifier-defis/modifier-defis.component';
 import { CommonModule } from "@angular/common";
+import { ArretsService } from './services/arrets.service';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,8 @@ import { CommonModule } from "@angular/common";
     RegisterFormService,
     ChamisService,
     DefisService,
+    ArretsService,
+    PseudoValidators
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@ import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
 import { Observable } from 'rxjs';
+import { ArretsService } from '../services/arrets.service';
 
 @Component({
   selector: 'app-accueil',
@@ -16,12 +17,25 @@ export class AccueilComponent implements OnInit {
   iconMarker = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/585px-Map_marker.svg.png';
   dataIconGoogle = 'assets/images/iconGoogle.png';
   public donnee:any = [];
-  public darrets:any = [];
-  public codeArret:any = [];
+
+  defis: Defis[] = [];
+
   defis$: Observable<Defis[]>;
 
-  constructor(private http: HttpClient, private defisServ: DefisService) {
+  constructor(private http: HttpClient,
+              private defisServ: DefisService,
+              private arretsServ: ArretsService) {
     this.defis$ = this.defisServ.defis;
+    arretsServ.arrets
+      .subscribe(data => {
+        console.log(data);
+      })
+    this.defis$
+      .subscribe(defis => {
+        for(let defi of defis) {
+          this.defis.push(defi);
+        }
+      });
   }
 
   /*createChami(){
@@ -44,32 +58,32 @@ export class AccueilComponent implements OnInit {
     })
   }
 
-  getDefisarret(code : String) {
-    this.defis$ = this.defisServ.defis;
-     this.defis$.subscribe( (defis) => {
-       for(let defi of defis){
-         this.codeArret.push(defi.codeArret);
-       }
-       console.log(this.codeArret);
-     });
-    this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${code}`).subscribe((arrets)=>{
-      this.darrets = arrets;
-      console.log(this.darrets);
-    });
-    return this.darrets;
-  }
+  // getDefisarret(code: String) {
+  //   this.defis$.
+  //     subscribe(defis => {
+  //       for(let defi of defis){
+  //         this.codeArrets.push(defi.codeArret);
+  //       }
+  //       console.log(this.codeArrets);
+  //     });
+  //   this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${code}`).subscribe((arrets)=>{
+  //     this.arrets = arrets;
+  //     console.log(this.arrets);
+  //   });
+  //   return this.arrets;
+  // }
 
-  getLngArret(code : String) : number {
+  // getLngArret(code : String) : number {
 
-    this.darrets = this.getDefisarret(code);
-    console.log(this.darrets);
-    return this.darrets.features[0]?.geometry.coordinates[0];
-  }
+  //   this.arrets = this.getDefisarret(code);
+  //   console.log(this.arrets);
+  //   return this.arrets.features[0]?.geometry.coordinates[0];
+  // }
 
-  getLatArret(code : String) : number {
-    this.darrets = this.getDefisarret(code);
-    return this.darrets.features[0]?.geometry.coordinates[1];
-  }
+  // getLatArret(code : String) : number {
+  //   this.arrets = this.getDefisarret(code);
+  //   return this.arrets.features[0]?.geometry.coordinates[1];
+  // }
 
   couleur(colorRGB: any): string {
     return `rgb( ${colorRGB} )`;
