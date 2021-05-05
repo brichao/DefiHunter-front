@@ -23,7 +23,8 @@ export class AccueilComponent implements OnInit {
     this.defisServ.defis
       .subscribe( (defis) => {
         for(const defi of defis){
-          this.setArret(defi.codeArret);
+          this.setNewArret(defi.codeArret);
+          console.log(defi.codeArret);
         }
       });
   }
@@ -41,7 +42,7 @@ export class AccueilComponent implements OnInit {
       });
   }
 
-  setArret(codeArret: string): void {
+  setNewArret(codeArret: string): void {
     this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${codeArret}`)
       .subscribe((arrets)=>{
         this.arrets.push(arrets);

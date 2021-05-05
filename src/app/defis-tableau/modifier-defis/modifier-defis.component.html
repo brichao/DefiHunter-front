@@ -12,7 +12,7 @@
 
        <mat-form-field>
         <mat-label>Titre</mat-label>
-        <input formControlName="titre" id="titre" placeholder="Titre du défi" matInput>
+        <input formControlName="titre" id="titre" placeholder="Titre du défi" matInput [(ngModel)]="donnees.titre">
         <mat-error *ngIf="titre?.errors?.required">Le titre est requis.</mat-error>
         <mat-error *ngIf="titre?.errors?.minlength">Le titre doit avoir au moins {{titre?.errors?.minlength.requiredLength}} charactères</mat-error>
       </mat-form-field>

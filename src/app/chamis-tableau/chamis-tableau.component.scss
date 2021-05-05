@@ -27,4 +27,13 @@
     background-color: rgb(223, 223, 223);
     border-radius: 2px;
   }
+
+  mat-card {
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  mat-card-actions {
+    text-align: right;
+  }
 }

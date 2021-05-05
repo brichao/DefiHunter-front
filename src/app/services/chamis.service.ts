@@ -22,7 +22,7 @@ export class ChamisService {
   }
 
   updateChamis(chamis: Chamis) {
-    return this.http.put<Chamis>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis).subscribe();
+    return this.http.put<Chamis>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
   }
 
   deleteChamis(chamis: Chamis){

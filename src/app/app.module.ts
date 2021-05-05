@@ -18,7 +18,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list'
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { YagaModule } from '@yaga/leaflet-ng2';
 import { AngularFireModule } from '@angular/fire';
@@ -36,6 +37,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AjoutDefiComponent } from './defis-tableau/ajout-defi/ajout-defi.component';
 import { ModifierDefisComponent } from './defis-tableau/modifier-defis/modifier-defis.component';
 import { CommonModule } from "@angular/common";
+import { ModifierChamisComponent } from './chamis-tableau/modifier-chamis/modifier-chamis.component';
 import { ArretsService } from './services/arrets.service';
 
 @NgModule({
@@ -48,6 +50,7 @@ import { ArretsService } from './services/arrets.service';
     RegisterFormComponent,
     AjoutDefiComponent,
     ModifierDefisComponent,
+    ModifierChamisComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { ArretsService } from './services/arrets.service';
     MatTableModule,
     MatTabsModule,
     MatFormFieldModule,
+    MatCardModule,
     MatDialogModule,
     YagaModule,
     AngularFireModule.initializeApp(environment.firebase),

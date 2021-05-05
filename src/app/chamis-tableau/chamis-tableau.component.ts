@@ -1,9 +1,8 @@
+import { ModifierChamisComponent } from './modifier-chamis/modifier-chamis.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ChamisService } from './../services/chamis.service';
 import { Chamis } from './../services/chamis';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'chamis-tableau',
@@ -12,13 +11,24 @@ import { map } from 'rxjs/operators';
 })
 export class ChamisTableauComponent {
 
-  chamis$: Observable<Chamis[]>;
+  public chamis!: Chamis[];
+  private chami!: Chamis;
 
-  constructor(public chamisService: ChamisService) {
-    this.chamis$ = chamisService.getchamis();
+  constructor(public chamisService: ChamisService, private dialogueChamis: MatDialog) {
+    chamisService.getchamis().subscribe(chamis => this.chamis = chamis);
    }
 
-   modifierChamis(){
-
-   }
+   modifierChamis(chami: Chamis){
+    this.chami=chami;
+    const dialogueConfiguration = new MatDialogConfig();
+    dialogueConfiguration.data = {
+      pseudo : this.chami.pseudo,
+      email : this.chami.email,
+      age : this.chami.age,
+      ville : this.chami.ville,
+      description : this.chami.description
+    }
+    dialogueConfiguration.width = '80%';
+    this.dialogueChamis.open(ModifierChamisComponent,dialogueConfiguration);
+  }
 }
