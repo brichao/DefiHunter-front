@@ -1,5 +1,5 @@
 import { environment } from './../../environments/environment.prod';
-import { Defis } from './defis';
+import { Defis } from 'src/generator';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';

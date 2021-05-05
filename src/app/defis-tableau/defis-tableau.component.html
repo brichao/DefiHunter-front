@@ -1,23 +1,54 @@
+<h1>LISTE DEFIS</h1>
 <mat-table [dataSource] = "defis$">
 
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-    <mat-cell *matCellDef="let defi"> {{defi.id }} </mat-cell>
+    <mat-cell *matCellDef="let defi"> {{ defi.id }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="titre">
     <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
-    <mat-cell *matCellDef="let defi"> {{defi.titre }} </mat-cell>
+    <mat-cell *matCellDef="let defi"> {{ defi.titre }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nomtype">
+    <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{ defi.nomtype }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="datecreation">
+    <mat-header-cell *matHeaderCellDef> Date Création </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{ defi.datecreation }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="datemodification">
+    <mat-header-cell *matHeaderCellDef> Date Modification </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{ defi.datemodification }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="auteur">
     <mat-header-cell *matHeaderCellDef> Auteur </mat-header-cell>
-    <mat-cell *matCellDef="let defi"> {{defi.auteur }} </mat-cell>
+    <mat-cell *matCellDef="let defi"> {{ defi.auteur }} </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="description">
-    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-    <mat-cell *matCellDef="let defi"> {{defi.description }} </mat-cell>
+  <ng-container matColumnDef="prologue">
+    <mat-header-cell *matHeaderCellDef> Prologue </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{ defi.prologue }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="codearret">
+    <mat-header-cell *matHeaderCellDef> Code Arret </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{ defi.codearret }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="points">
+    <mat-header-cell *matHeaderCellDef> Points </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{ defi.points }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="duree">
+    <mat-header-cell *matHeaderCellDef> Durée (h) </mat-header-cell>
+    <mat-cell *matCellDef="let defi"> {{defi.duree }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="modifier">
@@ -29,8 +60,8 @@
     </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="['id', 'titre', 'auteur', 'description', 'modifier']"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: ['id', 'titre', 'auteur', 'description', 'modifier']"></mat-row>
+  <mat-header-row *matHeaderRowDef="['id', 'titre', 'nomtype', 'datecreation', 'datemodification', 'auteur', 'prologue', 'codearret', 'points', 'duree', 'modifier']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['id', 'titre', 'nomtype', 'datecreation', 'datemodification', 'auteur', 'prologue', 'codearret', 'points', 'duree', 'modifier']"></mat-row>
 </mat-table>
 
 <button mat-mini-fab (click)="ajouterDefis()" aria-label="Creation defis">

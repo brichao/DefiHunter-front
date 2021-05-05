@@ -1,7 +1,7 @@
 import { ModifierChamisComponent } from './modifier-chamis/modifier-chamis.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ChamisService } from './../services/chamis.service';
-import { Chamis } from './../services/chamis';
+import { Chamis } from '../../generator';
 import { Component } from '@angular/core';
 
 @Component({

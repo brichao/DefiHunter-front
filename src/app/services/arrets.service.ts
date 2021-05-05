@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Arret } from './arret';
+import { Arret } from 'src/generator';
 
 @Injectable({
   providedIn: 'root'

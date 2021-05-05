@@ -1,6 +1,6 @@
 import { ChamisService } from './../../services/chamis.service';
 import { Component, Inject } from '@angular/core';
-import { Chamis } from 'src/app/services/chamis';
+import { Chamis } from 'src/generator';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AgeValidators } from 'src/app/register-form/age.validators';

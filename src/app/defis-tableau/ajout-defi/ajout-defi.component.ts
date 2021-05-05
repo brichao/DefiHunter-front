@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DefisService } from '../../services/defis.service';
-import { Defis } from '../../services/defis';
+import { Defis } from 'src/generator';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-ajout-defi',
@@ -12,8 +13,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class AjoutDefiComponent implements OnInit{
   private defis: Defis | null = null;
   public arrets: any = [];
+  public Larrets: any[] = [];
 
-  constructor(private defiService: DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>) { }
+
+  constructor(private http: HttpClient, private defiService: DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>) { }
 
 
   formDefis = new FormGroup({
@@ -53,32 +56,65 @@ export class AjoutDefiComponent implements OnInit{
     return this.formDefis.get('defis.titre');
   }
 
-  get arret(){
-    return this.formDefis.get('defis.arret');
+  get nomType(){
+    return this.formDefis.get('defis.nomType');
+  }
+
+  get dateDeCreation(){
+    return this.formDefis.get('defis.dateDeCreation');
+  }
+
+  get dateDeModification(){
+    return this.formDefis.get('defis.dateDeModification');
+  }
+
+  get auteur(){
+    return this.formDefis.get('defis.auteur');
+  }
+
+  get codeArret(){
+    return this.formDefis.get('defis.codeArret');
+  }
+
+  get points(){
+    return this.formDefis.get('defis.points');
   }
 
   get motsCles(){
     return this.formDefis.get('defis.motscles');
   }
 
-  get description(){
-    return this.formDefis.get('defis.description');
+  get duree(){
+    return this.formDefis.get('defis.duree');
   }
+
+  get prologue(){
+    return this.formDefis.get('defis.prologue');
+  }
+
+  get epilogue(){
+    return this.formDefis.get('defis.epilogue');
+  }
+
+  get commentaire(){
+    return this.formDefis.get('defis.commentaire');
+  }
+
 
   addDefis(){
     this.defis={
       id: this.id?.value,
       titre : this.titre?.value,
-      nomType : "",
-      dateDeCreation: new Date(Date.now()),
+      nomType : this.nomType?.value,
+      dateDeCreation: this.dateDeCreation?.value,
       dateDeModification: new Date(Date.now()),
-      auteur: "",
-      codeArret: this.arret?.value,
-      points: 0,
-      duree: "",
-      prologue: "",
-      epilogue: "",
-      commentaire: this.description?.value
+      auteur: this.auteur?.value,
+      codeArret: this.arrets?.value,
+      points: this.points?.value,
+      duree: this.duree?.value,
+      prologue: this.prologue?.value,
+      epilogue: this.epilogue?.value,
+      commentaire: this.commentaire?.value
     }
     this.defiService.addDefis(this.defis).subscribe(defi => console.log(defi));
     this.dialogRef.close();
@@ -88,4 +124,10 @@ export class AjoutDefiComponent implements OnInit{
     this.dialogRef.close();
   }
 
+  setNewArret(codeArret: string): void {
+    this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${codeArret}`)
+      .subscribe((arrets)=>{
+        this.Larrets.push(arrets);
+      });
+  }
 }
