@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ChamisService } from './../services/chamis.service';
 import { Chamis } from './../services/chamis';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'chamis-tableau',
@@ -11,15 +12,15 @@ import { Component } from '@angular/core';
 })
 export class ChamisTableauComponent {
 
-  public chamis!: Chamis[];
+  public chamis$!: Observable<Chamis[]>;
   private chami!: Chamis;
 
   constructor(public chamisService: ChamisService, private dialogueChamis: MatDialog) {
-    chamisService.getchamis().subscribe(chamis => this.chamis = chamis);
+    this.chamis$ = chamisService.getChamis();
    }
 
    modifierChamis(chami: Chamis){
-    this.chami=chami;
+    this.chami = chami;
     const dialogueConfiguration = new MatDialogConfig();
     dialogueConfiguration.data = {
       pseudo : this.chami.pseudo,

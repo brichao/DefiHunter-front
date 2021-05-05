@@ -15,6 +15,6 @@ export class ArretsService {
   }
 
   getArret(a: Arret): Observable<Arret> {
-    return this.http.get<Arret>(`https://data.mobilites-m.fr/api/findType/json?types=arret&code=${a.code}`);
+    return this.http.get<Arret>(`https://data.mobilites-m.fr/api/findType/json?types=arret&code=${a.features[0].properties.code}`);
   }
 }

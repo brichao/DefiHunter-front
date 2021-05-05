@@ -23,14 +23,14 @@ export class RegisterFormComponent {
 
   form = new FormGroup({
     account: new FormGroup({
-      pseudo: new FormControl('',[
+      pseudo: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         PseudoValidators.cannotContainSpace
       ],
         PseudoValidators.shouldBeUnique
       ),
-      age: new FormControl('',[
+      age: new FormControl('', [
           Validators.required,
           AgeValidators.isNotNumber,
           AgeValidators.cannotContainDotOrComma,
