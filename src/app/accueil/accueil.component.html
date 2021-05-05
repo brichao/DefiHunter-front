@@ -6,9 +6,9 @@
       <mat-tab label="Votre Map">
         <yaga-map [lng]="5.734862282275417" [lat]="45.18598899690281" [zoom]="13">
           <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
-          <ng-container  *ngFor="let code of codeArret">
-            <yaga-marker  [lng] = "getLngArret(code)"
-                          [lat] = "getLatArret(code)"
+          <ng-container  *ngFor="let arret of arrets">
+            <yaga-marker  [lng] = "arret.features[0].geometry.coordinates[0]"
+                          [lat] = "arret.features[0].geometry.coordinates[1]"
                           [display] = "true"
                           [opacity] = "1">
               <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
