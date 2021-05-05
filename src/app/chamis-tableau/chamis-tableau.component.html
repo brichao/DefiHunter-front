@@ -14,6 +14,16 @@
     <mat-cell *matCellDef="let c"> {{c.age }} </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="ville">
+    <mat-header-cell *matHeaderCellDef> Ville </mat-header-cell>
+    <mat-cell *matCellDef="let c"> {{c.ville }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let c"> {{c.description }} </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="modifier">
     <mat-header-cell *matHeaderCellDef> Modifier </mat-header-cell>
     <mat-cell *matCellDef="let defi">
@@ -23,7 +33,7 @@
     </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="['pseudo', 'age', 'modifier']"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: ['pseudo', 'age', 'modifier']"></mat-row>
+  <mat-header-row *matHeaderRowDef="['pseudo', 'age', 'ville', 'description', 'modifier']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['pseudo', 'age', 'ville', 'description', 'modifier']"></mat-row>
 </mat-table>
 

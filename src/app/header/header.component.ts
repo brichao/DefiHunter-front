@@ -1,3 +1,4 @@
+import { CommunicationComposantService } from './../services/communication-composant.service';
 import { ChangeDetectionStrategy, Component, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -22,7 +23,8 @@ export class HeaderComponent {
 
   constructor(  public auth: AngularFireAuth,
                 private registerService: RegisterFormService,
-                private router: Router
+                private router: Router,
+                private emailService: CommunicationComposantService
               ){
     this.chamis$ = auth.authState;
   }
@@ -38,6 +40,7 @@ export class HeaderComponent {
     });
     this.auth.signInWithPopup(provider);
     this.redirectUserAfterLogin();
+
 }
 
 logout(): void {
@@ -54,7 +57,11 @@ redirectUserAfterLogin(): void {
     .subscribe(c => {
       console.log(c);
       if (c != null && !RegisterFormService.emails.includes(c?.email as string)) {
+        this.emailService.envoieMail(c.email);
+        RegisterFormService.emails.push(c?.email as string);
         this.router.navigate(['inscription'], { state: { redirect: this.router.url } } );
+      } else {
+        this.router.navigate([''], {state: {redirect: this.router.url}})
       }
     });
   }

@@ -1,3 +1,5 @@
+import { CommunicationComposantService } from './../services/communication-composant.service';
+import { HeaderComponent } from './../header/header.component';
 import { PseudoValidators } from './pseudo.validators';
 import { AgeValidators } from './age.validators';
 import { Component } from '@angular/core';
@@ -18,7 +20,8 @@ export class RegisterFormComponent {
 
   constructor(private service: ChamisService,
               private pseudoService: PseudoValidators,
-              private router: Router) {}
+              private router: Router,
+              private emailService: CommunicationComposantService) {}
 
   form = new FormGroup({
     account: new FormGroup({
@@ -61,9 +64,11 @@ export class RegisterFormComponent {
   }
 
   inscription() {
+    let mail = this.emailService.recupererMail();
+    console.log(mail);
     this.chamis = {
       pseudo: this.pseudo?.value,
-      email: "",
+      email: mail!,
       age: this.age?.value,
       ville: this.ville?.value,
       description: this.description?.value,

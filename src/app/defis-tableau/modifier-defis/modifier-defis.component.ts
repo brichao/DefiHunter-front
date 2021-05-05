@@ -107,7 +107,7 @@ export class ModifierDefisComponent implements OnInit {
       epilogue: "",
       commentaire: this.description?.value
     }
-    this.defiService.updateDefis(this.defis);
+    this.defiService.updateDefis(this.defis).subscribe(defi => console.log(defi));
     this.dialogRefModifier.close();
   }
 
