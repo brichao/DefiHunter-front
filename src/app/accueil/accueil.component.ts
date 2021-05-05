@@ -1,11 +1,9 @@
-import { Arret } from './../services/arret';
 import { DefisService } from './../services/defis.service';
-import { Defis } from './../services/defis';
 import {  OnInit } from '@angular/core';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
-import { Observable } from 'rxjs';
+import "leaflet/dist/images/marker-shadow.png";
 
 @Component({
   selector: 'app-accueil',
@@ -24,7 +22,6 @@ export class AccueilComponent implements OnInit {
       .subscribe( (defis) => {
         for(const defi of defis){
           this.setNewArret(defi.codeArret);
-          console.log(defi.codeArret);
         }
       });
   }
