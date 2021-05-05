@@ -26,7 +26,7 @@ export class ModifierDefisComponent implements OnInit {
               public dialogRefModifier: MatDialogRef<ModifierDefisComponent>,
               @Inject(MAT_DIALOG_DATA) public donnees : DialogData)
   {
-    this.defis={
+    this.defis = {
       id: donnees.id,
       titre: donnees.titre,
       nomType: '',
@@ -38,7 +38,9 @@ export class ModifierDefisComponent implements OnInit {
       duree: "",
       prologue: "",
       epilogue: "",
-      commentaire: donnees.description
+      commentaire: donnees.description,
+      arret: this.arret?.value,
+      motsCles: donnees.motscles
     }
   }
 
@@ -105,7 +107,9 @@ export class ModifierDefisComponent implements OnInit {
       duree: "",
       prologue: "",
       epilogue: "",
-      commentaire: this.description?.value
+      commentaire: this.description?.value,
+      arret: this.arret?.value,
+      motsCles: this.motsCles?.value
     }
     this.defiService.updateDefis(this.defis).subscribe(defi => console.log(defi));
     this.dialogRefModifier.close();

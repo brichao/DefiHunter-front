@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Arret } from './arret';
+import { Arret } from 'src/generator';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class ArretsService {
     return this.http.get<Arret[]>('https://data.mobilites-m.fr/api/findType/json?types=arret');
   }
 
-  getArret(a: Arret): Observable<Arret> {
-    return this.http.get<Arret>(`https://data.mobilites-m.fr/api/findType/json?types=arret&code=${a.features[0].properties.code}`);
+  getArret(codeArret: string): Observable<Arret> {
+    return this.http.get<Arret>(`https://data.mobilites-m.fr/api/findType/json?types=arret&code=${ codeArret }`);
   }
 }

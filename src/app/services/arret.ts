@@ -1,19 +1,19 @@
 // tslint:disable-next-line: class-name
-interface features extends Object {
+interface features {
+  type: string;
   geometry: {
     type: string;
     coordinates: [number, number];
   };
   properties: {
     code: string;
-    libelle: string;
+    LIBELLE: string;
     type: string;
-    commune: string;
+    COMMUNE: string;
     arr_visibles: string;
     id: string;
     epci: string;
   };
-  type: string;
 }
 
 export interface Arret extends Object {

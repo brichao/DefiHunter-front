@@ -5,7 +5,7 @@ import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
 import "leaflet/dist/images/marker-shadow.png";
-import { Arret } from '../services/arret';
+import { Arret, Defis } from 'src/generator';
 
 @Component({
   selector: 'app-accueil',
@@ -18,33 +18,45 @@ export class AccueilComponent implements OnInit {
   dataIconGoogle = 'assets/images/iconGoogle.png';
   public lignes: any;
   public arrets: Arret[] = [];
+  public defis: Defis[] = [];
 
   constructor(private http: HttpClient, private defisServ: DefisService) {
-    this.defisServ.defis
-      .subscribe((defis) => {
-        for (const defi of defis) {
-          this.setNewArret(defi.codeArret);
-        }
-      });
   }
 
   ngOnInit(): void {
     this.getDonnee();
+    this.setDefis();
   }
 
-
   getDonnee(){
-    const lien = 'https://data.mobilites-m.fr/api/lines/json?types=ligne&reseaux=SEM';
-    this.http.get(lien)
+    this.http.get('https://data.mobilites-m.fr/api/lines/json?types=ligne&reseaux=SEM')
       .subscribe((lignes) => {
         this.lignes = lignes;
       });
   }
 
-  setNewArret(codeArret: string): void {
-    this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${codeArret}`)
-      .subscribe((arrets) => {
-        this.arrets.push(arrets as Arret);
+  setDefis(): void {
+    this.defisServ.defis
+      .subscribe((defis) => {
+        this.defis = defis;
+        for (const defi of this.defis) {
+          // Pour chaque defi recupere d'apres le service de defis
+          // On rajoute l'arret avec le codeArret du defi
+          this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${defi.codeArret}`)
+            .subscribe((arret) => {
+              defi.arret = (arret as Arret);
+            });
+
+          this.defisServ.getMotsCles(defi)
+            .subscribe(motsCles => {
+              let mCs = '';
+              for (const motCle of motsCles) {
+                mCs = mCs + (motCle.motCle) + `\n`;
+              }
+              defi.motsCles = mCs;
+            })
+          console.log(defi);
+        }
       });
   }
 

@@ -4,6 +4,7 @@ import { DefisService } from '../../services/defis.service';
 import { Defis } from 'src/generator';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpClient} from '@angular/common/http';
+import { ArretsService } from 'src/app/services/arrets.service';
 
 @Component({
   selector: 'app-ajout-defi',
@@ -16,7 +17,13 @@ export class AjoutDefiComponent implements OnInit{
   public Larrets: any[] = [];
 
 
-  constructor(private http: HttpClient, private defiService: DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>) { }
+  constructor(private http: HttpClient,
+              private defiService: DefisService,
+              private arretService: ArretsService,
+              public dialogRef: MatDialogRef<AjoutDefiComponent>)
+  {
+
+  }
 
 
   formDefis = new FormGroup({
@@ -114,7 +121,9 @@ export class AjoutDefiComponent implements OnInit{
       duree: this.duree?.value,
       prologue: this.prologue?.value,
       epilogue: this.epilogue?.value,
-      commentaire: this.commentaire?.value
+      commentaire: this.commentaire?.value,
+      arret: this.arrets,
+      motsCles: this.motsCles?.value
     }
     this.defiService.addDefis(this.defis).subscribe(defi => console.log(defi));
     this.dialogRef.close();
