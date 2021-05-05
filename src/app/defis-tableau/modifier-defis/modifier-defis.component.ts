@@ -1,6 +1,6 @@
 import { DefisService } from './../../services/defis.service';
 import { Component, OnInit } from '@angular/core';
-import { Defis } from 'src/app/services/defis';
+import { Defis } from 'src/generator';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Inject } from '@angular/core';

@@ -21,10 +21,11 @@
         <mat-label>Arrêt</mat-label>
         <mat-select formControlName="arret" id="arret">
           <ng-container>
-            <mat-option value="option1">option1</mat-option>
+            <mat-option *ngFor="let ar of Larrets"
+            value="arret?.features[0].properties.CODE">{{ ar?.features[0].properties.LIBELLE }}</mat-option>
           </ng-container>
         </mat-select>
-        <mat-error *ngIf="arret?.errors?.required">L'arret est requis.</mat-error>
+        <mat-error *ngIf="arrets?.errors?.required">L'arret est requis.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -33,10 +34,11 @@
         <mat-hint>Veuillez noter les mots clés séparés par des virgules.</mat-hint>
         <mat-error *ngIf="motsCles?.errors?.required">Les mots clés sont requis.</mat-error>
       </mat-form-field>
+
       <mat-form-field>
-        <mat-label>Description</mat-label>
-        <textarea formControlName="description" id="description" placeholder="Description du défi" matInput cols="30" rows="10"></textarea>
-        <mat-error *ngIf="description?.errors?.required">La description est requise.</mat-error>
+        <mat-label>Prologue</mat-label>
+        <textarea formControlName="prologue" id="prologue" placeholder="Prologue du défi" matInput cols="30" rows="10"></textarea>
+        <mat-error *ngIf="points?.errors?.required">La Prologue est requise.</mat-error>
       </mat-form-field>
     </div>
   </div>

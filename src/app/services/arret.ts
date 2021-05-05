@@ -1,8 +1,9 @@
+// tslint:disable-next-line: class-name
 interface features extends Object {
   geometry: {
     type: string;
     coordinates: [number, number];
-  }
+  };
   properties: {
     code: string;
     libelle: string;
@@ -11,8 +12,8 @@ interface features extends Object {
     arr_visibles: string;
     id: string;
     epci: string;
-  }
-  type: string
+  };
+  type: string;
 }
 
 export interface Arret extends Object {

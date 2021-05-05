@@ -4,7 +4,7 @@ import { AgeValidators } from './age.validators';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ChamisService } from '../services/chamis.service';
-import { Chamis } from '../services/chamis';
+import { Chamis } from '../../generator';
 import { Router } from '@angular/router';
 
 @Component({
@@ -63,7 +63,6 @@ export class RegisterFormComponent {
 
   inscription() {
     let mail = this.emailService.recupererMail();
-    console.log(mail);
     this.chamis = {
       pseudo: this.pseudo?.value,
       email: mail!,

@@ -39,6 +39,7 @@ import { ModifierDefisComponent } from './defis-tableau/modifier-defis/modifier-
 import { CommonModule } from "@angular/common";
 import { ModifierChamisComponent } from './chamis-tableau/modifier-chamis/modifier-chamis.component';
 import { ArretsService } from './services/arrets.service';
+import { ArretsComponent } from './arrets/arrets.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ArretsService } from './services/arrets.service';
     AjoutDefiComponent,
     ModifierDefisComponent,
     ModifierChamisComponent,
+    ArretsComponent,
   ],
   imports: [
     BrowserModule,

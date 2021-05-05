@@ -1,7 +1,7 @@
 import { ModifierDefisComponent } from './modifier-defis/modifier-defis.component';
 import { AjoutDefiComponent } from './ajout-defi/ajout-defi.component';
 import { DefisService } from './../services/defis.service';
-import { Defis } from './../services/defis';
+import { Defis } from 'src/generator';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -29,9 +29,13 @@ export class DefisTableauComponent{
     dialogConfig.data = {
       id: this.defis.id,
       titre: this.defis.titre,
+      type: this.defis.nomType,
       arret: this.defis.codeArret,
       motscles: '',
-      description: this.defis.commentaire
+
+      points: this.defis.points,
+      duree: this.defis.duree,
+      prologue: this.defis.prologue
     };
     dialogConfig.width = '80%';
     const dialogRefModifier = this.dialog.open(ModifierDefisComponent, dialogConfig);
