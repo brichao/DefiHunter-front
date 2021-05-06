@@ -16,7 +16,7 @@ import { CommunicationComposantService } from '../services/communication-composa
 export class ChamisTableauComponent implements OnInit {
 
   public chamis$!: Observable<Chamis[]>;
-  private chami!: Chamis | null;
+  private chamiConnecte!: Chamis | null;
 
   constructor(public chamisService: ChamisService,
               private dialogueChamis: MatDialog,
@@ -27,26 +27,24 @@ export class ChamisTableauComponent implements OnInit {
 
   ngOnInit() {
     this.utilisateurConnecte.chamisConnecte.subscribe(chami => {
-      this.chami = chami;
-      console.log(chami);
+      this.chamiConnecte = chami;
     });
    }
 
   modifierChamis(chami: Chamis){
-    console.log(this.chami);
-    if (this.chami?.pseudo === chami.pseudo) {
+    if (this.chamiConnecte?.pseudo === chami.pseudo) {
       const dialogueConfiguration = new MatDialogConfig();
       dialogueConfiguration.data = {
-        pseudo : this.chami.pseudo,
-        email : this.chami.email,
-        age : this.chami.age,
-        ville : this.chami.ville,
-        description : this.chami.description
+        pseudo : this.chamiConnecte.pseudo,
+        email : this.chamiConnecte.email,
+        age : this.chamiConnecte.age,
+        ville : this.chamiConnecte.ville,
+        description : this.chamiConnecte.description
       }
       dialogueConfiguration.width = '80%';
       this.dialogueChamis.open(ModifierChamisComponent, dialogueConfiguration);
     } else {
-      console.log('tu peux pas changer le chami')
+      console.log('tu peux pas changer le chami');
     }
   }
 }
