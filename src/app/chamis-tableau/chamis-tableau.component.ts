@@ -3,31 +3,38 @@ import { ModifierChamisComponent } from './modifier-chamis/modifier-chamis.compo
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ChamisService } from './../services/chamis.service';
 import { Chamis } from '../../generator';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CommunicationComposantService } from '../services/communication-composant.service';
 
 @Component({
   selector: 'chamis-tableau',
   templateUrl: './chamis-tableau.component.html',
   styleUrls: ['./chamis-tableau.component.scss']
 })
-export class ChamisTableauComponent {
+export class ChamisTableauComponent implements OnInit {
 
   public chamis$!: Observable<Chamis[]>;
-  private chami!: Chamis;
-  private pseudo: string='';
+  private chami!: Chamis | null;
 
-  constructor(public chamisService: ChamisService, private dialogueChamis: MatDialog, private connectee: UtilisateurService) {
+  constructor(public chamisService: ChamisService,
+              private dialogueChamis: MatDialog,
+              private utilisateurConnecte: CommunicationComposantService)
+  {
     this.chamis$ = chamisService.getChamis();
+  }
+
+  ngOnInit() {
+    this.utilisateurConnecte.chamisConnecte.subscribe(chami => {
+      this.chami = chami;
+      console.log(chami);
+    });
    }
 
-   modifierChamis(chami: Chamis){
-    this.chami = chami;
-    let mail:string = this.connectee.getChamisEmail();
-    this.chamis$.pipe(map(chamis => chamis.filter(chami => chami.email === mail))).subscribe(user => this.pseudo = user[0].pseudo);
-
-    if(this.chami.pseudo===this.pseudo){
+  modifierChamis(chami: Chamis){
+    console.log(this.chami);
+    if (this.chami?.pseudo === chami.pseudo) {
       const dialogueConfiguration = new MatDialogConfig();
       dialogueConfiguration.data = {
         pseudo : this.chami.pseudo,

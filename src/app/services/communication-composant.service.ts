@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Chamis } from 'src/generator';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommunicationComposantService {
 
-  private email: string | null = '';
+  private chamisSource = new BehaviorSubject<Chamis | null>(null);
+  private emailSource = new BehaviorSubject<string | null>(null);
+  chamisConnecte = this.chamisSource.asObservable();
+  email = this.emailSource.asObservable();
 
   constructor() { }
 
-  envoieMail(email: string | null): void{
-    this.email = email;
+  setChamisConnecte(chamis: Chamis | null): void {
+    this.chamisSource.next(chamis);
   }
 
-  recupererMail(): string | null{
-    return this.email;
+  setMail(email: string | null) {
+    this.emailSource.next(email);
   }
 }

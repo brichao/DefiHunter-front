@@ -6,16 +6,18 @@ import { Injectable } from '@angular/core';
 })
 export class UtilisateurService {
 
-  private chamisEmail: string = '';
+  private chamisEmail = '';
 
   constructor(private auth: AngularFireAuth) {
-    this.auth.authState.subscribe(chamis => {
-      if(chamis)
-        this.chamisEmail = chamis?.email as string;
-    })
+    this.auth.authState
+      .subscribe(chamis => {
+        if (chamis) {
+          this.chamisEmail = chamis?.email as string;
+        }
+      });
   }
 
-    getChamisEmail(): string{
-      return this.chamisEmail;
-    }
+  getChamisEmail(): string{
+    return this.chamisEmail;
+  }
 }
