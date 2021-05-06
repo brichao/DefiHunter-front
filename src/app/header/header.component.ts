@@ -23,7 +23,7 @@ export class HeaderComponent {
   constructor(  public auth: AngularFireAuth,
                 private registerService: RegisterFormService,
                 private router: Router,
-                private emailService: CommunicationComposantService
+                private chamisConnecteService: CommunicationComposantService
               ){
     this.chamis$ = auth.authState;
   }
@@ -43,6 +43,7 @@ export class HeaderComponent {
 
   logout(): void {
     this.auth.signOut();
+    this.chamisConnecteService.setChamisConnecte(null);
   }
 
   isLoggedIn(): Observable<firebase.User | null> {
@@ -54,7 +55,7 @@ export class HeaderComponent {
     this.chamis$
       .subscribe(c => {
         if (c != null && !RegisterFormService.emails.includes(c?.email as string)) {
-          this.emailService.setMail(c.email);
+          this.chamisConnecteService.setMail(c.email);
           RegisterFormService.emails.push(c?.email as string);
           this.router.navigate(['inscription'], { state: { redirect: this.router.url } } );
         } else {

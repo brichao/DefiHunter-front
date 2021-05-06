@@ -32,6 +32,10 @@ export class AjoutDefiComponent implements OnInit{
 
   formDefis = new FormGroup({
     defis: new FormGroup({
+      id : new FormControl('', [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
       titre : new FormControl('', [
         Validators.required,
         Validators.minLength(4)

@@ -13,6 +13,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { ArretsService } from '../services/arrets.service';
 import { CommunicationComposantService } from '../services/communication-composant.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'defis-tableau',
@@ -23,30 +24,33 @@ export class DefisTableauComponent implements OnInit {
   private defis: Defis | null = null;
   defis$: Observable<Defis[]>;
   public pseudo: string = '';
-  public chamis$!: Observable<Chamis[]>;
+  public listeChamis$!: Observable<Chamis[]>;
+  public chamiConnecte$!: Observable<Chamis | null>;
   public chamiConnecte!: Chamis | null;
   public date = Date.now();
   public arrets$!: Observable<Arret[]>;
 
   constructor(public defisService: DefisService,
               private dialog: MatDialog,
+              private auth: AngularFireAuth,
               private chamisConnecteService: CommunicationComposantService,
               private chamisService: ChamisService,
               public arretsService: ArretsService,
               private questionsService: QuestionsService)
   {
     this.defis$ = defisService.defis;
-    this.chamis$ = chamisService.getListeChamis();
+    this.listeChamis$ = chamisService.getListeChamis();
     this.arrets$ = arretsService.arrets;
   }
 
   ngOnInit() {
-    this.chamisConnecteService.chamisConnecte.subscribe(chamisC => this.chamiConnecte = chamisC);
+    this.chamiConnecte$ = this.chamisConnecteService.chamisConnecte;
+    this.chamiConnecte$.subscribe(chamisC => this.chamiConnecte = chamisC);
   }
 
 
   ajouterDefis(): void{
-    console.log(this.chamiConnecte);
+    this.chamiConnecte$.subscribe(chamisC => this.chamiConnecte = chamisC);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       auteur: this.chamiConnecte?.pseudo
