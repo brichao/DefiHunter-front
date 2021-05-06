@@ -18,16 +18,16 @@ export class BlocsTexteService {
   }
 
   addBlocsTexte(blocsTexte: BlocsTexte) : Observable<BlocsTexte> {
-    return this.http.post<BlocsTexte>(`${this.apiServerUrl}/api/BlocsTexte/${blocsTexte.blocsTexteId}`, BlocsTexte);
+    return this.http.post<BlocsTexte>(`${this.apiServerUrl}/api/BlocsTexte/${blocsTexte.bloctexteId}`, blocsTexte);
 
   }
 
   updateBlocsTexte(blocsTexte: BlocsTexte) {
-    return this.http.put<BlocsTexte>(`${this.apiServerUrl}/api/BlocsTexte/${blocsTexte.blocsTexteId}`, BlocsTexte).subscribe();
+    return this.http.put<BlocsTexte>(`${this.apiServerUrl}/api/BlocsTexte/${blocsTexte.bloctexteId}`, blocsTexte).subscribe();
   }
 
   deleteBlocsTexte(blocsTexte: BlocsTexte){
-    return this.http.delete<void>(`${this.apiServerUrl}/api/BlocsTexte/${blocsTexte.blocsTexteId}`).subscribe();
+    return this.http.delete<void>(`${this.apiServerUrl}/api/BlocsTexte/${blocsTexte.bloctexteId}`).subscribe();
   }
 
 

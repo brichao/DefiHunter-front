@@ -14,8 +14,9 @@
     <p>Durée : {{defi.duree}} mn</p>
     <p class="prologue">Prologue : </p>
     <p>{{defi.prologue}}</p>
-    <iframe *ngIf="defi.id == 'D127'" width="500" height="315" src="https://www.youtube.com/watch?v=ZbA7aPTmlDY&t=207s" allowfullscreen></iframe>
-
+    <ng-container *ngIf="defi.id == 'D127'" >
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ZbA7aPTmlDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </ng-container>
     <p>{{defi.epilogue}}</p>
     <p class="commentaire">Commentaires : </p>
     <p>{{defi.commentaire}}</p>

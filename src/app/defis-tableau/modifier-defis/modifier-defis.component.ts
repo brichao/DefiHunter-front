@@ -42,14 +42,8 @@ export class ModifierDefisComponent {
       duree: donnees.duree,
       prologue: donnees.prologue,
       epilogue: "",
-<<<<<<< HEAD
-      commentaire: donnees.description,
-      arret: this.arret?.value,
-      motsCles: donnees.motscles
+      commentaire: ""
     }
-=======
-      commentaire: ""}
->>>>>>> e295bee6cfd82c8f3f4c05bc414202411e47cc9a
   }
 
   formDefis = new FormGroup({
@@ -128,13 +122,7 @@ export class ModifierDefisComponent {
       duree: this.duree?.value,
       prologue: this.prologue?.value,
       epilogue: "",
-<<<<<<< HEAD
-      commentaire: this.description?.value,
-      arret: this.arret?.value,
-      motsCles: this.motsCles?.value
-=======
       commentaire: ''
->>>>>>> e295bee6cfd82c8f3f4c05bc414202411e47cc9a
     }
     console.log(this.defis);
     this.defiService.updateDefis(this.defis).subscribe(defi => console.log(defi));

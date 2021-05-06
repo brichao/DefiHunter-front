@@ -4,11 +4,7 @@ import { DefisService } from '../../services/defis.service';
 import { Defis, DialogDataAjout } from 'src/generator';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient} from '@angular/common/http';
-<<<<<<< HEAD
-import { ArretsService } from 'src/app/services/arrets.service';
-=======
 import { Inject } from '@angular/core';
->>>>>>> e295bee6cfd82c8f3f4c05bc414202411e47cc9a
 
 @Component({
   selector: 'app-ajout-defi',
@@ -22,20 +18,10 @@ export class AjoutDefiComponent{
   auteur: string = '';
 
 
-<<<<<<< HEAD
-  constructor(private http: HttpClient,
-              private defiService: DefisService,
-              private arretService: ArretsService,
-              public dialogRef: MatDialogRef<AjoutDefiComponent>)
-  {
-
-  }
-=======
   constructor(private http: HttpClient, private defiService: DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>,
     @Inject(MAT_DIALOG_DATA) public donnees : DialogDataAjout) {
       this.auteur = donnees.auteur;
     }
->>>>>>> e295bee6cfd82c8f3f4c05bc414202411e47cc9a
 
 
   formDefis = new FormGroup({
@@ -53,13 +39,6 @@ export class AjoutDefiComponent{
       motscles : new FormControl ('',[
         Validators.required
       ]),
-<<<<<<< HEAD
-      // description : new FormControl ('', [
-      //   Validators.required
-      // ]),
-      prologue : new FormControl ('', [
-        Validators.required
-=======
       prologue : new FormControl ('', [
         Validators.required
       ]),
@@ -68,7 +47,6 @@ export class AjoutDefiComponent{
       ]),
       duree : new FormControl ('', [
         Validators.required
->>>>>>> e295bee6cfd82c8f3f4c05bc414202411e47cc9a
       ])
     })
   })
@@ -105,17 +83,6 @@ export class AjoutDefiComponent{
     return this.formDefis.get('defis.prologue');
   }
 
-<<<<<<< HEAD
-  get epilogue(){
-    return this.formDefis.get('defis.epilogue');
-  }
-
-  get commentaire(){
-    return this.formDefis.get('defis.commentaire');
-  }
-
-=======
->>>>>>> e295bee6cfd82c8f3f4c05bc414202411e47cc9a
   addDefis(){
     console.log(this.auteur);
     this.defis={
@@ -129,15 +96,8 @@ export class AjoutDefiComponent{
       points: this.points?.value,
       duree: this.duree?.value,
       prologue: this.prologue?.value,
-<<<<<<< HEAD
-      epilogue: this.epilogue?.value,
-      commentaire: this.commentaire?.value,
-      arret: this.arrets,
-      motsCles: this.motsCles?.value
-=======
       epilogue: '',
       commentaire: ''
->>>>>>> e295bee6cfd82c8f3f4c05bc414202411e47cc9a
     }
     console.log(this.defis);
     this.defiService.addDefis(this.defis).subscribe(defi => console.log(defi));
