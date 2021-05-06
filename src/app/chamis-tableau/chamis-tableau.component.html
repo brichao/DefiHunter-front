@@ -1,3 +1,8 @@
+<mat-grid-tile-header>
+  <h1>
+    Liste des Chamis
+  </h1>
+</mat-grid-tile-header>
 <mat-grid-list cols="2" rowHeight="3:1">
   <mat-grid-tile *ngFor="let chami of (chamis$ | async)">
     <mat-card>

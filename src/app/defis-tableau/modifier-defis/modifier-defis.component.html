@@ -8,9 +8,9 @@
         <input formControlName="id" id="id" matInput [(ngModel)]="donnees.id">
         <mat-error *ngIf="id?.errors?.required"></mat-error>
         <mat-error *ngIf="id?.errors?.minlength">Défi doit avoir au moins {{id?.errors?.minlength.requiredLength}}</mat-error>
-       </mat-form-field>
+      </mat-form-field>
 
-       <mat-form-field>
+      <mat-form-field>
         <mat-label>Titre</mat-label>
         <input formControlName="titre" id="titre" placeholder="Titre du défi" matInput [(ngModel)]="donnees.titre">
         <mat-error *ngIf="titre?.errors?.required">Le titre est requis.</mat-error>
