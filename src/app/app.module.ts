@@ -52,7 +52,7 @@ import { ArretsComponent } from './arrets/arrets.component';
     AjoutDefiComponent,
     ModifierDefisComponent,
     ModifierChamisComponent,
-    ArretsComponent,
+    ArretsComponent
   ],
   imports: [
     BrowserModule,

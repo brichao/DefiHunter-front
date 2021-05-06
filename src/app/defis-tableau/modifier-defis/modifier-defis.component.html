@@ -2,7 +2,6 @@
 <div mat-dialog-content>
   <form [formGroup]="formDefis">
     <div formGroupName="defis">
-      <div class="fields">
       <mat-form-field>
         <mat-label>Défi</mat-label>
         <input formControlName="id" id="id" matInput [(ngModel)]="donnees.id">
@@ -26,21 +25,23 @@
         <mat-error *ngIf="arret?.errors?.required">L'arret est requis.</mat-error>
       </mat-form-field>
 
+      <!--<mat-form-field>
+            <mat-label>Mots clés</mat-label>
+            <input formControlName="motscles" id="motscles" placeholder="Les mots clés du défi" matInput>
+            <mat-hint>Veuillez noter les mots clés séparés par des virgules.</mat-hint>
+            <mat-error *ngIf="motsCles?.errors?.required">Les mots clés sont requis.</mat-error>
+          </mat-form-field>
+      -->
+
       <mat-form-field>
-        <mat-label>Mots clés</mat-label>
-        <input formControlName="motscles" id="motscles" placeholder="Les mots clés du défi" matInput>
-        <mat-hint>Veuillez noter les mots clés séparés par des virgules.</mat-hint>
-        <mat-error *ngIf="motsCles?.errors?.required">Les mots clés sont requis.</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <textarea formControlName="description" id="description" placeholder="Description du défi" matInput cols="30" rows="10">
+        <mat-label>Prologue</mat-label>
+        <textarea formControlName="prologue" id="prologue" placeholder="Prologue du défi" matInput cols="30" rows="10">
           {{donnees.description}}
         </textarea>
-        <mat-error *ngIf="description?.errors?.required">La description est requise.</mat-error>
+        <mat-error *ngIf="prologue?.errors?.required">La description est requise.</mat-error>
       </mat-form-field>
     </div>
-  </div>
+
   </form>
 </div>
 <div mat-dialog-actions>

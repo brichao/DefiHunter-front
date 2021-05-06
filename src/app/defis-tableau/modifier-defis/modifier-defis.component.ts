@@ -80,32 +80,57 @@ export class ModifierDefisComponent implements OnInit {
     return this.formDefis.get('defis.titre');
   }
 
+  get nomType(){
+    return this.formDefis.get('defis.nomtype');
+  }
+
+  get dateDeCreation(){
+    return this.formDefis.get('defis.datedecreation');
+  }
+
+  get auteur(){
+    return this.formDefis.get('defis.auteur');
+  }
+
   get arret(){
-    return this.formDefis.get('defis.arret');
+    return this.formDefis.get('defis.codearret');
   }
 
-  get motsCles(){
-    return this.formDefis.get('defis.motscles');
+  get points(){
+    return this.formDefis.get('defis.points');
   }
 
-  get description(){
-    return this.formDefis.get('defis.description');
+  get duree(){
+    return this.formDefis.get('defis.duree');
   }
+
+  get prologue(){
+    return this.formDefis.get('defis.prologue');
+  }
+
+  get epilogue(){
+    return this.formDefis.get('defis.epilogue');
+  }
+
+  get commentaire(){
+    return this.formDefis.get('defis.commentaire');
+  }
+
 
   modifierDefis(){
     this.defis={
       id: this.id?.value,
       titre : this.titre?.value,
-      nomType : "",
-      dateDeCreation: new Date(),
+      nomType : this.nomType?.value,
+      dateDeCreation: this.dateDeCreation?.value,
       dateDeModification: new Date(Date.now()),
-      auteur: "",
+      auteur: this.auteur?.value,
       codeArret: this.arret?.value,
-      points: 0,
-      duree: "",
-      prologue: "",
-      epilogue: "",
-      commentaire: this.description?.value
+      points: this.points?.value,
+      duree: this.duree?.value,
+      prologue: this.prologue?.value,
+      epilogue: this.epilogue?.value,
+      commentaire: this.commentaire?.value
     }
     this.defiService.updateDefis(this.defis).subscribe(defi => console.log(defi));
     this.dialogRefModifier.close();
