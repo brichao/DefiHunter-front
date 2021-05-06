@@ -1,61 +1,59 @@
 export interface Chamis {
-  pseudo: string;
-  email: string;
-  age: number;
-  ville: string;
-  description: string;
+  pseudo: string,
+  email: string,
+  age: number,
+  ville: string,
+  description: string
 }
 
 export interface Defis {
-  id: string;
-  titre: string;
-  nomType: string;
-  dateDeCreation: Date;
-  dateDeModification: Date;
-  auteur: string;
-  codeArret: string;
-  points: number;
-  duree: string;
-  prologue: string;
-  epilogue: string;
-  commentaire: string;
-  arret: Arret;
-  motsCles: string;
+  id: string,
+  titre: string,
+  nomType: string,
+  dateDeCreation: Date,
+  dateDeModification: Date,
+  auteur: string,
+  codeArret: string,
+  points: number,
+  duree: string,
+  prologue: string,
+  epilogue: string,
+  commentaire: string
 }
 
 export interface BlocsTexte {
-  bloctexteId: number;
-  questionsId: number;
-  indicesId: number;
-  texte: string;
-  defisId: string;
+  bloctexteId: number,
+  questionsId: number,
+  indicesId: number,
+  texte: string,
+  defisId: string
 }
 
 export interface Indices {
-  indicesId: number;
-  defisId: string;
-  indiceNum: number;
-  description: string;
-  points: number;
+  indicesId: number,
+  defisId: string,
+  indiceNum: number,
+  description: string,
+  points: number
 }
 export interface Questions {
-  questionId: number;
-  defisId: string;
-  questionNum: number;
-  description: string;
-  points: number;
-  secret: string;
+  questionId: number,
+  defisId: string,
+  questionNum: number,
+  description: string,
+  points: number,
+  secret: string
 }
 
 export interface Arrets {
-  codeArret: string;
-  nomArret: string;
-  streetMap: string;
+  codeArret: string,
+  nomArret: string
+  streetMap: string
 }
 
 export interface MotsCles {
-  defisId: string;
-  motCle: string;
+  defisId: string,
+  motCle: string
 }
 
 interface Coordinate {
@@ -81,7 +79,7 @@ interface Features {
     coordinates: [number, number];
   };
   properties: {
-    CODE: string;
+    code: string;
     LIBELLE: string;
     type: string;
     COMMUNE: string;
@@ -96,7 +94,20 @@ export interface Arret extends Object {
   features: Features[];
 }
 
+export interface ArretDefis {
+  defis: Defis;
+  arret: Arret;
+}
+export interface DialogData  {
+  pseudo: string;
+  email: string;
+  age: number;
+  ville: string;
+  description: string;
+}
 
 
-
+export interface DialogDataAjout{
+  auteur: string;
+}
 

@@ -12,17 +12,21 @@
       </mat-form-field>
 
       <mat-form-field>
+        <mat-label>Type</mat-label>
+        <input formControlName="nomType" id="type" placeholder="Le type du défi" matInput>
+        <mat-error *ngIf="nomType?.errors?.required">Le type est requis.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-label>Arrêt</mat-label>
         <mat-select formControlName="arret" id="arret">
           <ng-container>
-            <!-- <mat-option *ngFor="let ar of Larrets" value="ar?.features[0].properties.CODE"> -->
-            <mat-option value="1">
-              <!-- {{ ar?.features[0].properties.LIBELLE }} -->
-              Test
-            </mat-option>
+            <mat-option *ngFor="let ar of Larrets"
+            value="arret?.features[0].properties.LIBELLE">{{ ar?.features[0].properties.LIBELLE }}</mat-option>
+            <mat-option value="option">option1</mat-option>
           </ng-container>
         </mat-select>
-        <mat-error *ngIf="arrets?.errors?.required">L'arret est requis.</mat-error>
+        <mat-error *ngIf="arret?.errors?.required">L'arret est requis.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -33,10 +37,23 @@
       </mat-form-field>
 
       <mat-form-field>
+        <mat-label>Points</mat-label>
+        <input formControlName="points" id="points" placeholder="Les points du défi" matInput>
+        <mat-error *ngIf="points?.errors?.required">Les points du défi sont requis.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Durée</mat-label>
+        <input formControlName="duree" id="duree" placeholder="Durée du défi" matInput>
+        <mat-error *ngIf="duree?.errors?.required">La durée du défi est requise.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-label>Prologue</mat-label>
         <textarea formControlName="prologue" id="prologue" placeholder="Prologue du défi" matInput cols="30" rows="10"></textarea>
         <mat-error *ngIf="prologue?.errors?.required">La Prologue est requise.</mat-error>
       </mat-form-field>
+
     </div>
   </div>
   </form>
