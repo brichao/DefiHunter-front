@@ -18,12 +18,10 @@ export class AccueilComponent implements OnInit {
   iconMarker = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/585px-Map_marker.svg.png';
   dataIconGoogle = 'assets/images/iconGoogle.png';
 
-  arretDefis: ArretDefis[];
+  arretDefis: ArretDefis[] = [];
   public lignes: any;
 
-  constructor(private http: HttpClient, private defisServ: DefisService) {
-    this.arretDefis = [];
-  }
+  constructor(private http: HttpClient, private defisServ: DefisService) { }
 
   ngOnInit(): void {
     this.getLignes();
@@ -50,7 +48,7 @@ export class AccueilComponent implements OnInit {
               this.arretDefis.push({
                 defis: defi,
                 arret: arret as Arret
-              })
+              });
             });
 
           // this.defisServ.getMotsCles(defi)

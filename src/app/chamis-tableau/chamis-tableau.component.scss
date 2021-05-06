@@ -1,11 +1,17 @@
 mat-grid-tile-header {
   margin: 1rem 1rem 1rem 1rem;
 }
-
-mat-card {
-  margin: 1rem 0rem 1rem 0rem;
-  width: 90%;
-  mat-card-actions {
-    text-align: right;
+mat-grid-tile {
+  mat-card {
+    padding: 1rem 1rem 1rem 1rem;
+    width: 90%;
+    height: 90%;
+    mat-card-actions {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: translate(-15%, -15%);
+      text-align: right;
+    }
   }
 }

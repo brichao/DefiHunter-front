@@ -37,7 +37,7 @@ export class ChamisTableauComponent {
         description : this.chami.description
       }
       dialogueConfiguration.width = '80%';
-      this.dialogueChamis.open(ModifierChamisComponent,dialogueConfiguration);
+      this.dialogueChamis.open(ModifierChamisComponent, dialogueConfiguration);
     } else {
       console.log('tu peux pas changer le chami')
     }
