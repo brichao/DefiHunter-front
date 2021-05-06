@@ -1,6 +1,6 @@
 
 
-<mat-card *ngFor="let chami of chamis">
+<mat-card *ngFor="let chami of (chamis$ | async)">
   <mat-card-header>
     <mat-card-title>{{chami.pseudo}}</mat-card-title>
     <mat-card-subtitle>{{chami.ville}}</mat-card-subtitle>

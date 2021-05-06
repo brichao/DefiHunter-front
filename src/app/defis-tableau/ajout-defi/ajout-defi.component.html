@@ -21,8 +21,9 @@
         <mat-label>Arrêt</mat-label>
         <mat-select formControlName="arret" id="arret">
           <ng-container>
-            <mat-option *ngFor="let ar of Larrets"
-            value="arret?.features[0].properties.CODE">{{ ar?.features[0].properties.LIBELLE }}</mat-option>
+            <mat-option *ngFor="let ar of Larrets" value="arret?.features[0].properties.CODE">
+              {{ ar?.features[0].properties.LIBELLE }}
+            </mat-option>
           </ng-container>
         </mat-select>
         <mat-error *ngIf="arrets?.errors?.required">L'arret est requis.</mat-error>

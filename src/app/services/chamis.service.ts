@@ -12,7 +12,7 @@ export class ChamisService {
   constructor(private http: HttpClient) { }
 
 
-  getchamis(): Observable<Chamis[]> {
+  getChamis(): Observable<Chamis[]> {
     return this.http.get<Chamis[]>(`${this.apiServerUrl}/api/chamis/`);
   }
 
@@ -28,7 +28,4 @@ export class ChamisService {
   deleteChamis(chamis: Chamis){
     return this.http.delete<void>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`).subscribe();
   }
-
-
-
 }

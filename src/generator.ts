@@ -7,53 +7,53 @@ export interface Chamis {
 }
 
 export interface Defis {
-  id: string,
-  titre: string,
-  nomType: string,
-  dateDeCreation: Date,
-  dateDeModification: Date,
-  auteur: string,
-  codeArret: string,
-  points: number,
-  duree: string,
-  prologue: string,
-  epilogue: string,
+  id: string;
+  titre: string;
+  nomType: string;
+  dateDeCreation: Date;
+  dateDeModification: Date;
+  auteur: string;
+  codeArret: string;
+  points: number;
+  duree: string;
+  prologue: string;
+  epilogue: string;
   commentaire: string
 }
 
 export interface BlocsTexte {
-  bloctexteId: number,
-  questionsId: number,
-  indicesId: number,
-  texte: string,
-  defisId: string
+  bloctexteId: number;
+  questionsId: number;
+  indicesId: number;
+  texte: string;
+  defisId: string;
 }
 
 export interface Indices {
-  indicesId: number,
-  defisId: string,
-  indiceNum: number,
-  description: string,
-  points: number
+  indicesId: number;
+  defisId: string;
+  indiceNum: number;
+  description: string;
+  points: number;
 }
 export interface Questions {
-  questionId: number,
-  defisId: string,
-  questionNum: number,
-  description: string,
-  points: number,
-  secret: string
+  questionId: number;
+  defisId: string;
+  questionNum: number;
+  description: string;
+  points: number;
+  secret: string;
 }
 
 export interface Arrets {
-  codeArret: string,
-  nomArret: string
-  streetMap: string
+  codeArret: string;
+  nomArret: string;
+  streetMap: string;
 }
 
 export interface MotsCles {
-  defisId: string,
-  motCle: string
+  defisId: string;
+  motCle: string;
 }
 
 interface Coordinate {
@@ -72,21 +72,26 @@ export interface Ligne {
   }
 }
 
-interface features extends Object {
+interface Features {
+  type: string;
   geometry: {
-
-  }
-  properties: {}
-  type: string
+    type: string;
+    coordinates: [number, number];
+  };
+  properties: {
+    CODE: string;
+    LIBELLE: string;
+    type: string;
+    COMMUNE: string;
+    arr_visibles: string;
+    id: string;
+    epci: string;
+  };
 }
 
 export interface Arret extends Object {
   type: string;
-  features: features[];
-  code: string;
-  libelle: string;
-  commune: string;
-  coordinates: [number, number];
+  features: Features[];
 }
 
 

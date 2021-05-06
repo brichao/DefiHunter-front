@@ -26,7 +26,7 @@ export class ModifierDefisComponent implements OnInit {
               public dialogRefModifier: MatDialogRef<ModifierDefisComponent>,
               @Inject(MAT_DIALOG_DATA) public donnees : DialogData)
   {
-    this.defis={
+    this.defis = {
       id: donnees.id,
       titre: donnees.titre,
       nomType: '',

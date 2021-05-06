@@ -1,5 +1,5 @@
 import { environment } from './../../environments/environment.prod';
-import { Defis } from 'src/generator';
+import { Defis, MotsCles } from 'src/generator';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -26,5 +26,9 @@ export class DefisService {
 
   deleteDefis(defis: Defis): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/api/defis/${defis.id}`);
+  }
+
+  getMotsCles(defis: Defis): Observable<MotsCles[]> {
+    return this.http.get<MotsCles[]>(`${this.apiServerUrl}/api/defis/${defis.id}/motscles`);
   }
 }
