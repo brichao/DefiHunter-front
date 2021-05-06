@@ -2,7 +2,6 @@ import { CommunicationComposantService } from './../services/communication-compo
 import { ChangeDetectionStrategy, Component, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
 import firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { RegisterFormService } from '../services/register-form.service';

@@ -1,5 +1,3 @@
-
-
 <mat-card *ngFor="let chami of (chamis$ | async)">
   <mat-card-header>
     <mat-card-title>{{chami.pseudo}}</mat-card-title>
@@ -11,7 +9,7 @@
     <p>{{chami.description}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-icon-button (click)="modifierChamis(chami)" aria-label="modification defis">
+    <button mat-icon-button (click)="modifierChamis(chami)" aria-label="modification chamis">
       <mat-icon>edit</mat-icon>
     </button>
   </mat-card-actions>

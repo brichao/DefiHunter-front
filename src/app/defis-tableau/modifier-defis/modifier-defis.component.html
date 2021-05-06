@@ -18,6 +18,12 @@
       </mat-form-field>
 
       <mat-form-field>
+        <mat-label>Type</mat-label>
+        <input formControlName="nomType" id="nomType" placeholder="Type du défi" matInput [(ngModel)]="donnees.nomType">
+        <mat-error *ngIf="nomType?.errors?.required">Le type est requis.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-label>Arrêt</mat-label>
         <mat-select formControlName="arret" id="arret" [(ngModel)]="donnees.arret">
             <mat-option></mat-option>
@@ -27,17 +33,29 @@
       </mat-form-field>
 
       <mat-form-field>
+        <mat-label>Points</mat-label>
+        <input formControlName="points" id="points" placeholder="Les points du défi" matInput [(ngModel)]="donnees.points">
+        <mat-error *ngIf="points?.errors?.required">Les points sont requis.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Durée</mat-label>
+        <input formControlName="duree" id="duree" placeholder="Durée du défi" matInput [(ngModel)]="donnees.duree">
+        <mat-error *ngIf="duree?.errors?.required">La durée est requise.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-label>Mots clés</mat-label>
         <input formControlName="motscles" id="motscles" placeholder="Les mots clés du défi" matInput>
         <mat-hint>Veuillez noter les mots clés séparés par des virgules.</mat-hint>
         <mat-error *ngIf="motsCles?.errors?.required">Les mots clés sont requis.</mat-error>
       </mat-form-field>
+
       <mat-form-field>
-        <mat-label>Description</mat-label>
-        <textarea formControlName="description" id="description" placeholder="Description du défi" matInput cols="30" rows="10">
-          {{donnees.description}}
+        <mat-label>Prologue</mat-label>
+        <textarea formControlName="prologue" id="prologue" placeholder="Prologue du défi" matInput cols="30" rows="10" [(ngModel)]="donnees.prologue">
         </textarea>
-        <mat-error *ngIf="description?.errors?.required">La description est requise.</mat-error>
+        <mat-error *ngIf="prologue?.errors?.required">Le prologue est requise.</mat-error>
       </mat-form-field>
     </div>
   </div>

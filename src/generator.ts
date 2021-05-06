@@ -1,9 +1,9 @@
 export interface Chamis {
-  pseudo: string;
-  email: string;
-  age: number;
-  ville: string;
-  description: string;
+  pseudo: string,
+  email: string,
+  age: number,
+  ville: string,
+  description: string
 }
 
 export interface Defis {
@@ -89,7 +89,16 @@ export interface Arret extends Object {
   coordinates: [number, number];
 }
 
+export interface DialogData  {
+  pseudo: string,
+  email: string,
+  age: number,
+  ville: string,
+  description: string
+}
 
 
-
+export interface DialogDataAjout{
+  auteur: string
+}
 

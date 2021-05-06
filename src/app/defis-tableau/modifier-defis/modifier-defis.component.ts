@@ -1,5 +1,5 @@
 import { DefisService } from './../../services/defis.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Defis } from 'src/generator';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,9 +8,13 @@ import { Inject } from '@angular/core';
 export interface DialogData  {
   id: string,
   titre: string,
+  nomType: string,
   arret: string,
   motscles: string,
-  description: string
+  prologue: string,
+  auteur: string,
+  points: number,
+  duree: string
 }
 
 @Component({
@@ -18,7 +22,7 @@ export interface DialogData  {
   templateUrl: './modifier-defis.component.html',
   styleUrls: ['./modifier-defis.component.scss']
 })
-export class ModifierDefisComponent implements OnInit {
+export class ModifierDefisComponent {
   private defis: Defis | null = null;
   public arrets: any = [];
 
@@ -29,16 +33,16 @@ export class ModifierDefisComponent implements OnInit {
     this.defis={
       id: donnees.id,
       titre: donnees.titre,
-      nomType: '',
+      nomType: donnees.nomType,
       dateDeCreation: new Date(),
       dateDeModification: new Date(),
-      auteur: "",
+      auteur: donnees.auteur,
       codeArret: donnees.arret,
-      points: 0,
-      duree: "",
-      prologue: "",
+      points: donnees.points,
+      duree: donnees.duree,
+      prologue: donnees.prologue,
       epilogue: "",
-      commentaire: donnees.description
+      commentaire: ""
     }
   }
 
@@ -52,25 +56,26 @@ export class ModifierDefisComponent implements OnInit {
         Validators.required,
         Validators.minLength(4)
       ]),
+      nomType : new FormControl('', [
+        Validators.required
+      ]),
       arret : new FormControl('', [
         Validators.required
       ]),
       motscles : new FormControl ('',[
         Validators.required
       ]),
-      description : new FormControl ('', [
+      prologue : new FormControl ('', [
         Validators.required
       ]),
+      points : new FormControl ('', [
+        Validators.required
+      ]),
+      duree : new FormControl ('', [
+        Validators.required
+      ])
     })
   })
-
-  ngOnInit(): void {
-    this.getArrets();
-  }
-
-  getArrets() {
-    const lien = "https://data.mobilites-m.fr/api/lines/json?types=arret&reseaux=SEM";
-  }
 
   get id(){
     return this.formDefis.get('defis.id');
@@ -88,25 +93,38 @@ export class ModifierDefisComponent implements OnInit {
     return this.formDefis.get('defis.motscles');
   }
 
-  get description(){
-    return this.formDefis.get('defis.description');
+  get prologue(){
+    return this.formDefis.get('defis.prologue');
+  }
+
+  get points(){
+    return this.formDefis.get('defis.points');
+  }
+
+  get duree(){
+    return this.formDefis.get('defis.duree');
+  }
+
+  get nomType(){
+    return this.formDefis.get('defis.nomType');
   }
 
   modifierDefis(){
     this.defis={
       id: this.id?.value,
       titre : this.titre?.value,
-      nomType : "",
+      nomType : this.nomType?.value,
       dateDeCreation: new Date(),
       dateDeModification: new Date(Date.now()),
-      auteur: "",
+      auteur: this.donnees.auteur,
       codeArret: this.arret?.value,
-      points: 0,
-      duree: "",
-      prologue: "",
+      points: this.points?.value,
+      duree: this.duree?.value,
+      prologue: this.prologue?.value,
       epilogue: "",
-      commentaire: this.description?.value
+      commentaire: ''
     }
+    console.log(this.defis);
     this.defiService.updateDefis(this.defis).subscribe(defi => console.log(defi));
     this.dialogRefModifier.close();
   }

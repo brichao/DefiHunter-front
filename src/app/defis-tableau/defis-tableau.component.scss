@@ -29,4 +29,25 @@
       }
     }
   }
+
+  mat-card {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  mat-card-actions {
+    text-align: right;
+  }
+
+  .commentaire{
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .prologue{
+    color:  rgb(41, 115, 211);
+    font-weight: bold;
+  }
 }

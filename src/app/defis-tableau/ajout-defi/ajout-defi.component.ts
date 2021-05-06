@@ -1,22 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DefisService } from '../../services/defis.service';
-import { Defis } from 'src/generator';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Defis, DialogDataAjout } from 'src/generator';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient} from '@angular/common/http';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-ajout-defi',
   templateUrl: './ajout-defi.component.html',
   styleUrls: ['./ajout-defi.component.scss']
 })
-export class AjoutDefiComponent implements OnInit{
+export class AjoutDefiComponent{
   private defis: Defis | null = null;
   public arrets: any = [];
   public Larrets: any[] = [];
+  auteur: string = '';
 
 
-  constructor(private http: HttpClient, private defiService: DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>) { }
+  constructor(private http: HttpClient, private defiService: DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>,
+    @Inject(MAT_DIALOG_DATA) public donnees : DialogDataAjout) {
+      this.auteur = donnees.auteur;
+    }
 
 
   formDefis = new FormGroup({
@@ -29,25 +34,27 @@ export class AjoutDefiComponent implements OnInit{
         Validators.required,
         Validators.minLength(4)
       ]),
+      nomType : new FormControl('', [
+        Validators.required
+      ]),
       arret : new FormControl('', [
         Validators.required
       ]),
       motscles : new FormControl ('',[
         Validators.required
       ]),
-      description : new FormControl ('', [
+      prologue : new FormControl ('', [
         Validators.required
       ]),
+      points : new FormControl ('', [
+        Validators.required
+      ]),
+      duree : new FormControl ('', [
+        Validators.required
+      ])
     })
   })
 
-  ngOnInit() {
-    this.getArrets();
-  }
-
-  getArrets() {
-    const lien = "https://data.mobilites-m.fr/api/lines/json?types=arret&reseaux=SEM";
-  }
   get id(){
     return this.formDefis.get('defis.id');
   }
@@ -60,20 +67,8 @@ export class AjoutDefiComponent implements OnInit{
     return this.formDefis.get('defis.nomType');
   }
 
-  get dateDeCreation(){
-    return this.formDefis.get('defis.dateDeCreation');
-  }
-
-  get dateDeModification(){
-    return this.formDefis.get('defis.dateDeModification');
-  }
-
-  get auteur(){
-    return this.formDefis.get('defis.auteur');
-  }
-
-  get codeArret(){
-    return this.formDefis.get('defis.codeArret');
+  get arret(){
+    return this.formDefis.get('defis.arret');
   }
 
   get points(){
@@ -92,30 +87,23 @@ export class AjoutDefiComponent implements OnInit{
     return this.formDefis.get('defis.prologue');
   }
 
-  get epilogue(){
-    return this.formDefis.get('defis.epilogue');
-  }
-
-  get commentaire(){
-    return this.formDefis.get('defis.commentaire');
-  }
-
-
   addDefis(){
+    console.log(this.auteur);
     this.defis={
       id: this.id?.value,
       titre : this.titre?.value,
       nomType : this.nomType?.value,
-      dateDeCreation: this.dateDeCreation?.value,
-      dateDeModification: new Date(Date.now()),
-      auteur: this.auteur?.value,
+      dateDeCreation: new Date(),
+      dateDeModification: new Date(),
+      auteur: this.auteur,
       codeArret: this.arrets?.value,
       points: this.points?.value,
       duree: this.duree?.value,
       prologue: this.prologue?.value,
-      epilogue: this.epilogue?.value,
-      commentaire: this.commentaire?.value
+      epilogue: '',
+      commentaire: ''
     }
+    console.log(this.defis);
     this.defiService.addDefis(this.defis).subscribe(defi => console.log(defi));
     this.dialogRef.close();
   }

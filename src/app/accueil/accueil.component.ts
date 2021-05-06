@@ -1,11 +1,12 @@
-import { Observable } from 'rxjs';
 import { DefisService } from './../services/defis.service';
 import {  OnInit } from '@angular/core';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
+import { Component } from '@angular/core';
 import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
 import "leaflet/dist/images/marker-shadow.png";
 import { Arret } from '../services/arret';
+import { Observable } from 'rxjs';
+import { Defis } from 'src/generator';
 
 @Component({
   selector: 'app-accueil',

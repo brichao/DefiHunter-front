@@ -1,17 +1,9 @@
 import { ChamisService } from './../../services/chamis.service';
 import { Component, Inject } from '@angular/core';
-import { Chamis } from 'src/generator';
+import { Chamis, DialogData } from 'src/generator';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AgeValidators } from 'src/app/register-form/age.validators';
-
-export interface DialogData  {
-  pseudo: string,
-  email: string,
-  age: number,
-  ville: string,
-  description: string
-}
 
 @Component({
   selector: 'app-modifier-chamis',
@@ -24,7 +16,7 @@ export class ModifierChamisComponent {
 
   constructor(private chamiService: ChamisService,
               public dialogRefModifier: MatDialogRef<ModifierChamisComponent>,
-              @Inject(MAT_DIALOG_DATA) public donnees : DialogData)
+              @Inject (MAT_DIALOG_DATA) public donnees : DialogData)
   {
     this.chamis={
       pseudo: donnees.pseudo,

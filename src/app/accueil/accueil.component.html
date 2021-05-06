@@ -1,27 +1,20 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer #drawer [mode]="'over'">Contenu du drawer</mat-drawer>
-  <mat-drawer-content>
-
-        <yaga-map [lng]="5.734862282275417" [lat]="45.18598899690281" [zoom]="13">
-          <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
-          <ng-container  *ngFor="let arret of arrets">
-            <yaga-marker  [lng] = "arret.features[0].geometry.coordinates[0]"
-                          [lat] = "arret.features[0].geometry.coordinates[1]"
-                          [display] = "true"
-                          [opacity] = "1">
-              <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
-              <yaga-popup>
-                <h1>DEFIS</h1>
-              </yaga-popup>
-            </yaga-marker>
-          </ng-container>
-          <yaga-polyline *ngFor="let x of lignes?.features; let i = index" [color]="couleur(x.properties.COULEUR)" [geoJSON]="x" >
-            <yaga-popup>
-              <h3>Ligne {{x.properties.NUMERO}}</h3>
-              <h4>{{x.properties.LIBELLE}}</h4>
-            </yaga-popup>
-          </yaga-polyline>
-        </yaga-map>
-
-  </mat-drawer-content>
-</mat-drawer-container>
+<yaga-map [lng]="5.734862282275417" [lat]="45.18598899690281" [zoom]="13">
+  <yaga-tile-layer [(url)]="tileLayerUrl"></yaga-tile-layer>
+    <ng-container  *ngFor="let arret of arrets">
+      <yaga-marker  [lng] = "arret.features[0].geometry.coordinates[0]"
+                    [lat] = "arret.features[0].geometry.coordinates[1]"
+                    [display] = "true"
+                    [opacity] = "1">
+        <yaga-icon [iconUrl]="iconMarker"></yaga-icon>
+        <yaga-popup>
+           <h1>Defi</h1>
+        </yaga-popup>
+      </yaga-marker>
+    </ng-container>
+    <yaga-polyline *ngFor="let x of lignes?.features; let i = index" [color]="couleur(x.properties.COULEUR)" [geoJSON]="x" >
+      <yaga-popup>
+        <h3>Ligne {{x.properties.NUMERO}}</h3>
+        <h4>{{x.properties.LIBELLE}}</h4>
+      </yaga-popup>
+    </yaga-polyline>
+</yaga-map>
