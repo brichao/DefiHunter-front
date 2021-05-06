@@ -39,29 +39,28 @@ export class HeaderComponent {
     });
     this.auth.signInWithPopup(provider);
     this.redirectUserAfterLogin();
+  }
 
-}
+  logout(): void {
+    this.auth.signOut();
+  }
 
-logout(): void {
-  this.auth.signOut();
-}
+  isLoggedIn(): Observable<firebase.User | null> {
+    return this.chamis$;
+  }
 
-isLoggedIn(): Observable<firebase.User | null> {
-  return this.chamis$;
-}
-
-// Redirects User to Register Page if the user's email is not found in the database
-redirectUserAfterLogin(): void {
-  this.chamis$
-    .subscribe(c => {
-      console.log(c);
-      if (c != null && !RegisterFormService.emails.includes(c?.email as string)) {
-        this.emailService.envoieMail(c.email);
-        RegisterFormService.emails.push(c?.email as string);
-        this.router.navigate(['inscription'], { state: { redirect: this.router.url } } );
-      } else {
-        this.router.navigate([''], {state: {redirect: this.router.url}})
-      }
-    });
+  // Redirects User to Register Page if the user's email is not found in the database
+  redirectUserAfterLogin(): void {
+    this.chamis$
+      .subscribe(c => {
+        console.log(c);
+        if (c != null && !RegisterFormService.emails.includes(c?.email as string)) {
+          this.emailService.setMail(c.email);
+          RegisterFormService.emails.push(c?.email as string);
+          this.router.navigate(['inscription'], { state: { redirect: this.router.url } } );
+        } else {
+          this.router.navigate([''], {state: {redirect: this.router.url}});
+        }
+      });
   }
 }

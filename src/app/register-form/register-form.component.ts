@@ -15,11 +15,12 @@ import { Router } from '@angular/router';
 export class RegisterFormComponent {
 
   private chamis: Chamis | null = null;
+  private mailChamis: string | null = null;
 
   constructor(private service: ChamisService,
               private pseudoService: PseudoValidators,
               private router: Router,
-              private emailService: CommunicationComposantService) {}
+              private userService: CommunicationComposantService) {}
 
   form = new FormGroup({
     account: new FormGroup({
@@ -62,15 +63,15 @@ export class RegisterFormComponent {
   }
 
   inscription() {
-    let mail = this.emailService.recupererMail();
+    this.userService.email.subscribe(mail => this.mailChamis = mail);
     this.chamis = {
       pseudo: this.pseudo?.value,
-      email: mail!,
+      email: this.mailChamis!,
       age: this.age?.value,
       ville: this.ville?.value,
       description: this.description?.value,
-      // defisCrees: 0
     };
+    this.userService.setChamisConnecte(this.chamis);
     this.service.addChamis(this.chamis).subscribe((chami) => console.log(chami));
     this.router.navigate([''], { state: { redirect: this.router.url } } );
   }
