@@ -4,7 +4,7 @@
   </h1>
 </mat-grid-tile-header>
 
-<button mat-mini-fab (click)="ajouterDefis()" aria-label="Creation defis">
+<button mat-mini-fab [disabled]="chamiConnecte == null" (click)="ajouterDefis()" aria-label="Creation defis">
   <mat-icon>add</mat-icon>
 </button>
 

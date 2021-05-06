@@ -10,7 +10,7 @@ export class RegisterFormService {
   static _emails: Array<string> = [];
 
   constructor(service: ChamisService) {
-    service.getChamis()
+    service.getListeChamis()
       .subscribe((chamis) => {
         chamis.forEach(c => {
           RegisterFormService._pseudos.push(c.pseudo);

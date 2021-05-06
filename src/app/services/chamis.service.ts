@@ -12,8 +12,12 @@ export class ChamisService {
   constructor(private http: HttpClient) { }
 
 
-  getChamis(): Observable<Chamis[]> {
+  getListeChamis(): Observable<Chamis[]> {
     return this.http.get<Chamis[]>(`${this.apiServerUrl}/api/chamis/`);
+  }
+
+  getChami(pseudoChami: string): Observable<Chamis> {
+    return this.http.get<Chamis>(`${this.apiServerUrl}/api/chamis/${pseudoChami}`);
   }
 
   addChamis(chamis: Chamis) : Observable<Chamis> {

@@ -4,6 +4,7 @@ import { Chamis, DialogData } from 'src/generator';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AgeValidators } from 'src/app/register-form/age.validators';
+import { CommunicationComposantService } from 'src/app/services/communication-composant.service';
 
 @Component({
   selector: 'app-modifier-chamis',
@@ -15,6 +16,7 @@ export class ModifierChamisComponent {
   private chamis: Chamis | null = null;
 
   constructor(private chamiService: ChamisService,
+              private utilisateurConnecte: CommunicationComposantService,
               public dialogRefModifier: MatDialogRef<ModifierChamisComponent>,
               @Inject (MAT_DIALOG_DATA) public donnees : DialogData)
   {
@@ -75,7 +77,8 @@ export class ModifierChamisComponent {
       ville: this.ville?.value,
       description: this.description?.value
     }
-    this.chamiService.updateChamis(this.chamis).subscribe(chamis => console.log(chamis));
+    this.utilisateurConnecte.setChamisConnecte(this.chamis);
+    this.chamiService.updateChamis(this.chamis);
     this.dialogRefModifier.close();
   }
 

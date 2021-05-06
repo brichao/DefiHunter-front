@@ -53,7 +53,6 @@ export class HeaderComponent {
   redirectUserAfterLogin(): void {
     this.chamis$
       .subscribe(c => {
-        console.log(c);
         if (c != null && !RegisterFormService.emails.includes(c?.email as string)) {
           this.emailService.setMail(c.email);
           RegisterFormService.emails.push(c?.email as string);

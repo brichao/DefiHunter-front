@@ -22,7 +22,7 @@ export class ChamisTableauComponent implements OnInit {
               private dialogueChamis: MatDialog,
               private utilisateurConnecte: CommunicationComposantService)
   {
-    this.chamis$ = chamisService.getChamis();
+    this.chamis$ = chamisService.getListeChamis();
   }
 
   ngOnInit() {
