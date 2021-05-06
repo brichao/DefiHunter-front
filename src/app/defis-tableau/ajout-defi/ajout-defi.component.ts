@@ -106,7 +106,7 @@ export class AjoutDefiComponent implements OnInit{
       commentaire: ''
     }
     console.log(this.defis);
-    this.defiService.addDefis(this.defis).subscribe(defi => console.log(defi));
+    this.defiService.addDefis(this!.defis).subscribe(defi => console.log(defi));
     this.dialogRef.close();
   }
 
