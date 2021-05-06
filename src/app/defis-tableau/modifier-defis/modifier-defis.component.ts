@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { DefisService } from './../../services/defis.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Defis } from 'src/generator';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -22,13 +23,14 @@ export interface DialogData  {
   templateUrl: './modifier-defis.component.html',
   styleUrls: ['./modifier-defis.component.scss']
 })
-export class ModifierDefisComponent {
+export class ModifierDefisComponent implements OnInit{
   private defis: Defis | null = null;
-  public arrets: any = [];
+  public Larrets: any[] = [];
 
   constructor(private defiService: DefisService,
               public dialogRefModifier: MatDialogRef<ModifierDefisComponent>,
-              @Inject(MAT_DIALOG_DATA) public donnees : DialogData)
+              @Inject(MAT_DIALOG_DATA) public donnees : DialogData,
+              private http: HttpClient)
   {
     this.defis = {
       id: donnees.id,
@@ -44,6 +46,14 @@ export class ModifierDefisComponent {
       epilogue: "",
       commentaire: ""
     }
+  }
+
+  ngOnInit(): void {
+    this.defiService.defis.subscribe((defis) => {
+      for (const defi of defis) {
+        this.setNewArret(defi.codeArret)
+      }
+    });
   }
 
   formDefis = new FormGroup({
@@ -131,5 +141,12 @@ export class ModifierDefisComponent {
 
   fermerModification(): void {
     this.dialogRefModifier.close();
+  }
+
+  setNewArret(codeArret: string): void {
+    this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${codeArret}`)
+      .subscribe((arrets) => {
+        this.Larrets.push(arrets);
+      });
   }
 }

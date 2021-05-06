@@ -5,9 +5,8 @@
       <div class="fields">
       <mat-form-field>
         <mat-label>Défi</mat-label>
-        <input formControlName="id" id="id" matInput [(ngModel)]="donnees.id">
-        <mat-error *ngIf="id?.errors?.required"></mat-error>
-        <mat-error *ngIf="id?.errors?.minlength">Défi doit avoir au moins {{id?.errors?.minlength.requiredLength}}</mat-error>
+        <input formControlName="id" id="id" matInput [(ngModel)]="donnees.id" readonly>
+        <mat-hint>Impossible de changer l'id du défi.</mat-hint>>
       </mat-form-field>
 
       <mat-form-field>
@@ -27,7 +26,8 @@
         <mat-label>Arrêt</mat-label>
         <mat-select formControlName="arret" id="arret" [(ngModel)]="donnees.arret">
             <mat-option></mat-option>
-            <mat-option [value]="donnees.arret">{{donnees.arret}}</mat-option>
+            <mat-option *ngFor="let ar of Larrets"
+            [value]="ar?.features[0].properties.CODE">{{ ar?.features[0].properties.LIBELLE }}</mat-option>
         </mat-select>
         <mat-error *ngIf="arret?.errors?.required">L'arret est requis.</mat-error>
       </mat-form-field>

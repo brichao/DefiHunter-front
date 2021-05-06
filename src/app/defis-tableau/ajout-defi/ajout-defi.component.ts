@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DefisService } from '../../services/defis.service';
 import { Defis, DialogDataAjout } from 'src/generator';
@@ -11,9 +11,8 @@ import { Inject } from '@angular/core';
   templateUrl: './ajout-defi.component.html',
   styleUrls: ['./ajout-defi.component.scss']
 })
-export class AjoutDefiComponent{
+export class AjoutDefiComponent implements OnInit{
   private defis: Defis | null = null;
-  public arrets: any = [];
   public Larrets: any[] = [];
   auteur: string = '';
 
@@ -23,6 +22,13 @@ export class AjoutDefiComponent{
       this.auteur = donnees.auteur;
     }
 
+  ngOnInit(): void {
+    this.defiService.defis.subscribe((defis) => {
+      for (const defi of defis) {
+        this.setNewArret(defi.codeArret)
+      }
+    });
+  }
 
   formDefis = new FormGroup({
     defis: new FormGroup({
@@ -92,7 +98,7 @@ export class AjoutDefiComponent{
       dateDeCreation: new Date(),
       dateDeModification: new Date(),
       auteur: this.auteur,
-      codeArret: this.arrets?.value,
+      codeArret: this.arret?.value,
       points: this.points?.value,
       duree: this.duree?.value,
       prologue: this.prologue?.value,

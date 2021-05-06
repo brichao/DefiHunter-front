@@ -5,8 +5,7 @@ import { Component } from '@angular/core';
 import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
 import "leaflet/dist/images/marker-shadow.png";
 import { Arret } from '../services/arret';
-import { Observable } from 'rxjs';
-import { ArretDefis, Defis } from 'src/generator';
+import { ArretDefis } from 'src/generator';
 
 @Component({
   selector: 'app-accueil',

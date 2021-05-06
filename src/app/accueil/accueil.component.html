@@ -17,7 +17,7 @@
     <yaga-polyline *ngFor="let x of lignes?.features; let i = index" [color]="couleur(x.properties.COULEUR)" [geoJSON]="x" >
       <yaga-popup>
         <h3>Ligne {{x.properties.NUMERO}}</h3>
-        <h4>{{x.properties.LIBELLE}}</h4>
+        <p>Destination : {{x.properties.LIBELLE}}</p>
       </yaga-popup>
     </yaga-polyline>
 </yaga-map>
