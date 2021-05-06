@@ -42,8 +42,7 @@ export class ModifierDefisComponent {
       duree: donnees.duree,
       prologue: donnees.prologue,
       epilogue: "",
-      commentaire: ""
-    }
+      commentaire: ""}
   }
 
   formDefis = new FormGroup({

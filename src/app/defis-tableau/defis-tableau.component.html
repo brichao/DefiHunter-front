@@ -1,8 +1,6 @@
-
 <button mat-mini-fab (click)="ajouterDefis()" aria-label="Creation defis">
   <mat-icon>add</mat-icon>
 </button>
-
 
 <mat-card *ngFor="let defi of (defis$ | async)">
   <mat-card-header>
@@ -13,8 +11,7 @@
     <p>Type : {{defi.nomType}}</p>
     <p>Arret : {{defi.codeArret}}</p>
     <p>Points : {{defi.points}}</p>
-    <p>Durée : {{defi.duree}}</p>
-    <p>Points : {{defi.points}}</p>
+    <p>Durée : {{defi.duree}} mn</p>
     <p class="prologue">Prologue : </p>
     <p>{{defi.prologue}}</p>
     <iframe *ngIf="defi.id == 'D127'" width="500" height="315" src="https://www.youtube.com/watch?v=ZbA7aPTmlDY&t=207s" allowfullscreen></iframe>
