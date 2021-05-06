@@ -3,12 +3,6 @@
   <form [formGroup]="formDefis">
     <div formGroupName="defis">
       <div class="fields">
-      <mat-form-field>
-        <mat-label>Défi</mat-label>
-        <input formControlName="id" id="id" placeholder="Id du défi" matInput>
-        <mat-error *ngIf="id?.errors?.required">L'id du Défi est requis.</mat-error>
-        <mat-error *ngIf="id?.errors?.minlength">Défi doit avoir au moins {{id?.errors?.minlength.requiredLength}} charactères</mat-error>
-      </mat-form-field>
 
       <mat-form-field>
         <mat-label>Titre</mat-label>
@@ -21,8 +15,10 @@
         <mat-label>Arrêt</mat-label>
         <mat-select formControlName="arret" id="arret">
           <ng-container>
-            <mat-option *ngFor="let ar of Larrets" value="arret?.features[0].properties.CODE">
-              {{ ar?.features[0].properties.LIBELLE }}
+            <!-- <mat-option *ngFor="let ar of Larrets" value="ar?.features[0].properties.CODE"> -->
+            <mat-option value="1">
+              <!-- {{ ar?.features[0].properties.LIBELLE }} -->
+              Test
             </mat-option>
           </ng-container>
         </mat-select>
@@ -39,7 +35,7 @@
       <mat-form-field>
         <mat-label>Prologue</mat-label>
         <textarea formControlName="prologue" id="prologue" placeholder="Prologue du défi" matInput cols="30" rows="10"></textarea>
-        <mat-error *ngIf="points?.errors?.required">La Prologue est requise.</mat-error>
+        <mat-error *ngIf="prologue?.errors?.required">La Prologue est requise.</mat-error>
       </mat-form-field>
     </div>
   </div>

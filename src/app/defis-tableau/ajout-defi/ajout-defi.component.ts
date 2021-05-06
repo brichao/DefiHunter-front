@@ -28,10 +28,6 @@ export class AjoutDefiComponent implements OnInit{
 
   formDefis = new FormGroup({
     defis: new FormGroup({
-      id: new FormControl('', [
-        Validators.required,
-        Validators.minLength(4)
-      ]),
       titre : new FormControl('', [
         Validators.required,
         Validators.minLength(4)
@@ -42,9 +38,12 @@ export class AjoutDefiComponent implements OnInit{
       motscles : new FormControl ('',[
         Validators.required
       ]),
-      description : new FormControl ('', [
+      // description : new FormControl ('', [
+      //   Validators.required
+      // ]),
+      prologue : new FormControl ('', [
         Validators.required
-      ]),
+      ])
     })
   })
 
@@ -107,7 +106,6 @@ export class AjoutDefiComponent implements OnInit{
     return this.formDefis.get('defis.commentaire');
   }
 
-
   addDefis(){
     this.defis={
       id: this.id?.value,
@@ -125,6 +123,7 @@ export class AjoutDefiComponent implements OnInit{
       arret: this.arrets,
       motsCles: this.motsCles?.value
     }
+    console.log(this.defis);
     this.defiService.addDefis(this.defis).subscribe(defi => console.log(defi));
     this.dialogRef.close();
   }
@@ -135,7 +134,7 @@ export class AjoutDefiComponent implements OnInit{
 
   setNewArret(codeArret: string): void {
     this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${codeArret}`)
-      .subscribe((arrets)=>{
+      .subscribe((arrets) => {
         this.Larrets.push(arrets);
       });
   }

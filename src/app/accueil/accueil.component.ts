@@ -20,8 +20,7 @@ export class AccueilComponent implements OnInit {
   public arrets: Arret[] = [];
   public defis: Defis[] = [];
 
-  constructor(private http: HttpClient, private defisServ: DefisService) {
-  }
+  constructor(private http: HttpClient, private defisServ: DefisService) { }
 
   ngOnInit(): void {
     this.getDonnee();
@@ -55,7 +54,6 @@ export class AccueilComponent implements OnInit {
               }
               defi.motsCles = mCs;
             })
-          console.log(defi);
         }
       });
   }

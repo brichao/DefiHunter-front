@@ -1,19 +1,24 @@
 
+<mat-grid-tile-header>
+  Liste de Chamis
+</mat-grid-tile-header>
+<mat-grid-list cols="2">
+  <mat-grid-tile *ngFor="let chami of (chamis$ | async)">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{chami.pseudo}}</mat-card-title>
+        <mat-card-subtitle>{{chami.ville}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Age : {{chami.age}} ans</p>
 
-<mat-card *ngFor="let chami of (chamis$ | async)">
-  <mat-card-header>
-    <mat-card-title>{{chami.pseudo}}</mat-card-title>
-    <mat-card-subtitle>{{chami.ville}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Age : {{chami.age}} ans</p>
-
-    <p>{{chami.description}}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-icon-button (click)="modifierChamis(chami)" aria-label="modification defis">
-      <mat-icon>edit</mat-icon>
-    </button>
-  </mat-card-actions>
-</mat-card>
-
+        <p>{{chami.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button (click)="modifierChamis(chami)" aria-label="modification defis">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
