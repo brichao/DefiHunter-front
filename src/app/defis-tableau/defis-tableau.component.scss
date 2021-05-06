@@ -1,53 +1,40 @@
-:host {
-  width: 75%;
-  min-height: 40px;
-  min-width: 100px;
-  max-height: 150px;
-  display: flex;
-  flex-direction: column;
-
-  mat-grid-list[cols="2"] mat-grid-tile {
-    mat-list[dense] {
-      flex-grow: 1;
-      border: 1.5px solid rgb(170, 170, 170);
-      border-radius: 3px;
-      overflow: auto;
-      padding-top: 0px;
-
-      mat-list-item {
-        font-size: 12px;
-        color: rgb(44, 44, 44);
-        background-color: rgb(238, 238, 238);
-        border-radius: 2px;
-      }
-
-      mat-list-item:nth-child(odd) {
-        font-size: 12px;
-        color: rgb(44, 44, 44);
-        background-color: rgb(223, 223, 223);
-        border-radius: 2px;
-      }
-    }
+mat-grid-tile-header {
+  h1 {
+    margin: 1rem 1rem 1rem 1rem;
   }
+}
 
-  mat-card {
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+button {
+  margin: 1rem 1rem 1rem 1rem;
+}
 
-  mat-card-actions {
-    text-align: right;
-  }
+mat-card {
+  padding: 1rem 1rem 1rem 1rem;
+  width: 90%;
+  height: 90%;
 
   .commentaire{
     font-style: italic;
-    font-weight: bold;
+    color:  gray;
   }
 
-  .prologue{
+  .titre{
     color:  rgb(41, 115, 211);
     font-weight: bold;
   }
+
+  mat-card-actions {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(-15%, -15%);
+    text-align: right;
+  }
 }
+.info {
+  padding: 20px;
+  background-color: lightblue;
+  color:black;
+}
+
+

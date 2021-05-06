@@ -1,4 +1,4 @@
-import { Questions} from '../../generator';
+import { Questions, Defis} from '../../generator';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
@@ -13,21 +13,21 @@ export class QuestionsService {
   constructor(private http: HttpClient) { }
 
 
-  getQuestions(): Observable<Questions[]> {
-    return this.http.get<Questions[]>(`${this.apiServerUrl}/api/Questions/`);
+  getQuestions(Defis: Defis, Questions: Questions): Observable<Questions[]> {
+    return this.http.get<Questions[]>(`${this.apiServerUrl}/api/${Defis.id}/questions/${Questions.questionNum}`);
   }
 
-  addQuestions(Questions: Questions) : Observable<Questions> {
-    return this.http.post<Questions>(`${this.apiServerUrl}/api/Questions/${Questions.questionsId}`, Questions);
+  addQuestions(Defis: Defis, Questions: Questions) : Observable<Questions> {
+    return this.http.post<Questions>(`${this.apiServerUrl}/api/${Defis.id}/questions/${Questions.questionNum}`, Questions);
 
   }
 
-  updateQuestions(Questions: Questions) {
-    return this.http.put<Questions>(`${this.apiServerUrl}/api/Questions/${Questions.questionsId}`, Questions).subscribe();
+  updateQuestions(Defis: Defis, Questions: Questions) {
+    return this.http.put<Questions>(`${this.apiServerUrl}/api/${Defis.id}/questions/${Questions.questionNum}`, Questions).subscribe();
   }
 
-  deleteQuestions(Questions: Questions){
-    return this.http.delete<void>(`${this.apiServerUrl}/api/Questions/${Questions.questionsId}`).subscribe();
+  deleteQuestions(Defis: Defis, Questions: Questions){
+    return this.http.delete<void>(`${this.apiServerUrl}/api/${Defis.id}/questions/${Questions.questionNum}`).subscribe();
   }
 
 

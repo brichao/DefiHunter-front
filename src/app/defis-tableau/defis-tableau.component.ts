@@ -1,3 +1,5 @@
+import { Questions } from './../../generator';
+import { QuestionsService } from './../services/questions.service';
 import { ChamisService } from './../services/chamis.service';
 import { UtilisateurService } from './../services/utilisateur.service';
 import { ModifierDefisComponent } from './modifier-defis/modifier-defis.component';
@@ -25,7 +27,7 @@ export class DefisTableauComponent{
   public arrets$!: Observable<Arret[]>;
 
   constructor(public defisService: DefisService, private dialog : MatDialog, private connectee: UtilisateurService,
-    private chamisService: ChamisService, public arretsService: ArretsService) {
+    private chamisService: ChamisService, public arretsService: ArretsService, private questionsService: QuestionsService) {
     this.defis$ = defisService.defis;
     this.chamis$ = chamisService.getChamis();
     this.arrets$ = arretsService.arrets;
@@ -68,5 +70,10 @@ export class DefisTableauComponent{
     } else {
       console.log('vous ne pouvez pas modifier le defi');
     }
+  }
+
+  QuestionDefis(defi: Defis,  question: Questions){
+    this.questionsService.getQuestions(defi, question).subscribe( (question) => console.log(question));
+
   }
 }
