@@ -4,6 +4,13 @@
     <div formGroupName="defis">
       <div class="fields">
 
+        <mat-form-field>
+          <mat-label>ID</mat-label>
+          <input formControlName="id" id="id" placeholder="ID du défi" matInput>
+          <mat-error *ngIf="id?.errors?.required">Le ID est requis.</mat-error>
+          <mat-error *ngIf="id?.errors?.minlength">Le ID doit avoir au moins {{id?.errors?.minlength.requiredLength}} charactères</mat-error>
+        </mat-form-field>
+
       <mat-form-field>
         <mat-label>Titre</mat-label>
         <input formControlName="titre" id="titre" placeholder="Titre du défi" matInput>
