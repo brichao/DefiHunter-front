@@ -36,7 +36,7 @@ export class AjoutDefiComponent implements OnInit{
     defis: new FormGroup({
       id: new FormControl('', [
         Validators.required,
-        Validators.minLength(4)
+        Validators.minLength(3)
       ]),
       titre : new FormControl('', [
         Validators.required,
@@ -56,7 +56,10 @@ export class AjoutDefiComponent implements OnInit{
       ]),
       duree : new FormControl ('', [
         Validators.required
-      ])
+      ]),
+      prologue : new FormControl(''),
+      epilogue : new FormControl(''),
+      commentaire : new FormControl('')
     })
   })
 

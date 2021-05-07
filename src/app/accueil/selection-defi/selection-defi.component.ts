@@ -20,12 +20,12 @@ export class SelectionDefiComponent {
       dateDeCreation: new Date(),
       dateDeModification: new Date(),
       auteur: donnees.auteur,
-      codeArret: donnees.arret,
+      codeArret: donnees.codeArret,
       points: donnees.points,
       duree: donnees.duree,
       prologue: donnees.prologue,
-      epilogue: "",
-      commentaire: ""
+      epilogue: donnees.epilogue,
+      commentaire: donnees.commentaire
     }
    }
 

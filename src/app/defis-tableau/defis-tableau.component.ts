@@ -84,13 +84,14 @@ export class DefisTableauComponent implements OnInit {
         id: defi.id,
         titre: defi.titre,
         nomType: defi.nomType,
-        arret: defi.codeArret,
-        motscles: '',
+        codeArret: defi.codeArret,
         prologue: defi.prologue,
         auteur: defi.auteur,
         points: defi.points,
         duree: defi.duree,
-        motsCles: this.motsCles?.motCle
+        motsCles: this.motsCles?.motCle,
+        epilogue: defi.epilogue,
+        commentaire: defi.commentaire
       };
       dialogConfig.width = '80%';
       const dialogRefModifier = this.dialog.open(ModifierDefisComponent, dialogConfig);

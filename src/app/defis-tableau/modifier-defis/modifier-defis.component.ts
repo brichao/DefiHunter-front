@@ -29,12 +29,12 @@ export class ModifierDefisComponent implements OnInit{
       dateDeCreation: new Date(),
       dateDeModification: new Date(),
       auteur: donnees.auteur,
-      codeArret: donnees.arret,
+      codeArret: donnees.codeArret,
       points: donnees.points,
       duree: donnees.duree,
       prologue: donnees.prologue,
-      epilogue: "",
-      commentaire: ""
+      epilogue: donnees.epilogue,
+      commentaire: donnees.commentaire
     }
     this.motsCles = {
       defisId: donnees.id,
@@ -69,15 +69,15 @@ export class ModifierDefisComponent implements OnInit{
       motscles : new FormControl ('',[
         Validators.required
       ]),
-      prologue : new FormControl ('', [
-        Validators.required
-      ]),
       points : new FormControl ('', [
         Validators.required
       ]),
       duree : new FormControl ('', [
         Validators.required
-      ])
+      ]),
+      prologue : new FormControl (''),
+      epilogue : new FormControl (''),
+      commentaire : new FormControl ('')
     })
   })
 
@@ -140,7 +140,6 @@ export class ModifierDefisComponent implements OnInit{
       defisId: this.id?.value,
       motCle: this.motscles?.value
     }
-    console.log(this.defis);
     this.defiService.updateDefis(this.defis).subscribe(defi => console.log(defi));
     this.motsClesService.updateMotsCles(this.motsCles).subscribe(motscle => console.log(motscle));
     this.dialogRefModifier.close();

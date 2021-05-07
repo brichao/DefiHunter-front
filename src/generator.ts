@@ -115,12 +115,14 @@ export interface DialogDataDefis{
   id: string,
   titre: string,
   nomType: string,
-  arret: string,
+  codeArret: string,
   prologue: string,
   auteur: string,
   points: number,
   duree: string,
-  motsCles: string
+  motsCles: string,
+  epilogue: string,
+  commentaire: string,
 }
 
 export const emptyQuestions: Questions = {
