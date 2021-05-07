@@ -22,6 +22,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { YagaModule } from '@yaga/leaflet-ng2';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -41,6 +42,8 @@ import { CommonModule } from "@angular/common";
 import { ModifierChamisComponent } from './chamis-tableau/modifier-chamis/modifier-chamis.component';
 import { ArretsService } from './services/arrets.service';
 import { ArretsComponent } from './arrets/arrets.component';
+import { SelectionDefiComponent } from './accueil/selection-defi/selection-defi.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,8 @@ import { ArretsComponent } from './arrets/arrets.component';
     ModifierDefisComponent,
     ModifierChamisComponent,
     ArretsComponent,
+    SelectionDefiComponent,
+    QuestionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +80,7 @@ import { ArretsComponent } from './arrets/arrets.component';
     MatFormFieldModule,
     MatCardModule,
     MatDialogModule,
+    MatExpansionModule,
     YagaModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

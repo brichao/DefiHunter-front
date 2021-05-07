@@ -14,18 +14,18 @@ export class MotsClesService {
   constructor(private http: HttpClient) { }
 
   get MotsCles(): Observable<MotsCles[]> {
-    return this.http.get<MotsCles[]>(`${this.apiServerUrl}/api/MotsCles/`);
+    return this.http.get<MotsCles[]>(`${this.apiServerUrl}/api/defis/motscles`);
   }
 
   addMotsCles(motsCles: MotsCles): Observable<MotsCles> {
-    return this.http.post<MotsCles>(`${this.apiServerUrl}/api/MotsCles/${motsCles.id}`, motsCles);
+    return this.http.post<MotsCles>(`${this.apiServerUrl}/api/defis/${motsCles.defisId}/motscles/${motsCles.motCle}`, motsCles);
   }
 
   updateMotsCles(motsCles: MotsCles): Observable<MotsCles> {
-    return this.http.put<MotsCles>(`${this.apiServerUrl}/api/MotsCles/${motsCles.id}`, motsCles);
+    return this.http.put<MotsCles>(`${this.apiServerUrl}/api/defis/${motsCles.defisId}/motscles/${motsCles.motCle}`, motsCles);
   }
 
   deleteMotsCles(motsCles: MotsCles): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/api/MotsCles/${motsCles.id}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/api/defis/${motsCles.defisId}/motscles/${motsCles.motCle}`);
   }
 }

@@ -6,7 +6,8 @@
 
         <mat-form-field>
           <mat-label>ID</mat-label>
-          <input formControlName="id" id="id" placeholder="ID du défi" matInput>
+          <span matPrefix>D </span>
+          <input formControlName="id" id="id" matInput>
           <mat-error *ngIf="id?.errors?.required">Le ID est requis.</mat-error>
           <mat-error *ngIf="id?.errors?.minlength">Le ID doit avoir au moins {{id?.errors?.minlength.requiredLength}} charactères</mat-error>
         </mat-form-field>
@@ -37,10 +38,9 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Mots clés</mat-label>
+        <mat-label>Mot clés</mat-label>
         <input formControlName="motscles" id="motscles" placeholder="Les mots clés du défi" matInput>
-        <mat-hint>Veuillez noter les mots clés séparés par des virgules.</mat-hint>
-        <mat-error *ngIf="motsCles?.errors?.required">Les mots clés sont requis.</mat-error>
+        <mat-error *ngIf="motscles?.errors?.required">Le mot clés est requis.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -57,8 +57,15 @@
 
       <mat-form-field>
         <mat-label>Prologue</mat-label>
-        <textarea formControlName="prologue" id="prologue" placeholder="Prologue du défi" matInput cols="30" rows="10"></textarea>
-        <mat-error *ngIf="prologue?.errors?.required">La Prologue est requise.</mat-error>
+        <textarea id="prologue" placeholder="Prologue du défi" matInput cols="30" rows="10"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Epilogue</mat-label>
+        <textarea id="epilogue" placeholder="Epilogue du défi" matInput cols="30" rows="10"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Commentaire</mat-label>
+        <textarea id="commentaire" placeholder="Commentaire du défi" matInput cols="30" rows="10"></textarea>
       </mat-form-field>
 
     </div>

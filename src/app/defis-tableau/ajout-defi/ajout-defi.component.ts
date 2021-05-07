@@ -1,7 +1,8 @@
+import { MotsClesService } from './../../services/motsCles.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DefisService } from '../../services/defis.service';
-import { Defis, DialogDataAjout } from 'src/generator';
+import { Defis, DialogDataAjout, MotsCles } from 'src/generator';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient} from '@angular/common/http';
 import { Inject } from '@angular/core';
@@ -15,10 +16,11 @@ export class AjoutDefiComponent implements OnInit{
   private defis: Defis | null = null;
   public Larrets: any[] = [];
   auteur: string = '';
+  private motsCles: MotsCles | null = null;
 
 
   constructor(private http: HttpClient, private defiService: DefisService, public dialogRef: MatDialogRef<AjoutDefiComponent>,
-    @Inject(MAT_DIALOG_DATA) public donnees : DialogDataAjout) {
+    @Inject(MAT_DIALOG_DATA) public donnees : DialogDataAjout, private motsClesService: MotsClesService) {
       this.auteur = donnees.auteur;
     }
 
@@ -32,7 +34,7 @@ export class AjoutDefiComponent implements OnInit{
 
   formDefis = new FormGroup({
     defis: new FormGroup({
-      id : new FormControl('', [
+      id: new FormControl('', [
         Validators.required,
         Validators.minLength(4)
       ]),
@@ -47,9 +49,6 @@ export class AjoutDefiComponent implements OnInit{
         Validators.required
       ]),
       motscles : new FormControl ('',[
-        Validators.required
-      ]),
-      prologue : new FormControl ('', [
         Validators.required
       ]),
       points : new FormControl ('', [
@@ -81,7 +80,7 @@ export class AjoutDefiComponent implements OnInit{
     return this.formDefis.get('defis.points');
   }
 
-  get motsCles(){
+  get motscles(){
     return this.formDefis.get('defis.motscles');
   }
 
@@ -92,10 +91,16 @@ export class AjoutDefiComponent implements OnInit{
   get prologue(){
     return this.formDefis.get('defis.prologue');
   }
+  get epilogue(){
+    return this.formDefis.get('defis.epilogue');
+  }
+  get commentaire(){
+    return this.formDefis.get('defis.commentaire');
+  }
 
   addDefis(){
     console.log(this.auteur);
-    this.defis={
+    this.defis= {
       id: this.id?.value,
       titre : this.titre?.value,
       nomType : this.nomType?.value,
@@ -106,11 +111,15 @@ export class AjoutDefiComponent implements OnInit{
       points: this.points?.value,
       duree: this.duree?.value,
       prologue: this.prologue?.value,
-      epilogue: '',
-      commentaire: ''
+      epilogue: this.epilogue?.value,
+      commentaire: this.commentaire?.value
     }
-    console.log(this.defis);
+    this.motsCles= {
+      defisId: this.id?.value,
+      motCle: this.motscles?.value
+    }
     this.defiService.addDefis(this!.defis).subscribe(defi => console.log(defi));
+    this.motsClesService.addMotsCles(this!.motsCles).subscribe(motcles => console.log(motcles));
     this.dialogRef.close();
   }
 
@@ -121,7 +130,8 @@ export class AjoutDefiComponent implements OnInit{
   setNewArret(codeArret: string): void {
     this.http.get(`https://data.mobilites-m.fr/api/findType/json?types=arret&codes=${codeArret}`)
       .subscribe((arrets) => {
-        this.Larrets.push(arrets);
+        if(!this.Larrets.includes(arrets))
+          this.Larrets.push(arrets);
       });
   }
 }
