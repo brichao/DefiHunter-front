@@ -56,6 +56,19 @@ export interface MotsCles {
   motCle: string;
 }
 
+export interface Visites {
+  visiteId: string,
+  defisId: string,
+  visiteur: string | undefined,
+  dateVisite: Date,
+  modeDP: string,
+  notation: number,
+  score: number,
+  temps: number,
+  status: string,
+  commentaire: string
+}
+
 interface Coordinate {
   lat: number;
   long: number;
@@ -135,5 +148,8 @@ export const emptyQuestions: Questions = {
 }
 
 export interface DialogDataPoints{
-  points: number;
+  points: number,
+  defiId: string,
+  epilogue: string,
+  modeDP: string
 }

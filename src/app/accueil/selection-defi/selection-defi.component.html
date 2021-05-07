@@ -1,5 +1,11 @@
 <h1 mat-dialog-title>Visite du défi {{donnees.id}}</h1>
 <div mat-dialog-content>
+  <label id="modeDP">Voulez-vous effectuer la visite en distanciel ou en présentiel?  </label>
+  <mat-radio-group aria-labelledby="modeDP" [(ngModel)]='modeDP'>
+    <mat-radio-button value="presentiel">Presentiel</mat-radio-button>
+    <mat-radio-button value="distanciel"> Distanciel</mat-radio-button>
+  </mat-radio-group>
+  <p></p>
   <b>Description : </b>
   <p>{{donnees.prologue}}</p>
   <p></p>
@@ -19,6 +25,9 @@
               <b> ({{ question.points }} points)</b>
               <p> {{ question.description }} </p>
               <input formControlName="question" id="question" matInput>
+              <button mat-icon-button (click)="validerQuestions(question)">
+                <mat-icon>done</mat-icon>
+              </button>>
           </mat-form-field>
         </div>
       </div>
@@ -41,10 +50,8 @@
 
     <p></p>
   </div>
-  <p></p>
-  <p>{{donnees.epilogue}}</p>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)='fermerDialogue()'>Abandonner</button>
-  <button mat-button (click)='ajouterVisite()'>Valider</button>
+  <button mat-button (click)='validerVisite()'>Valider</button>
 </div>

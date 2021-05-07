@@ -23,6 +23,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
 import { YagaModule } from '@yaga/leaflet-ng2';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -80,6 +81,7 @@ import { PointsVisiteComponent } from './accueil/selection-defi/points-visite/po
     MatTableModule,
     MatTabsModule,
     MatFormFieldModule,
+    MatRadioModule,
     MatCardModule,
     MatDialogModule,
     MatExpansionModule,

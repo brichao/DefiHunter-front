@@ -1,6 +1,29 @@
 <h1 mat-dialog-title>Résultat de la visite : </h1>
 <div mat-dialog-content>
   Vous avez fait {{points}} points.
+  <p></p>
+  <p> {{epilogue}} </p>
+
+          <label id="notation">Notation : </label>
+          <mat-radio-group aria-labelledby="modeDP" [(ngModel)]='notations'>
+            <mat-radio-button *ngFor="let i of [1,2,3,4,5]" [value]="i">{{  i  }}</mat-radio-button>
+          </mat-radio-group>
+    <form [formGroup]="formFinal">
+      <div formGroupName="visite">
+        <div class="fields">
+        <mat-form-field>
+          <mat-label>Duree :  </mat-label>
+          <input formControlName="duree" id="duree" placeholder="Durée effectuée pour le défi" matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Commentaire : </mat-label>
+          <textarea formControlName="commentaire" id="commentaire" cols="5" rows="5" placeholder="Veuillez laisser un commentaire" matInput></textarea>
+        </mat-form-field>
+
+      </div>
+    </div>
+  </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)='fermerDialogue()'>Fermer</button>
