@@ -57,7 +57,7 @@ export interface MotsCles {
 }
 
 export interface Visites {
-  visitesId: string,
+  visiteId: string,
   defisId: string,
   visiteur: string | undefined,
   dateVisite: Date,

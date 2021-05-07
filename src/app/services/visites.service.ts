@@ -17,14 +17,14 @@ export class VisitesService {
   }
 
   addVisites(visite: Visites): Observable<Visites> {
-    return this.http.post<Visites>(`${this.apiServerUrl}/api/visites/${visite.visitesId}`, visite);
+    return this.http.post<Visites>(`${this.apiServerUrl}/api/visites/${visite.visiteId}`, visite);
   }
 
   updateVisites(visite: Visites): Observable<Visites> {
-    return this.http.put<Visites>(`${this.apiServerUrl}/api/visites/${visite.visitesId}`, visite);
+    return this.http.put<Visites>(`${this.apiServerUrl}/api/visites/${visite.visiteId}`, visite);
   }
 
   deleteVisites(visite: Visites): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/api/visites/${visite.visitesId}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/api/visites/${visite.visiteId}`);
   }
 }

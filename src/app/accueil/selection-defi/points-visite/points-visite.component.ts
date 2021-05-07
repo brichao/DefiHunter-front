@@ -50,17 +50,20 @@ export class PointsVisiteComponent implements OnInit {
   }
 
   fermerDialogue(): void{
+    let nomVisite = this.defiId.slice(1);
     AccueilComponent.visiteId += 1;
     let visiteid: number = AccueilComponent.visiteId;
+    nomVisite = "V" + nomVisite + "-" + visiteid;
+    let temps: number = parseInt(this.duree?.value);
     this.visite = {
-      visitesId: visiteid.toString(),
+      visiteId: nomVisite,
       defisId: this.donnees.defiId,
       visiteur: this.chamisConnecte?.pseudo,
       dateVisite: new Date(),
       modeDP: this.donnees.modeDP,
       notation: this.notations,
       score: this.donnees.points,
-      temps: parseInt(this.duree?.value),
+      temps: temps,
       status: "completed",
       commentaire: this.commentaire?.value
     }
