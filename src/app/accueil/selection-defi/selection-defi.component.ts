@@ -22,6 +22,7 @@ export class SelectionDefiComponent {
   indices$: Observable<Indices[]>;
   points: number = 0;
   indiceOuvert = false;
+  modeDP: string = '';
 
   constructor(public dialogRefModifier: MatDialogRef<SelectionDefiComponent>,
              @Inject(MAT_DIALOG_DATA) public donnees: DialogDataDefis,
@@ -58,20 +59,25 @@ export class SelectionDefiComponent {
      return this.formeVisite.get('visite.question');
    }
 
-   ajouterVisite(){
-
-    //Calcul points a faire
-
+   validerVisite(){
      const dialogueConfig = new MatDialogConfig();
      dialogueConfig.data = {
        points: this.points,
-       defisId: this.defi?.id,
-       visiteur: this.defi?.auteur,
-       epilogue: this.defi?.epilogue
+       defiId: this.defi?.id,
+       epilogue: this.defi?.epilogue,
+       modeDP: this.modeDP
      }
      dialogueConfig.width = '40%';
+     console.log(this.points);
      this.dialoguePoints.open(PointsVisiteComponent, dialogueConfig)
     this.dialogRefModifier.close();
+   }
+
+   validerQuestions(question: Questions){
+      let reponse: string = this.question?.value;
+      if(reponse === question.secret){
+        this.points += question.points;
+      }
    }
 
    ouvert(indice: Indices): void{

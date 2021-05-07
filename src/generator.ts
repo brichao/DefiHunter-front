@@ -57,13 +57,13 @@ export interface MotsCles {
 }
 
 export interface Visites {
-  visiteId: string,
+  visitesId: string,
   defisId: string,
   visiteur: string | undefined,
-  dateDeVisite: Date,
+  dateVisite: Date,
   modeDP: string,
-  score: number,
   notation: number,
+  score: number,
   temps: number,
   status: string,
   commentaire: string
@@ -150,6 +150,6 @@ export const emptyQuestions: Questions = {
 export interface DialogDataPoints{
   points: number,
   defiId: string,
-  visiteur: string,
-  epilogue: string
+  epilogue: string,
+  modeDP: string
 }

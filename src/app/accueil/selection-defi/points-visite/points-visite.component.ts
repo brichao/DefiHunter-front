@@ -1,3 +1,4 @@
+import { VisitesService } from './../../../services/visites.service';
 import { AccueilComponent } from './../../accueil.component';
 import { Chamis, Visites } from './../../../../generator';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -17,17 +18,16 @@ export class PointsVisiteComponent implements OnInit {
   chamisConnecte!: Chamis | null;
   visite: Visites | null = null;
   epilogue: string = "";
-  defiId: string = "";
-  visiteur: string = "";
+  defiId: string = '';
+  notations: number = 0;
 
   constructor(public dialogRefModifier: MatDialogRef<PointsVisiteComponent>,
               private chamisConnecteService: CommunicationComposantService,
-              @Inject(MAT_DIALOG_DATA) public donnees: DialogDataPoints) {
-
+              @Inject(MAT_DIALOG_DATA) public donnees: DialogDataPoints,
+              private visiteService: VisitesService) {
                 this.points = donnees.points;
                 this.epilogue = donnees.epilogue;
                 this.defiId = donnees.defiId;
-                this.visiteur = donnees.visiteur;
   }
 
   ngOnInit(): void {
@@ -37,17 +37,12 @@ export class PointsVisiteComponent implements OnInit {
   formFinal = new FormGroup({
     visite: new FormGroup({
       commentaire: new FormControl(''),
-      notation: new FormControl(''),
       duree: new FormControl('')
     })
   })
 
   get commentaire(){
     return this.formFinal.get('visite.commentaire');
-  }
-
-  get notation(){
-    return this.formFinal.get('visite.notation');
   }
 
   get duree(){
@@ -58,18 +53,19 @@ export class PointsVisiteComponent implements OnInit {
     AccueilComponent.visiteId += 1;
     let visiteid: number = AccueilComponent.visiteId;
     this.visite = {
-      visiteId: visiteid.toString(),
-      defisId: this.defiId,
+      visitesId: visiteid.toString(),
+      defisId: this.donnees.defiId,
       visiteur: this.chamisConnecte?.pseudo,
-      dateDeVisite: new Date(),
-      modeDP: "",
-      notation: this.notation?.value,
-      score: this.points,
-      temps: this.duree?.value,
-      status: "",
+      dateVisite: new Date(),
+      modeDP: this.donnees.modeDP,
+      notation: this.notations,
+      score: this.donnees.points,
+      temps: parseInt(this.duree?.value),
+      status: "completed",
       commentaire: this.commentaire?.value
     }
     console.log(this.visite);
+    this.visiteService.addVisites(this.visite).subscribe(visite => console.log(visite));
     this.dialogRefModifier.close();
   }
 

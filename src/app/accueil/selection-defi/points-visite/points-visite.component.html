@@ -3,15 +3,14 @@
   Vous avez fait {{points}} points.
   <p></p>
   <p> {{epilogue}} </p>
-  <form [formGroup]="formFinal">
-    <div formGroupName="visite">
-        <div class="fields">
-        <mat-form-field>
-          <mat-label>Notation : </mat-label>
-          <input formControlName="notation" id="notation" placeholder="Veuillez laisser une notation de 1 à 10" matInput>
-          <mat-hint>De 1 à 10</mat-hint>
-        </mat-form-field>
 
+          <label id="notation">Notation : </label>
+          <mat-radio-group aria-labelledby="modeDP" [(ngModel)]='notations'>
+            <mat-radio-button *ngFor="let i of [1,2,3,4,5]" [value]="i">{{  i  }}</mat-radio-button>
+          </mat-radio-group>
+    <form [formGroup]="formFinal">
+      <div formGroupName="visite">
+        <div class="fields">
         <mat-form-field>
           <mat-label>Duree :  </mat-label>
           <input formControlName="duree" id="duree" placeholder="Durée effectuée pour le défi" matInput>
