@@ -9,8 +9,9 @@
 </button>
 
 <mat-grid-list cols="2" >
-  <mat-grid-tile *ngFor="let defi of (defis$ | async)">
+  <mat-grid-tile *ngFor="let defi of (defis$ | async)" >
     <mat-card>
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       <mat-card-header>
         <mat-card-title>{{defi.id}} : {{defi.titre}}</mat-card-title>
         <mat-card-subtitle>{{defi.auteur}}</mat-card-subtitle>
@@ -59,22 +60,23 @@
               <p class="text"> {{ bloc.texte }} </p>
             </div>
 
-            <!-- QUESTIONS -->
-            <div *ngFor="let question of (questions$ | async)">
-              <div *ngIf="question.defisId === defi.id && bloc.questionsId === question.questionId" >
-                <b  class="titre">Question : {{ question.questionNum }} </b>
-                <b> {{ question.points }} points</b>
-                <p> {{ question.description }} </p>
-              </div>
-            </div>
             <!-- INDICES -->
             <div *ngFor="let indice of (indices$ |async)">
               <div *ngIf="indice.defisId === defi.id && bloc.questionsId === indice.indicesId">
-                <b class="titre"> Indice : {{ indice.indiceNum }} </b>
+                <b class="titre"> Indice {{ indice.indiceNum }}: </b>
                 <b> ({{indice.points}} points)</b>
                 <p> {{ indice.description }} </p>
               </div>
             </div>
+            <!-- QUESTIONS -->
+            <div *ngFor="let question of (questions$ | async)">
+              <div *ngIf="question.defisId === defi.id && bloc.questionsId === question.questionId" >
+                <b  class="titre">Question {{ question.questionNum }}: </b>
+                <b> ({{ question.points }} points)</b>
+                <p> {{ question.description }} </p>
+              </div>
+            </div>
+
           </div>
           </mat-expansion-panel>
         </mat-accordion>

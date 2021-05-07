@@ -16,7 +16,7 @@
           <div *ngFor="let question of (questions$ | async)">
             <mat-form-field *ngIf="question.defisId === donnees.id && bloc.questionsId === question.questionId">
               <b  class="titre">Question : {{ question.questionNum }} </b>
-              <b> {{ question.points }} points</b>
+              <b> ({{ question.points }} points)</b>
               <p> {{ question.description }} </p>
               <input formControlName="question" id="question" matInput>
           </mat-form-field>
