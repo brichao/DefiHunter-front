@@ -1,3 +1,6 @@
+import { SelectionDefiComponent } from './selection-defi/selection-defi.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Defis } from './../../generator';
 import { DefisService } from './../services/defis.service';
 import {  OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
@@ -20,7 +23,7 @@ export class AccueilComponent implements OnInit {
   arretDefis: ArretDefis[] = [];
   public lignes: any;
 
-  constructor(private http: HttpClient, private defisServ: DefisService) { }
+  constructor(private http: HttpClient, private defisServ: DefisService, private dialogue: MatDialog) { }
 
   ngOnInit(): void {
     this.getLignes();
@@ -64,5 +67,21 @@ export class AccueilComponent implements OnInit {
 
   couleur(colorRGB: any): string {
     return `rgb( ${colorRGB} )`;
+  }
+
+  selectionnerDefi(defi: Defis): void {
+    const dialogueConfig = new MatDialogConfig();
+    dialogueConfig.width = '60%';
+    dialogueConfig.data = {
+      id: defi.id,
+      titre: defi.titre,
+      nomType: defi.nomType,
+      arret: defi.codeArret,
+      prologue: defi.prologue,
+      auteur: defi.auteur,
+      points: defi.points,
+      duree: defi.duree
+    }
+    this.dialogue.open(SelectionDefiComponent, dialogueConfig);
   }
 }

@@ -11,6 +11,7 @@
            <p>Type : {{arretDefi.defis.nomType}}</p>
            <p color ="blue">Durée : {{arretDefi.defis.duree}}mn</p>
            <p>Points : {{arretDefi.defis.points}}</p>
+           <button mat-stroked-button color='primary' (click)="selectionnerDefi(arretDefi.defis)">Visiter</button>
         </yaga-popup>
       </yaga-marker>
     </ng-container>

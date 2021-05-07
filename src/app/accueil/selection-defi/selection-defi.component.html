@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Visite du défi {{donnees.id}}</h1>
+<div mat-dialog-content>
+  <b>Description : </b>
+  <p>{{donnees.prologue}}</p>
+  <p></p>
+
+   <!-- TEXTE -->
+  <div *ngFor="let bloc of (bloctexte$ | async)">
+    <div *ngIf="bloc.defisId === donnees.id">
+      <p class="text"> {{ bloc.texte }} </p>
+    </div>
+
+    <!-- QUESTIONS -->
+    <form [formGroup]="formeVisite">
+      <div formGroupName="visite">
+          <div *ngFor="let question of (questions$ | async)">
+            <mat-form-field *ngIf="question.defisId === donnees.id && bloc.questionsId === question.questionId">
+              <b  class="titre">Question : {{ question.questionNum }} </b>
+              <b> {{ question.points }} points</b>
+              <p> {{ question.description }} </p>
+              <input formControlName="question" id="question" matInput>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+
+    <!-- INDICES -->
+    <div *ngFor="let indice of (indices$ |async)">
+      <div *ngIf="indice.defisId === donnees.id && bloc.questionsId === indice.indicesId">
+        <mat-expansion-panel (opened)="ouvert(indice)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b class="titre"> Indice : {{ indice.indiceNum }} </b>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <b> ({{indice.points}} points)</b>
+            <p> {{ indice.description }} </p>
+      </mat-expansion-panel>
+      </div>
+    </div>
+
+    <p></p>
+  </div>
+  <p></p>
+  <p>{{donnees.epilogue}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)='fermerDialogue()'>Abandonner</button>
+  <button mat-button (click)='ajouterVisite()'>Valider</button>
+</div>

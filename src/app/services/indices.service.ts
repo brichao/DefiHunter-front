@@ -14,20 +14,20 @@ export class IndicesService {
 
 
   getIndices(): Observable<Indices[]> {
-    return this.http.get<Indices[]>(`${this.apiServerUrl}/api/Indices/`);
+    return this.http.get<Indices[]>(`${this.apiServerUrl}/api/defis/indices`);
   }
 
   addIndices(indices: Indices) : Observable<Indices> {
-    return this.http.post<Indices>(`${this.apiServerUrl}/api/Indices/${indices.indicesId}`, indices);
+    return this.http.post<Indices>(`${this.apiServerUrl}/api/defis/${indices.defisId}/indices/${indices.indicesId}`, indices);
 
   }
 
   updateIndices(indices: Indices) {
-    return this.http.put<Indices>(`${this.apiServerUrl}/api/Indices/${indices.indicesId}`, indices).subscribe();
+    return this.http.put<Indices>(`${this.apiServerUrl}/api/defis/${indices.defisId}/indices/${indices.indicesId}`, indices).subscribe();
   }
 
   deleteIndices(indices: Indices){
-    return this.http.delete<void>(`${this.apiServerUrl}/api/Indices/${indices.indicesId}`).subscribe();
+    return this.http.delete<void>(`${this.apiServerUrl}/api/defis/${indices.defisId}/indices/${indices.indicesId}`).subscribe();
   }
 
 

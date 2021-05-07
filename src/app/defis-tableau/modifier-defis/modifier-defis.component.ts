@@ -1,22 +1,12 @@
+import { MotsClesService } from './../../services/motsCles.service';
+import { MotsCles } from './../../../generator';
 import { HttpClient } from '@angular/common/http';
 import { DefisService } from './../../services/defis.service';
 import { Component, OnInit } from '@angular/core';
-import { Defis } from 'src/generator';
+import { Defis, DialogDataDefis } from 'src/generator';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Inject } from '@angular/core';
-
-export interface DialogData  {
-  id: string,
-  titre: string,
-  nomType: string,
-  arret: string,
-  motscles: string,
-  prologue: string,
-  auteur: string,
-  points: number,
-  duree: string
-}
 
 @Component({
   selector: 'app-modifier-defis',
@@ -26,11 +16,12 @@ export interface DialogData  {
 export class ModifierDefisComponent implements OnInit{
   private defis: Defis | null = null;
   public Larrets: any[] = [];
+  private motsCles: MotsCles | null = null;
 
   constructor(private defiService: DefisService,
               public dialogRefModifier: MatDialogRef<ModifierDefisComponent>,
-              @Inject(MAT_DIALOG_DATA) public donnees : DialogData,
-              private http: HttpClient)
+              @Inject(MAT_DIALOG_DATA) public donnees : DialogDataDefis,
+              private http: HttpClient, private motsClesService: MotsClesService)
   {
     this.defis = {
       id: donnees.id,
@@ -39,12 +30,16 @@ export class ModifierDefisComponent implements OnInit{
       dateDeCreation: new Date(),
       dateDeModification: new Date(),
       auteur: donnees.auteur,
-      codeArret: donnees.arret,
+      codeArret: donnees.codeArret,
       points: donnees.points,
       duree: donnees.duree,
       prologue: donnees.prologue,
-      epilogue: "",
-      commentaire: ""
+      epilogue: donnees.epilogue,
+      commentaire: donnees.commentaire
+    }
+    this.motsCles = {
+      defisId: donnees.id,
+      motCle: donnees.motsCles
     }
   }
 
@@ -75,15 +70,15 @@ export class ModifierDefisComponent implements OnInit{
       motscles : new FormControl ('',[
         Validators.required
       ]),
-      prologue : new FormControl ('', [
-        Validators.required
-      ]),
+      prologue : new FormControl (''),
       points : new FormControl ('', [
         Validators.required
       ]),
       duree : new FormControl ('', [
         Validators.required
-      ])
+      ]),
+      epilogue : new FormControl (''),
+      commentaire : new FormControl ('')
     })
   })
 
@@ -99,12 +94,20 @@ export class ModifierDefisComponent implements OnInit{
     return this.formDefis.get('defis.arret');
   }
 
-  get motsCles(){
+  get motscles(){
     return this.formDefis.get('defis.motscles');
   }
 
   get prologue(){
     return this.formDefis.get('defis.prologue');
+  }
+
+  get epilogue(){
+    return this.formDefis.get('defis.epilogue');
+  }
+
+  get commentaire(){
+    return this.formDefis.get('defis.commentaire');
   }
 
   get points(){
@@ -131,11 +134,16 @@ export class ModifierDefisComponent implements OnInit{
       points: this.points?.value,
       duree: this.duree?.value,
       prologue: this.prologue?.value,
-      epilogue: "",
-      commentaire: ''
+      epilogue: this.epilogue?.value,
+      commentaire: this.commentaire?.value
+    }
+    this.motsCles= {
+      defisId: this.id?.value,
+      motCle: this.motscles?.value
     }
     console.log(this.defis);
     this.defiService.updateDefis(this.defis).subscribe(defi => console.log(defi));
+    this.motsClesService.updateMotsCles(this.motsCles).subscribe(motscle => console.log(motscle));
     this.dialogRefModifier.close();
   }
 

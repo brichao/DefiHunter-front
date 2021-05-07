@@ -10,8 +10,9 @@ button {
 
 mat-card {
   padding: 1rem 1rem 1rem 1rem;
-  width: 90%;
+  width: 95%;
   height: 90%;
+  overflow: scroll;
 
   .commentaire{
     font-style: italic;
@@ -23,11 +24,23 @@ mat-card {
     font-weight: bold;
   }
 
+  .text{
+    background-color: lightcyan;
+  }
+
   mat-card-actions {
     position: absolute;
     right: 0;
     bottom: 0;
     transform: translate(-15%, -15%);
+    text-align: right;
+  }
+
+  mat-expansion-panel {
+    height: 90%;
+  }
+
+  button {
     text-align: right;
   }
 }
@@ -36,5 +49,6 @@ mat-card {
   background-color: lightblue;
   color:black;
 }
+
 
 

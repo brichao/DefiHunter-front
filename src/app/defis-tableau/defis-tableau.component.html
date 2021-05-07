@@ -25,15 +25,65 @@
         <ng-container *ngIf="defi.id == 'D127'" >
           <div class="info">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Info! </strong> Pour le présentiel regarder la vidéo avant d'aller sur place.
+            <strong> Info! </strong> Pour le présentiel regarder la vidéo avant d'aller sur place.
           </div>
           <iframe width="500" height="250" src="https://www.youtube.com/embed/ZbA7aPTmlDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
         </ng-container>
 
-        <p>{{defi.epilogue}}</p>
-        <p class="titre">Commentaires : </p>
-        <p class="commentaire">{{defi.commentaire}}</p>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <b>Afficher les mots clés </b>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div> Mots clés :
+              <div *ngFor="let motscles of (motsCles$ | async)">
+                <div *ngIf="motscles.defisId === defi.id">
+                  <li>{{ motscles.motCle }}</li>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <b>Afficher la Description </b>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+          <!-- TEXTE -->
+          <div *ngFor="let bloc of (bloctexte$ | async)">
+            <div *ngIf="bloc.defisId === defi.id">
+              <p class="text"> {{ bloc.texte }} </p>
+            </div>
+
+            <!-- QUESTIONS -->
+            <div *ngFor="let question of (questions$ | async)">
+              <div *ngIf="question.defisId === defi.id && bloc.questionsId === question.questionId" >
+                <b  class="titre">Question : {{ question.questionNum }} </b>
+                <b> {{ question.points }} points</b>
+                <p> {{ question.description }} </p>
+              </div>
+            </div>
+            <!-- INDICES -->
+            <div *ngFor="let indice of (indices$ |async)">
+              <div *ngIf="indice.defisId === defi.id && bloc.questionsId === indice.indicesId">
+                <b class="titre"> Indice : {{ indice.indiceNum }} </b>
+                <b> ({{indice.points}} points)</b>
+                <p> {{ indice.description }} </p>
+              </div>
+            </div>
+          </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      <p></p>
+      <p class="titre">Epilogue : </p>
+      <p>{{defi.epilogue}}</p>
+      <p class="titre">Commentaires : </p>
+      <p class="commentaire">{{defi.commentaire}}</p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-icon-button (click)="modifierDefis(defi)" aria-label="modification defis">

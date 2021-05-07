@@ -13,21 +13,21 @@ export class BlocsTexteService {
   constructor(private http: HttpClient) { }
 
 
-  getBlocsTexte(): Observable<BlocsTexte[]> {
-    return this.http.get<BlocsTexte[]>(`${this.apiServerUrl}/api/BlocsTexte/`);
+  get BlocsTexte(): Observable<BlocsTexte[]> {
+    return this.http.get<BlocsTexte[]>(`${this.apiServerUrl}/api/defis/blocstexte/`);
   }
 
   addBlocsTexte(blocsTexte: BlocsTexte) : Observable<BlocsTexte> {
-    return this.http.post<BlocsTexte>(`${this.apiServerUrl}/api/BlocsTexte/${blocsTexte.bloctexteId}`, blocsTexte);
+    return this.http.post<BlocsTexte>(`${this.apiServerUrl}/api/defis/blocstexte/${blocsTexte.bloctexteId}`, blocsTexte);
 
   }
 
   updateBlocsTexte(blocsTexte: BlocsTexte) {
-    return this.http.put<BlocsTexte>(`${this.apiServerUrl}/api/BlocsTexte/${blocsTexte.bloctexteId}`, blocsTexte).subscribe();
+    return this.http.put<BlocsTexte>(`${this.apiServerUrl}/api/defis/blocstexte/${blocsTexte.bloctexteId}`, blocsTexte).subscribe();
   }
 
   deleteBlocsTexte(blocsTexte: BlocsTexte){
-    return this.http.delete<void>(`${this.apiServerUrl}/api/BlocsTexte/${blocsTexte.bloctexteId}`).subscribe();
+    return this.http.delete<void>(`${this.apiServerUrl}/api/defis/blocstexte/${blocsTexte.bloctexteId}`).subscribe();
   }
 
 
