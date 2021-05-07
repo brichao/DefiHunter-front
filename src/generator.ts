@@ -122,7 +122,7 @@ export interface DialogDataDefis{
   duree: string,
   motsCles: string,
   epilogue: string,
-  commentaire: string,
+  commentaire: string
 }
 
 export const emptyQuestions: Questions = {
@@ -132,4 +132,8 @@ export const emptyQuestions: Questions = {
   description: '',
   points: 0,
   secret: ''
+}
+
+export interface DialogDataPoints{
+  points: number;
 }

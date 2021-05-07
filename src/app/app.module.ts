@@ -44,6 +44,7 @@ import { ArretsService } from './services/arrets.service';
 import { ArretsComponent } from './arrets/arrets.component';
 import { SelectionDefiComponent } from './accueil/selection-defi/selection-defi.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { PointsVisiteComponent } from './accueil/selection-defi/points-visite/points-visite.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { QuestionsComponent } from './questions/questions.component';
     ArretsComponent,
     SelectionDefiComponent,
     QuestionsComponent,
+    PointsVisiteComponent,
   ],
   imports: [
     BrowserModule,

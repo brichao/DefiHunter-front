@@ -76,7 +76,6 @@ export class DefisTableauComponent implements OnInit {
   }
 
   modifierDefis(defi: Defis): void{
-    console.log(this.chamiConnecte?.pseudo);
     this.motsCles$.pipe(map(motcles => motcles.filter(motcle => (motcle.defisId === defi.id)))).subscribe(mot => this.motsCles = mot[0]);
     if (this.chamiConnecte?.pseudo === defi.auteur){
       const dialogConfig = new MatDialogConfig();

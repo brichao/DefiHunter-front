@@ -21,7 +21,8 @@ export class ModifierDefisComponent implements OnInit{
   constructor(private defiService: DefisService,
               public dialogRefModifier: MatDialogRef<ModifierDefisComponent>,
               @Inject(MAT_DIALOG_DATA) public donnees : DialogDataDefis,
-              private http: HttpClient, private motsClesService: MotsClesService){
+              private http: HttpClient, private motsClesService: MotsClesService)
+  {
     this.defis = {
       id: donnees.id,
       titre: donnees.titre,
@@ -69,13 +70,13 @@ export class ModifierDefisComponent implements OnInit{
       motscles : new FormControl ('',[
         Validators.required
       ]),
+      prologue : new FormControl (''),
       points : new FormControl ('', [
         Validators.required
       ]),
       duree : new FormControl ('', [
         Validators.required
       ]),
-      prologue : new FormControl (''),
       epilogue : new FormControl (''),
       commentaire : new FormControl ('')
     })
@@ -140,6 +141,7 @@ export class ModifierDefisComponent implements OnInit{
       defisId: this.id?.value,
       motCle: this.motscles?.value
     }
+    console.log(this.defis);
     this.defiService.updateDefis(this.defis).subscribe(defi => console.log(defi));
     this.motsClesService.updateMotsCles(this.motsCles).subscribe(motscle => console.log(motscle));
     this.dialogRefModifier.close();
