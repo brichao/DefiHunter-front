@@ -48,7 +48,6 @@ export class DefisTableauComponent implements OnInit {
     this.chamiConnecte$.subscribe(chamisC => this.chamiConnecte = chamisC);
   }
 
-
   ajouterDefis(): void{
     this.chamiConnecte$.subscribe(chamisC => this.chamiConnecte = chamisC);
     const dialogConfig = new MatDialogConfig();
