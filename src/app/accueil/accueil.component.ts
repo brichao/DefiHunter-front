@@ -22,6 +22,7 @@ export class AccueilComponent implements OnInit {
 
   arretDefis: ArretDefis[] = [];
   public lignes: any;
+  static visiteId: number = 0;
 
   constructor(private http: HttpClient, private defisServ: DefisService, private dialogue: MatDialog) { }
 
@@ -80,7 +81,9 @@ export class AccueilComponent implements OnInit {
       prologue: defi.prologue,
       auteur: defi.auteur,
       points: defi.points,
-      duree: defi.duree
+      duree: defi.duree,
+      epilogue: defi.epilogue,
+      commentaire: defi.commentaire
     }
     this.dialogue.open(SelectionDefiComponent, dialogueConfig);
   }

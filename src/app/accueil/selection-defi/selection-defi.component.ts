@@ -64,7 +64,10 @@ export class SelectionDefiComponent {
 
      const dialogueConfig = new MatDialogConfig();
      dialogueConfig.data = {
-       points: this.points
+       points: this.points,
+       defisId: this.defi?.id,
+       visiteur: this.defi?.auteur,
+       epilogue: this.defi?.epilogue
      }
      dialogueConfig.width = '40%';
      this.dialoguePoints.open(PointsVisiteComponent, dialogueConfig)
