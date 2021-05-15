@@ -4,9 +4,11 @@
   </h1>
 </mat-grid-tile-header>
 
+
 <button mat-mini-fab [disabled]="(chamiConnecte$ | async) == null" (click)="ajouterDefis()" aria-label="Creation defis">
   <mat-icon>add</mat-icon>
 </button>
+<div *ngIf="(chamiConnecte$ | async) == null">Veuillez vous connecter pour créer un défi.</div>
 
 <mat-grid-list cols="2" >
   <mat-grid-tile *ngFor="let defi of (defis$ | async)" >

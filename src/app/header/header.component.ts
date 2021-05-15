@@ -45,6 +45,7 @@ export class HeaderComponent {
   logout(): void {
     this.auth.signOut();
     this.chamisConnecteService.setChamisConnecte(null);
+    this.router.navigate([''], {state: {redirect: this.router.url}});
   }
 
   isLoggedIn(): Observable<firebase.User | null> {

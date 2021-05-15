@@ -5,7 +5,11 @@
 
   <a mat-button label= mat-button routerLink = "defis">Liste des défis</a>
   <a mat-button routerLink = "chamis">Liste des Chamis</a>
-  <a mat-button routerLink = "profil">Mon profil</a>
+  <div *ngIf="isLoggedIn() | async">
+    <a mat-button routerLink = "defi">Mes défis</a>
+    <a mat-button routerLink = "profil">Mon profil</a>
+  </div>
+
   <label class="spacer">
   </label>
 
