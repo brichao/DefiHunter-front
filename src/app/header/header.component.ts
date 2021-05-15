@@ -1,3 +1,4 @@
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommunicationComposantService } from './../services/communication-composant.service';
 import { ChangeDetectionStrategy, Component, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';

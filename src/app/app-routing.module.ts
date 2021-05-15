@@ -1,3 +1,4 @@
+import { MonProfilComponent } from './mon-profil/mon-profil.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ChamisTableauComponent } from './chamis-tableau/chamis-tableau.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'inscription', component: RegisterFormComponent },
   { path: 'chamis', component: ChamisTableauComponent },
   { path: 'defis',  component: DefisTableauComponent },
+  { path: 'profil',  component: MonProfilComponent },
 ];
 
 @NgModule({

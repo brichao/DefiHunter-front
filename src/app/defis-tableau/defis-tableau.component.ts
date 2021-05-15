@@ -16,6 +16,7 @@ import { ArretsService } from '../services/arrets.service';
 import { CommunicationComposantService } from '../services/communication-composant.service';
 import { BlocsTexteService } from '../services/blocsTexte.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { SelectionDefiComponent } from '../accueil/selection-defi/selection-defi.component';
 
 @Component({
   selector: 'defis-tableau',
@@ -47,7 +48,8 @@ export class DefisTableauComponent implements OnInit {
               private motsClesService: MotsClesService,
               private blocTexteService: BlocsTexteService,
               private indicesService: IndicesService,
-              private auth: AngularFireAuth
+              private auth: AngularFireAuth,
+              private dialogue: MatDialog
               )
   {
     this.defis$ = defisService.defis;
@@ -75,6 +77,24 @@ export class DefisTableauComponent implements OnInit {
     const dialogRef =  this.dialog.open(AjoutDefiComponent, dialogConfig);
   }
 
+  selectionnerDefi(defi: Defis): void {
+    const dialogueConfig = new MatDialogConfig();
+    dialogueConfig.width = '60%';
+    dialogueConfig.data = {
+      id: defi.id,
+      titre: defi.titre,
+      nomType: defi.nomType,
+      arret: defi.codeArret,
+      prologue: defi.prologue,
+      auteur: defi.auteur,
+      points: defi.points,
+      duree: defi.duree,
+      epilogue: defi.epilogue,
+      commentaire: defi.commentaire
+    }
+    this.dialogue.open(SelectionDefiComponent, dialogueConfig);
+  }
+
   modifierDefis(defi: Defis): void{
     this.motsCles$.pipe(map(motcles => motcles.filter(motcle => (motcle.defisId === defi.id)))).subscribe(mot => this.motsCles = mot[0]);
     if (this.chamiConnecte?.pseudo === defi.auteur){
@@ -98,9 +118,4 @@ export class DefisTableauComponent implements OnInit {
       console.log('vous ne pouvez pas modifier le defi');
     }
   }
-
-  // QuestionDefis(defi: Defis,  question: Questions){
-  //   this.questionsService.getQuestions(defi, question).subscribe( (question) => console.log(question));
-
-  // }
 }

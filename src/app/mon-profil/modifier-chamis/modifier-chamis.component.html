@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Modification du chamis : {{donnees.pseudo}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formChamis">
+    <div formGroupName="chamis">
+      <div class="fields">
+      <mat-form-field>
+        <mat-label>Pseudo</mat-label>
+        <input formControlName="pseudo" id="pseudo" matInput [(ngModel)]="donnees.pseudo" readonly>
+        <mat-hint>Impossible de changer.</mat-hint>
+       </mat-form-field>
+
+       <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input formControlName="email" id="email" matInput [(ngModel)]="donnees.email" readonly>
+        <mat-hint>Impossible de changer.</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age" id="age" [(ngModel)]="donnees.age">
+        <mat-error *ngIf="age?.errors?.required">L'âge est requis.</mat-error>
+        <mat-error *ngIf="age?.errors?.isNotNumber">L'âge doit être un numéro.</mat-error>
+        <mat-error *ngIf="age?.errors?.tooOld">Vous êtes trop vieux XD.</mat-error>
+        <mat-error *ngIf="age?.errors?.cannotContainSpace">L'Âge ne peut pas contenir des espaces.</mat-error>
+        <mat-error *ngIf="age?.errors?.cannotContainDotOrComma">L'Âge doit être un numéro entier.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ville</mat-label>
+        <input formControlName="ville" id="ville" matInput [(ngModel)]="donnees.ville">
+        <mat-error>La ville est requise.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea formControlName="description" id="description" matInput cols="30" rows="10" [(ngModel)]="donnees.description">
+          {{donnees.description}}
+        </textarea>
+        <mat-error>La description est requise.</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)='fermerModification()'>Fermer</button>
+  <button [disabled]="formChamis?.invalid" mat-button (click)="modifierChamis()">Valider</button>
+</div>
+
+

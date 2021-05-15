@@ -1,0 +1,25 @@
+<div *ngFor="let chami of (chamis$ | async)">
+  <div *ngIf="chami.pseudo === chamiConnecte!.pseudo">
+
+
+    <section id="stark">
+      <div class="profile-card">
+        <div class="photo"></div>
+        <div class="text-info-outer">
+          <div class="text-info-inner">
+            <div class="follow-button">
+              <button mat-raised-button color="primary" (click)="modifierChamis(chami)">Modifier</button>
+            </div>
+            <h3>{{chami.ville}}</h3>
+            <h1>{{chami.pseudo}}</h1>
+            <h2>Défis crées: 1022</h2>
+            <h2>Age: {{chami.age}}</h2>
+            <p>{{chami.description}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+</div>

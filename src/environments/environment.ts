@@ -4,16 +4,18 @@
 
 export const environment = {
   production: false,
+
   firebase: {
-    apiKey: "AIzaSyADIAtQ402XTfHTlpU0Tng18elb3-CAJC0",
-    authDomain: "defigrenoble-961cf.firebaseapp.com",
-    projectId: "defigrenoble-961cf",
-    storageBucket: "defigrenoble-961cf.appspot.com",
-    messagingSenderId: "455752264671",
-    appId: "1:455752264671:web:49baa93e1d72897c18f26a"
+    apiKey: "AIzaSyBVWiTv19PgHl4h-N9RkOFbIFY-fBC34bQ",
+    authDomain: "defihunter-8999f.firebaseapp.com",
+    projectId: "defihunter-8999f",
+    storageBucket: "defihunter-8999f.appspot.com",
+    messagingSenderId: "706588673357",
+    appId: "1:706588673357:web:3a9187f2bca8e73ddfa304",
+    measurementId: "G-LFE3VGPBS1"
+
   },
   apiBaseUrl: "https://l3m-pi-serveur-gp09.herokuapp.com"
-
 };
 
 /*

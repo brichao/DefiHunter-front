@@ -1,8 +1,8 @@
 {
   "hosting": [
     {
-      "target": "amorce-client",
-      "public": "dist/amorce-client",
+      "target": "DefiHunter-client",
+      "public": "dist/DefiHunter-client",
       "ignore": [
         "**/.*"
       ],
