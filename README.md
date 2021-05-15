@@ -6,7 +6,7 @@ Organisation de challenges solidaires et locaux à métropole grenobloise.
 
 # Installation
 
-Run `npm install` to install all the depencies.
+Run `npm install` to install all the dependencies.
 
 ## Development server
 
