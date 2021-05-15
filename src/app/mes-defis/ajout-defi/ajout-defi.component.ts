@@ -1,3 +1,5 @@
+import { HeaderComponent } from './../../header/header.component';
+import { RegisterFormComponent } from './../../register-form/register-form.component';
 import { MotsClesService } from './../../services/motsCles.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -123,6 +125,7 @@ export class AjoutDefiComponent implements OnInit{
     }
     this.defiService.addDefis(this!.defis).subscribe(defi => console.log(defi));
     this.motsClesService.addMotsCles(this!.motsCles).subscribe(motcles => console.log(motcles));
+    HeaderComponent.defiCree += 1;
     this.dialogRef.close();
   }
 

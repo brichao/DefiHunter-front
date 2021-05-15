@@ -25,7 +25,7 @@ export class ChamisService {
 
   }
 
-  updateChamis(chamis: Chamis) {
+  updateChamis(chamis: Chamis) : Observable<Chamis>{
     return this.http.put<Chamis>(`${this.apiServerUrl}/api/chamis/${chamis.pseudo}`, chamis);
   }
 

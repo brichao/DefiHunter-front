@@ -6,13 +6,13 @@
       <mat-form-field>
         <mat-label>Pseudo</mat-label>
         <input formControlName="pseudo" id="pseudo" matInput [(ngModel)]="donnees.pseudo" readonly>
-        <mat-hint>Impossible de changer.</mat-hint>
+        <mat-hint>Impossible de changer le pseudo.</mat-hint>
        </mat-form-field>
 
        <mat-form-field>
         <mat-label>Email</mat-label>
         <input formControlName="email" id="email" matInput [(ngModel)]="donnees.email" readonly>
-        <mat-hint>Impossible de changer.</mat-hint>
+        <mat-hint>Impossible de changer l'adresse mail.</mat-hint>
       </mat-form-field>
 
       <mat-form-field>
@@ -35,7 +35,8 @@
         <textarea formControlName="description" id="description" matInput cols="30" rows="10" [(ngModel)]="donnees.description">
           {{donnees.description}}
         </textarea>
-        <mat-error>La description est requise.</mat-error>
+        <mat-error *ngIf="description?.errors?.required">La description est requise.</mat-error>
+        <mat-error *ngIf="description?.errors?.maxLength">La description doit avoir au maximum {{description?.errors?.maxLength.requiredLength}} charactères</mat-error>
       </mat-form-field>
     </div>
   </div>

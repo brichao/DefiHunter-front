@@ -1,3 +1,4 @@
+import { HeaderComponent } from './../header/header.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -15,6 +16,7 @@ export class MonProfilComponent implements OnInit {
 
   public chamis$!: Observable<Chamis[]>;
   public chamiConnecte!: Chamis | null;
+  public defiNombre: number = HeaderComponent.defiCree;
 
   constructor(public chamisService: ChamisService,
               private dialogueChamis: MatDialog,

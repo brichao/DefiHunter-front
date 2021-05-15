@@ -1,4 +1,4 @@
-<mat-grid-tile-header>
+<!--<mat-grid-tile-header>
   <h1>
     Liste des Chamis
   </h1>
@@ -16,4 +16,29 @@
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list>-->
+
+    <div class="team-boxed">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Communauté </h2>
+            </div>
+            <div class="row people">
+              <div *ngFor="let chami of (chamis$ | async)">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle" src="assets/image.png">
+                        <h3 class="name">{{chami.pseudo}}</h3>
+                        <p class="ville">{{chami.ville}}</p>
+                        <p class="description">Age : {{chami.age}}</p>
+                        <p class="description">{{chami.description}}</p>
+
+                    </div>
+                </div>
+
+
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+

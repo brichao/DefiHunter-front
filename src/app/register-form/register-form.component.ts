@@ -17,6 +17,7 @@ export class RegisterFormComponent {
   private chamis: Chamis | null = null;
   private mailChamis: string | null = null;
 
+
   constructor(private service: ChamisService,
               private pseudoService: PseudoValidators,
               private router: Router,

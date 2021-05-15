@@ -37,7 +37,7 @@ import { RegisterFormService } from './services/register-form.service';
 import { ChamisService } from './services/chamis.service';
 import { PseudoValidators } from './register-form/pseudo.validators';
 import { AccueilComponent } from './accueil/accueil.component';
-import { AjoutDefiComponent } from './defis-tableau/ajout-defi/ajout-defi.component';
+import { AjoutDefiComponent } from './mes-defis/ajout-defi/ajout-defi.component';
 import { ModifierDefisComponent } from './defis-tableau/modifier-defis/modifier-defis.component';
 import { CommonModule } from "@angular/common";
 import { ModifierChamisComponent } from './mon-profil/modifier-chamis/modifier-chamis.component';

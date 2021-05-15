@@ -44,7 +44,8 @@ export class ModifierChamisComponent {
         Validators.required
       ]),
       description : new FormControl ('', [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(380)
       ]),
     })
   })
@@ -78,7 +79,7 @@ export class ModifierChamisComponent {
       description: this.description?.value
     }
     this.utilisateurConnecte.setChamisConnecte(this.chamis);
-    this.chamiService.updateChamis(this.chamis);
+    this.chamiService.updateChamis(this.chamis).subscribe(chami => console.log(chami));
     this.dialogRefModifier.close();
   }
 

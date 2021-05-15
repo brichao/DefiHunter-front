@@ -20,6 +20,7 @@ export class HeaderComponent {
   public menuEvent = new EventEmitter<MouseEvent>();
 
   chamis$: Observable<firebase.User | null>;
+  static defiCree: number = 0;
 
   constructor(  public auth: AngularFireAuth,
                 private registerService: RegisterFormService,

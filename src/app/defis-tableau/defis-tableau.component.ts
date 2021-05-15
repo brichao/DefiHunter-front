@@ -4,7 +4,7 @@ import { BlocsTexte, Questions,Indices } from './../../generator';
 import { QuestionsService } from './../services/questions.service';
 import { ChamisService } from './../services/chamis.service';
 import { ModifierDefisComponent } from './modifier-defis/modifier-defis.component';
-import { AjoutDefiComponent } from './ajout-defi/ajout-defi.component';
+import { AjoutDefiComponent } from '../mes-defis/ajout-defi/ajout-defi.component';
 import { DefisService } from './../services/defis.service';
 import { Chamis, Defis, MotsCles } from 'src/generator';
 import { Arret } from '../services/arret';
@@ -65,16 +65,6 @@ export class DefisTableauComponent implements OnInit {
   ngOnInit() {
     this.chamiConnecte$ = this.chamisConnecteService.chamisConnecte;
     this.chamiConnecte$.subscribe(chamisC => this.chamiConnecte = chamisC);
-  }
-
-  ajouterDefis(): void{
-    this.chamiConnecte$.subscribe(chamisC => this.chamiConnecte = chamisC);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {
-      auteur: this.chamiConnecte?.pseudo
-    }
-    dialogConfig.width = '80%';
-    const dialogRef =  this.dialog.open(AjoutDefiComponent, dialogConfig);
   }
 
   selectionnerDefi(defi: Defis): void {
