@@ -1,35 +1,12 @@
-mat-grid-tile-header {
-  h1 {
-    margin: 1rem 1rem 1rem 1rem;
-  }
-  overflow: scroll;
-}
-
-mat-grid-tile {
-  mat-card {
-    padding: 1rem 1rem 1rem 1rem;
-    width: 90%;
-    height: 90%;
-    mat-card-actions {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      transform: translate(-15%, -15%);
-      text-align: right;
-    }
-  }
-}
-
 .team-boxed {
   color:#313437;
-  background-color:#eef4f7;
 }
 
 .team-boxed p {
   color:#7d8285;
 }
 
-.team-boxed h2 {
+.team-boxed h1 {
   font-weight:bold;
   margin-bottom:40px;
   padding-top:40px;
@@ -91,5 +68,5 @@ mat-grid-tile {
 }
 
 .team-boxed .item img {
-  max-width:160px;
+  max-width: 160px;
 }

@@ -1,30 +1,29 @@
-<mat-grid-tile-header>
-  <h1>
-    Liste des Defis
-  </h1>
-</mat-grid-tile-header>
+<main class="container">
+	<div class="h1 text-center" id="pageHeaderTitle">Les défis</div>
 
-<mat-grid-list cols="2" >
-  <mat-grid-tile *ngFor="let defi of (defis$ | async)" >
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>{{defi.id}} : {{defi.titre}}</mat-card-title>
-        <mat-card-subtitle>{{defi.auteur}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
+  <div *ngFor="let defi of (defis$ | async)">
+	<article class="postcard yellow">
+
+		<div class="postcard__text">
+			<h1 class="postcard__title yellow">{{defi.id}} : {{defi.titre}}</h1>
+			<div class="postcard__subtitle small">
+					<i class="fas fa-calendar-alt mr-2"></i>{{defi.auteur}}, {{defi.dateDeCreation}}
+
+			</div>
+			<div class="postcard__bar"></div>
+			<div class="postcard__preview-txt">
         <p>Type : {{defi.nomType}}</p>
-        <p>Arret : {{defi.codeArret}}</p>
+        <p>Arrêt : {{defi.codeArret}}</p>
         <p>Points : {{defi.points}}</p>
         <p>Durée : {{defi.duree}} mn</p>
-        <p class="titre">Prologue : </p>
         <p>{{defi.prologue}}</p>
+
         <ng-container *ngIf="defi.id == 'D127'" >
           <div class="info">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong> Info! </strong> Pour le présentiel regarder la vidéo avant d'aller sur place.
+            <strong> Info ! </strong> Pour le présentiel regarder la vidéo avant d'aller sur place.
           </div>
           <iframe width="500" height="250" src="https://www.youtube.com/embed/ZbA7aPTmlDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
         </ng-container>
 
         <mat-accordion>
@@ -34,7 +33,7 @@
                 <b>Afficher les mots clés </b>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <div> Mots clés :
+            <div>
               <div *ngFor="let motscles of (motsCles$ | async)">
                 <div *ngIf="motscles.defisId === defi.id">
                   <li>{{ motscles.motCle }}</li>
@@ -49,13 +48,13 @@
                 <b>Afficher la Description </b>
               </mat-panel-title>
             </mat-expansion-panel-header>
-          <!-- TEXTE -->
+            <!--TEXTE-->
           <div *ngFor="let bloc of (bloctexte$ | async)">
             <div *ngIf="bloc.defisId === defi.id">
               <p class="text"> {{ bloc.texte }} </p>
             </div>
 
-            <!-- INDICES -->
+            <!--INDICES-->
             <div *ngFor="let indice of (indices$ |async)">
               <div *ngIf="indice.defisId === defi.id && bloc.questionsId === indice.indicesId">
                 <b class="titre"> Indice {{ indice.indiceNum }}: </b>
@@ -63,7 +62,8 @@
                 <p> {{ indice.description }} </p>
               </div>
             </div>
-            <!-- QUESTIONS -->
+
+            <!--QUESTIONS-->
             <div *ngFor="let question of (questions$ | async)">
               <div *ngIf="question.defisId === defi.id && bloc.questionsId === question.questionId" >
                 <b  class="titre">Question {{ question.questionNum }}: </b>
@@ -75,19 +75,15 @@
           </div>
           </mat-expansion-panel>
         </mat-accordion>
+        <p></p>
+        <div *ngIf="defi.commentaire.length !== 0">
+          <p>Commentaires : </p>
+          <p>{{defi.commentaire}}</p>
+        </div>
+        <button mat-raised-button class="boutonVisiter" color="success" (click)="selectionnerDefi(defi)">Visiter</button>
+      </div>
 
-      <p></p>
-      <p class="titre">Epilogue : </p>
-      <p>{{defi.epilogue}}</p>
-      <p class="titre">Commentaires : </p>
-      <p class="commentaire">{{defi.commentaire}}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button (click)="selectionnerDefi(defi)" aria-label="selection defi">Visiter</button>
-        <button mat-icon-button (click)="modifierDefis(defi)" aria-label="modification defis">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+		</div>
+  </article>
+</div>
+</main>

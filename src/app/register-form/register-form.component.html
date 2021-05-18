@@ -14,8 +14,8 @@
         >
         <div *ngIf="pseudo?.pending">Checking for duplicated pseudo...</div>
           <mat-error *ngIf="pseudo?.errors?.required">Pseudo est requis.</mat-error>
-          <mat-error *ngIf="pseudo?.errors?.minlength">Pseudo should have a minimum of {{pseudo?.errors?.minlength.requiredLength}} characters.</mat-error>
-          <mat-error *ngIf="pseudo?.errors?.cannotContainSpace">Pseudo cannot contain space.</mat-error>
+          <mat-error *ngIf="pseudo?.errors?.minlength">Pseudo doit avoir un minimum de {{pseudo?.errors?.minlength.requiredLength}} caracteres.</mat-error>
+          <mat-error *ngIf="pseudo?.errors?.cannotContainSpace">Pseudo ne peut pas contenir space.</mat-error>
           <mat-error *ngIf="pseudo?.errors?.shouldBeUnique">Pseudo déjà pris.</mat-error>
       </mat-form-field>
     </div>

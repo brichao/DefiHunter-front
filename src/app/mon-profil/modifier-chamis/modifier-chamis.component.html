@@ -20,7 +20,7 @@
         <input matInput formControlName="age" id="age" [(ngModel)]="donnees.age">
         <mat-error *ngIf="age?.errors?.required">L'âge est requis.</mat-error>
         <mat-error *ngIf="age?.errors?.isNotNumber">L'âge doit être un numéro.</mat-error>
-        <mat-error *ngIf="age?.errors?.tooOld">Vous êtes trop vieux XD.</mat-error>
+        <mat-error *ngIf="age?.errors?.tooOld">Vous êtes trop vieux.</mat-error>
         <mat-error *ngIf="age?.errors?.cannotContainSpace">L'Âge ne peut pas contenir des espaces.</mat-error>
         <mat-error *ngIf="age?.errors?.cannotContainDotOrComma">L'Âge doit être un numéro entier.</mat-error>
       </mat-form-field>
@@ -30,12 +30,14 @@
         <input formControlName="ville" id="ville" matInput [(ngModel)]="donnees.ville">
         <mat-error>La ville est requise.</mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="blocDescription">
         <mat-label>Description</mat-label>
         <textarea formControlName="description" id="description" matInput cols="30" rows="10" [(ngModel)]="donnees.description">
           {{donnees.description}}
         </textarea>
-        <mat-error>La description est requise.</mat-error>
+        <span class="nbCaracteres">Nombre de caractères {{donnees.description.length}} / 380</span>
+        <mat-error *ngIf="description?.errors?.required">La description est requise.</mat-error>
+        <mat-error *ngIf="description?.errors?.maxLength">La description doit avoir un maximum de 380 caractères.</mat-error>
       </mat-form-field>
     </div>
   </div>

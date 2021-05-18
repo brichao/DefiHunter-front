@@ -1,6 +1,5 @@
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 export class UtilisateurService {
 
   private chamisEmail = '';
-  // private utilisateurSource = new BehaviorSubject<Chamis | null>(null);
-  // utilisateur!: any;
 
   constructor(private auth: AngularFireAuth) {
     this.auth.authState

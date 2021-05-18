@@ -38,13 +38,11 @@ import { ChamisService } from './services/chamis.service';
 import { PseudoValidators } from './register-form/pseudo.validators';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AjoutDefiComponent } from './mes-defis/ajout-defi/ajout-defi.component';
-import { ModifierDefisComponent } from './defis-tableau/modifier-defis/modifier-defis.component';
+import { ModifierDefisComponent } from './mes-defis/modifier-defis/modifier-defis.component';
 import { CommonModule } from "@angular/common";
 import { ModifierChamisComponent } from './mon-profil/modifier-chamis/modifier-chamis.component';
 import { ArretsService } from './services/arrets.service';
-import { ArretsComponent } from './arrets/arrets.component';
 import { SelectionDefiComponent } from './accueil/selection-defi/selection-defi.component';
-import { QuestionsComponent } from './questions/questions.component';
 import { PointsVisiteComponent } from './accueil/selection-defi/points-visite/points-visite.component';
 import { MesDefisComponent } from './mes-defis/mes-defis.component';
 import { MonProfilComponent } from './mon-profil/mon-profil.component';
@@ -60,9 +58,7 @@ import { MonProfilComponent } from './mon-profil/mon-profil.component';
     AjoutDefiComponent,
     ModifierDefisComponent,
     ModifierChamisComponent,
-    ArretsComponent,
     SelectionDefiComponent,
-    QuestionsComponent,
     PointsVisiteComponent,
     MesDefisComponent,
     MonProfilComponent,

@@ -44,7 +44,8 @@ export class ModifierChamisComponent {
         Validators.required
       ]),
       description : new FormControl ('', [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(380)
       ]),
     })
   })

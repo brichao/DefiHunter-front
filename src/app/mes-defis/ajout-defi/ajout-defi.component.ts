@@ -1,5 +1,4 @@
 import { HeaderComponent } from './../../header/header.component';
-import { RegisterFormComponent } from './../../register-form/register-form.component';
 import { MotsClesService } from './../../services/motsCles.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
