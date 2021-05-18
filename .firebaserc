@@ -6,6 +6,18 @@
           "defigrenoble-961cf"
         ]
       }
+    },
+    "defihunter-8999f": {
+      "hosting": {
+        "DefiHunter-client": [
+          "defihunter-8999f"
+        ]
+      }
     }
+  },
+  "projects": {
+    "defihunter": "defihunter-8999f",
+    "defi": "defihunter-8999f",
+    "default": "defihunter-8999f"
   }
 }
