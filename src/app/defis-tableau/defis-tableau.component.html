@@ -13,6 +13,12 @@
 			<div class="postcard__bar"></div>
 			<div class="postcard__preview-txt">
         <p>Type : {{defi.nomType}}</p>
+        <!--
+        <div *ngFor="let arret of Larrets">
+          <div *ngIf="arret.features[0].properties.code !== defi.codeArret"></div>
+          <p>Arrêt : {{arret.features[0].properties.LIBELLE}}</p>
+        </div>
+        -->
         <p>Arrêt : {{defi.codeArret}}</p>
         <p>Points : {{defi.points}}</p>
         <p>Durée : {{defi.duree}} mn</p>

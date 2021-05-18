@@ -85,7 +85,7 @@ export interface Ligne {
   };
 }
 
-interface Features {
+export interface Features {
   type: string;
   geometry: {
     type: string;

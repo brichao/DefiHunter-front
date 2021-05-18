@@ -30,6 +30,12 @@ body {
   text-transform: uppercase;
 }
 
+.boutonModif, .boutonSuppression {
+  float: right;
+  margin: 10px;
+  width: 100px;
+}
+
 .container {
 	margin-top: 2rem;
 }
@@ -60,7 +66,6 @@ body {
 		margin-bottom: 0.5rem;
 		font-weight: 500;
     line-height: 1.2;
-
 	}
 
 	.small {

@@ -22,12 +22,13 @@ export class DefisTableauComponent implements OnInit{
   bloctexte$: Observable<BlocsTexte[]>;
   indices$: Observable<Indices[]>;
 
+
   constructor(public defisService: DefisService,
               private questionsService: QuestionsService,
               private motsClesService: MotsClesService,
               private blocTexteService: BlocsTexteService,
               private indicesService: IndicesService,
-              private dialogue: MatDialog,
+              private dialogue: MatDialog
               )
   {
     this.defis$ = this.defisService.defis;
@@ -36,9 +37,13 @@ export class DefisTableauComponent implements OnInit{
     this.bloctexte$ = this.blocTexteService.BlocsTexte;
     this.indices$ = this.indicesService.getIndices();
 
+    /*this.arrets$ = this.arretService.arrets;
+    this.arretService.arrets.subscribe(donnee => console.log(donnee.features));
+    console.log(this.features);*/
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   selectionnerDefi(defi: Defis): void {
     const dialogueConfig = new MatDialogConfig();
@@ -60,9 +65,7 @@ export class DefisTableauComponent implements OnInit{
 
   /*libelleArret(codeArret: string): string{
     let libelle:string = '';
-    this.arretService.getArret(codeArret).subscribe(arret => libelle = arret.features[0].properties.LIBELLE)
-    console.log(codeArret);
-    console.log(this.arretService.getArret(codeArret));
+    this.arretService.getArret(codeArret).subscribe(arret => libelle = arret.features[0].properties.LIBELLE);
     console.log(libelle);
     return libelle;
   }*/

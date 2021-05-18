@@ -53,10 +53,7 @@ export class ModifierDefisComponent implements OnInit{
 
   formDefis = new FormGroup({
     defis: new FormGroup({
-      id: new FormControl('', [
-        Validators.required,
-        Validators.minLength(4)
-      ]),
+      id: new FormControl(''),
       titre : new FormControl('', [
         Validators.required,
         Validators.minLength(4)

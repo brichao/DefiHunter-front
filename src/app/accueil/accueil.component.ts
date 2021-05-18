@@ -1,13 +1,12 @@
 import { SelectionDefiComponent } from './selection-defi/selection-defi.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Defis } from './../../generator';
+import { Defis, Arret } from './../../generator';
 import { DefisService } from './../services/defis.service';
 import {  OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Component } from '@angular/core';
 import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
 import "leaflet/dist/images/marker-shadow.png";
-import { Arret } from '../services/arret';
 import { ArretDefis } from 'src/generator';
 
 @Component({
